@@ -1,0 +1,1601 @@
+ts,cwd_id,family,cmd_redacted,exit_code,duration_ms,hour,dow,prev_exit,fail_streak,secs_since_prev,git_dirty,arg_count,has_pipe,has_redirect,p_fail_pred,predictor
+1786338192,4aa9acb1199c7ec1,python3,python3 -m <arg>,0,1133,5,1,,0,,1,2,0,0,0.21,baseline
+1786338380,4aa9acb1199c7ec1,curl,curl -s <url>,0,1228,5,1,0,0,188,0,2,0,0,0.106,baseline
+1786338440,4aa9acb1199c7ec1,python3,python3 -m <arg>,1,1144,5,1,0,0,60,1,2,0,0,0.02,baseline
+1786338603,4aa9acb1199c7ec1,python3,python3 <path>,0,776,5,1,1,1,163,,1,0,0,0.158,baseline
+1786338705,4aa9acb1199c7ec1,python3,python3 -m <arg>,0,968,5,1,0,0,102,0,2,0,0,0.194,baseline
+1786338896,4aa9acb1199c7ec1,git,git push <arg>,0,321,5,1,0,0,191,0,2,0,0,0.103,baseline
+1786338981,4aa9acb1199c7ec1,curl,curl -X <arg> <url>,0,1353,5,1,0,0,85,0,3,0,0,0.02,baseline
+1786339053,4aa9acb1199c7ec1,curl,curl -s <url>,0,599,5,1,0,0,72,0,2,0,0,0.195,baseline
+1786339218,4aa9acb1199c7ec1,git,git pull,0,199,5,1,0,0,165,1,1,0,0,0.02,baseline
+1786339397,4aa9acb1199c7ec1,npm,npm install <arg>,0,1912,5,1,0,0,179,1,2,0,0,0.595,baseline
+1786339586,4aa9acb1199c7ec1,python3,python3 <path>,0,1136,5,1,0,0,189,0,1,0,0,0.22,baseline
+1786339729,4aa9acb1199c7ec1,npm,npm run build,1,2252,5,1,0,0,143,1,2,0,0,0.597,baseline
+1786339928,4aa9acb1199c7ec1,git,git push <arg>,0,205,5,1,1,1,199,,2,0,0,0.02,baseline
+1786340115,4aa9acb1199c7ec1,python3,python3 -m <arg>,0,833,5,1,0,0,187,1,2,0,0,0.163,baseline
+1786340270,4aa9acb1199c7ec1,git,git diff <path>,0,94,5,1,0,0,155,1,2,0,0,0.058,baseline
+1786340421,4aa9acb1199c7ec1,curl,curl -s <url>,0,662,5,1,0,0,151,1,2,0,0,0.204,baseline
+1786340545,4aa9acb1199c7ec1,npm,npm run build,0,1508,5,1,0,0,124,1,2,0,0,0.64,baseline
+1786340613,4aa9acb1199c7ec1,npm,npm run <arg>,1,1320,5,1,0,0,68,,2,0,1,0.685,baseline
+1786340717,4aa9acb1199c7ec1,python3,python3 -m <arg>,0,968,5,1,1,1,104,0,2,0,0,0.233,baseline
+1786340736,4aa9acb1199c7ec1,npm,npm run <arg>,1,976,5,1,0,0,19,1,2,0,0,0.689,baseline
+1786340844,4aa9acb1199c7ec1,npm,npm run build,0,2195,5,1,1,1,108,0,2,0,0,0.607,baseline
+1786341032,4aa9acb1199c7ec1,python3,python3 -m <arg>,0,409,5,1,0,0,188,,2,0,1,0.13,baseline
+1786341196,4aa9acb1199c7ec1,npm,npm install <arg>,1,2902,5,1,0,0,164,1,2,0,0,0.745,baseline
+1786341381,4aa9acb1199c7ec1,python3,python3 <path>,0,293,5,1,1,1,185,1,1,0,0,0.102,baseline
+1786380678,e0f632d940b22f8b,npm,npm install <arg>,0,680,16,1,0,0,39297,0,2,0,0,0.367,baseline
+1786380694,e0f632d940b22f8b,npm,npm test,1,3598,16,1,0,0,16,0,1,1,0,0.418,baseline
+1786380925,e0f632d940b22f8b,make,make test,0,2088,16,1,1,1,231,1,1,0,0,0.151,baseline
+1786380940,e0f632d940b22f8b,git,git diff <path>,0,157,16,1,0,0,15,0,2,0,0,0.059,baseline
+1786381005,e0f632d940b22f8b,npm,npm run build,0,2994,16,1,0,0,65,0,2,0,0,0.405,baseline
+1786381220,e0f632d940b22f8b,npm,npm run build,1,2432,17,1,0,0,215,0,2,0,0,0.433,baseline
+1786381440,e0f632d940b22f8b,make,make <arg>,0,757,17,1,1,1,220,1,1,0,0,0.262,baseline
+1786381575,e0f632d940b22f8b,npm,npm run build,1,1046,17,1,0,0,135,0,2,0,0,0.442,baseline
+1786411000,dfc1277f11c97751,cargo,cargo build --release,0,9555,1,2,1,1,29425,1,2,0,0,0.429,baseline
+1786411080,dfc1277f11c97751,pytest,pytest <arg>,1,6243,1,2,0,0,80,0,1,0,0,0.472,baseline
+1786411240,dfc1277f11c97751,git,git pull,0,201,1,2,1,1,160,0,1,0,0,0.118,baseline
+1786411403,dfc1277f11c97751,git,git push <arg>,0,447,1,2,0,0,163,1,2,0,1,0.02,baseline
+1786411470,dfc1277f11c97751,docker,docker build <path>,0,1626,1,2,0,0,67,1,2,0,0,0.071,baseline
+1786411651,dfc1277f11c97751,cargo,cargo run <arg>,0,3835,1,2,0,0,181,1,2,0,0,0.369,baseline
+1786411772,dfc1277f11c97751,pytest,pytest -q <path>,0,31737,1,2,0,0,121,0,2,0,0,0.445,baseline
+1786411967,dfc1277f11c97751,docker,docker ps,0,5945,1,2,0,0,195,0,1,0,0,0.097,baseline
+1786411991,dfc1277f11c97751,git,git status,0,34,1,2,0,0,24,0,1,0,0,0.083,baseline
+1786412134,dfc1277f11c97751,docker,docker build <path>,0,490,1,2,0,0,143,0,2,0,0,0.209,baseline
+1786412261,dfc1277f11c97751,cargo,cargo run <arg>,0,1681,1,2,0,0,127,,2,0,0,0.309,baseline
+1786412390,dfc1277f11c97751,cargo,cargo test --workspace,101,21632,1,2,0,0,129,0,2,0,0,0.393,baseline
+1786412564,dfc1277f11c97751,cargo,cargo build --release,101,1774,1,2,101,1,174,0,2,0,0,0.436,baseline
+1786412781,dfc1277f11c97751,docker,docker build <path>,0,537,1,2,101,2,217,1,2,0,0,0.272,baseline
+1786413000,dfc1277f11c97751,cargo,cargo build --release,0,1376,1,2,0,0,219,0,2,0,0,0.375,baseline
+1786413196,dfc1277f11c97751,cargo,cargo build --release,0,1391,1,2,0,0,196,0,2,0,0,0.401,baseline
+1786413384,dfc1277f11c97751,pytest,pytest <path>,1,14670,1,2,0,0,188,1,1,0,0,0.556,baseline
+1786413406,dfc1277f11c97751,git,git push <arg>,1,339,1,2,1,1,22,0,2,0,0,0.02,baseline
+1786413598,dfc1277f11c97751,git,git diff <path>,0,172,1,2,1,2,192,0,2,0,0,0.074,baseline
+1786413721,dfc1277f11c97751,docker,docker ps,0,890,2,2,0,0,123,1,1,0,0,0.306,baseline
+1786413951,dfc1277f11c97751,git,git commit -m <arg>,0,225,2,2,0,0,230,0,3,0,0,0.035,baseline
+1786414158,dfc1277f11c97751,cargo,cargo clippy,101,3436,2,2,0,0,207,0,1,0,0,0.34,baseline
+1786414247,dfc1277f11c97751,git,git status,0,152,2,2,101,1,89,,1,0,0,0.059,baseline
+1786414441,dfc1277f11c97751,docker,docker build <path>,0,1409,2,2,0,0,194,1,2,0,0,0.11,baseline
+1786414504,dfc1277f11c97751,git,git commit -m <arg>,0,271,2,2,0,0,63,1,3,1,0,0.02,baseline
+1786414631,dfc1277f11c97751,docker,docker ps,0,1901,2,2,0,0,127,1,1,0,0,0.081,baseline
+1786414783,dfc1277f11c97751,cargo,cargo run <arg>,101,2060,2,2,0,0,152,1,2,0,0,0.323,baseline
+1786457357,819dbc88958c1ad1,grep,grep -r <arg> <path>,0,116,14,2,101,1,42574,0,3,0,0,0.02,baseline
+1786457402,819dbc88958c1ad1,git,git push <arg>,0,190,14,2,0,0,45,1,2,0,0,0.106,baseline
+1786457466,819dbc88958c1ad1,grep,grep -r <arg> <path>,0,124,14,2,0,0,64,1,3,0,0,0.052,baseline
+1786457703,819dbc88958c1ad1,grep,grep -r <arg> <path>,0,31,14,2,0,0,237,1,3,0,0,0.02,baseline
+1786457846,819dbc88958c1ad1,grep,grep -r <arg> <path>,0,231,14,2,0,0,143,0,3,0,0,0.069,baseline
+1786458071,819dbc88958c1ad1,git,git status,0,292,14,2,0,0,225,0,1,0,0,0.054,baseline
+1786458187,819dbc88958c1ad1,grep,grep -r <arg> <path>,0,75,14,2,0,0,116,,3,0,0,0.02,baseline
+1786458265,819dbc88958c1ad1,grep,grep -r <arg> <path>,0,89,14,2,0,0,78,,3,0,1,0.039,baseline
+1786458492,819dbc88958c1ad1,grep,grep -r <arg> <path>,0,44,14,2,0,0,227,0,3,0,0,0.075,baseline
+1786458570,819dbc88958c1ad1,grep,grep -r <arg> <path>,0,78,14,2,0,0,78,1,3,0,0,0.025,baseline
+1786458790,819dbc88958c1ad1,git,git diff <path>,0,218,14,2,0,0,220,0,2,0,0,0.02,baseline
+1786458911,819dbc88958c1ad1,git,git commit -m <arg>,0,616,14,2,0,0,121,0,3,0,0,0.087,baseline
+1786459126,819dbc88958c1ad1,git,git pull,0,122,14,2,0,0,215,0,1,0,0,0.02,baseline
+1786459326,819dbc88958c1ad1,grep,grep -r <arg> <path>,0,61,14,2,0,0,200,0,3,0,0,0.02,baseline
+1786459538,819dbc88958c1ad1,grep,grep -r <arg> <path>,0,239,14,2,0,0,212,0,3,0,0,0.02,baseline
+1786459765,819dbc88958c1ad1,git,git pull,0,189,14,2,0,0,227,,1,0,0,0.089,baseline
+1786459837,819dbc88958c1ad1,grep,grep -r <arg> <path>,0,69,14,2,0,0,72,,3,0,0,0.044,baseline
+1786460025,819dbc88958c1ad1,grep,grep -r <arg> <path>,0,586,14,2,0,0,188,1,3,0,0,0.038,baseline
+1786485430,67844d2de16dc0eb,docker,docker compose up <arg>,125,605,21,2,0,0,25405,1,3,0,0,0.045,baseline
+1786485481,67844d2de16dc0eb,kubectl,kubectl get <arg>,1,483,21,2,125,1,51,0,2,0,0,0.281,baseline
+1786485559,67844d2de16dc0eb,kubectl,kubectl apply -f <path>,1,371,21,2,1,2,78,0,3,0,0,0.389,baseline
+1786485639,67844d2de16dc0eb,ssh,ssh <arg>,255,643,22,2,1,3,80,,1,0,0,0.238,baseline
+1786485849,67844d2de16dc0eb,ssh,ssh <arg>,0,730,22,2,255,4,210,,1,0,0,0.098,baseline
+1786485966,67844d2de16dc0eb,docker,docker ps,0,1223,22,2,0,0,117,1,1,0,0,0.136,baseline
+1786486064,67844d2de16dc0eb,ssh,ssh -p <arg> <arg>,0,227,22,2,0,0,98,0,3,0,0,0.144,baseline
+1786486188,67844d2de16dc0eb,docker,docker ps,125,4318,22,2,0,0,124,1,1,0,1,0.294,baseline
+1786486330,67844d2de16dc0eb,docker,docker build <path>,0,1695,22,2,125,1,142,1,2,0,0,0.164,baseline
+1786486507,67844d2de16dc0eb,kubectl,kubectl get <arg>,0,235,22,2,0,0,177,0,2,0,0,0.198,baseline
+1786486521,67844d2de16dc0eb,ssh,ssh <arg>,0,656,22,2,0,0,14,1,1,0,0,0.021,baseline
+1786486704,67844d2de16dc0eb,systemctl,systemctl status <arg>,0,459,22,2,0,0,183,0,2,0,0,0.153,baseline
+1786486801,67844d2de16dc0eb,docker,docker build <path>,0,177,22,2,0,0,97,1,2,0,0,0.149,baseline
+1786486837,67844d2de16dc0eb,systemctl,systemctl status <arg>,1,228,22,2,0,0,36,0,2,0,0,0.16,baseline
+1786486983,67844d2de16dc0eb,kubectl,kubectl get <arg>,0,653,22,2,1,1,146,0,2,0,0,0.29,baseline
+1786487021,67844d2de16dc0eb,ssh,ssh <arg>,0,602,22,2,0,0,38,1,1,0,0,0.069,baseline
+1786487055,67844d2de16dc0eb,docker,docker compose up <arg>,0,1786,22,2,0,0,34,0,3,0,0,0.163,baseline
+1786487292,67844d2de16dc0eb,ssh,ssh <arg>,0,1150,22,2,0,0,237,1,1,0,0,0.02,baseline
+1786507432,e0f632d940b22f8b,make,make <arg>,0,2263,4,3,0,0,20140,0,1,0,0,0.219,baseline
+1786507655,e0f632d940b22f8b,make,make test,0,4770,4,3,0,0,223,1,1,0,0,0.077,baseline
+1786507846,e0f632d940b22f8b,npm,npm run <arg>,1,3953,4,3,0,0,191,0,2,0,0,0.482,baseline
+1786507961,e0f632d940b22f8b,npm,npm run build,0,1509,4,3,1,1,115,1,2,0,0,0.363,baseline
+1786508136,e0f632d940b22f8b,git,git diff <path>,0,264,4,3,0,0,175,0,2,0,0,0.02,baseline
+1786508230,e0f632d940b22f8b,make,make <arg>,0,3145,4,3,0,0,94,0,1,0,1,0.317,baseline
+1786546884,4aa9acb1199c7ec1,python3,python3 <path>,0,423,15,3,0,0,38654,1,1,0,0,0.023,baseline
+1786546906,4aa9acb1199c7ec1,git,git pull,0,233,15,3,0,0,22,0,1,0,0,0.02,baseline
+1786546924,4aa9acb1199c7ec1,git,git push <arg>,0,339,15,3,0,0,18,1,2,0,0,0.107,baseline
+1786547035,4aa9acb1199c7ec1,python3,python3 <path>,0,613,15,3,0,0,111,0,1,0,0,0.158,baseline
+1786547193,4aa9acb1199c7ec1,npm,npm run build,1,4499,15,3,0,0,158,1,2,0,0,0.743,baseline
+1786547295,4aa9acb1199c7ec1,git,git pull,0,272,15,3,1,1,102,0,1,0,0,0.052,baseline
+1786547476,4aa9acb1199c7ec1,python3,python3 <path>,1,283,15,3,0,0,181,1,1,0,0,0.249,baseline
+1786547566,4aa9acb1199c7ec1,git,git commit -m <arg>,0,309,15,3,1,1,90,0,3,0,0,0.124,baseline
+1786547608,4aa9acb1199c7ec1,python3,python3 <path>,0,1002,15,3,0,0,42,1,1,0,0,0.144,baseline
+1786547806,4aa9acb1199c7ec1,curl,curl -X <arg> <url>,0,2530,15,3,0,0,198,1,3,0,0,0.165,baseline
+1786547888,4aa9acb1199c7ec1,python3,python3 -m <arg>,0,495,15,3,0,0,82,0,2,0,0,0.106,baseline
+1786548114,4aa9acb1199c7ec1,npm,npm run build,1,2603,15,3,0,0,226,0,2,0,0,0.519,baseline
+1786548134,4aa9acb1199c7ec1,curl,curl -X <arg> <url>,28,840,15,3,1,1,20,0,3,0,0,0.16,baseline
+1786548373,4aa9acb1199c7ec1,python3,python3 <path>,0,1674,15,3,28,2,239,1,1,0,0,0.245,baseline
+1786548450,4aa9acb1199c7ec1,python3,python3 <path>,0,4466,15,3,0,0,77,1,1,0,0,0.082,baseline
+1786548544,4aa9acb1199c7ec1,python3,python3 <path>,0,887,15,3,0,0,94,0,1,0,0,0.155,baseline
+1786548738,4aa9acb1199c7ec1,npm,npm install <arg>,0,1558,15,3,0,0,194,1,2,0,0,0.703,baseline
+1786548939,4aa9acb1199c7ec1,curl,curl -s <url>,0,220,15,3,0,0,201,0,2,0,0,0.025,baseline
+1786549121,4aa9acb1199c7ec1,git,git commit -m <arg>,0,92,15,3,0,0,182,0,3,0,0,0.02,baseline
+1786549185,4aa9acb1199c7ec1,git,git commit -m <arg>,0,442,15,3,0,0,64,0,3,0,0,0.02,baseline
+1786549325,4aa9acb1199c7ec1,curl,curl -X <arg> <url>,0,392,15,3,0,0,140,0,3,0,0,0.225,baseline
+1786549547,4aa9acb1199c7ec1,npm,npm run <arg>,1,1355,15,3,0,0,222,0,2,0,0,0.699,baseline
+1786549650,4aa9acb1199c7ec1,npm,npm install <arg>,1,2260,15,3,1,1,103,0,2,0,0,0.527,baseline
+1786549833,4aa9acb1199c7ec1,git,git status,0,199,15,3,1,2,183,1,1,0,0,0.138,baseline
+1786549946,4aa9acb1199c7ec1,npm,npm run <arg>,0,1257,15,3,0,0,113,1,2,0,0,0.646,baseline
+1786619059,684205ec612d8248,python3,python3 -m <arg>,0,826,11,4,0,0,69113,1,2,0,0,0.093,baseline
+1786619085,684205ec612d8248,git,git diff <path>,0,234,11,4,0,0,26,0,2,0,0,0.092,baseline
+1786619185,684205ec612d8248,git,git commit -m <arg>,0,183,11,4,0,0,100,0,3,0,0,0.039,baseline
+1786619329,684205ec612d8248,git,git commit -m <arg>,0,191,11,4,0,0,144,0,3,0,0,0.02,baseline
+1786619409,684205ec612d8248,pytest,pytest -q <path>,1,10073,11,4,0,0,80,0,2,0,0,0.09,baseline
+1786619505,684205ec612d8248,python3,python3 -m <arg>,0,476,11,4,1,1,96,1,2,0,0,0.18,baseline
+1786619608,684205ec612d8248,git,git diff <path>,0,218,11,4,0,0,103,1,2,0,0,0.047,baseline
+1786661712,e0f632d940b22f8b,npm,npm test,1,1604,22,4,0,0,42104,1,1,0,0,0.449,baseline
+1786661903,e0f632d940b22f8b,git,git status,0,177,22,4,1,1,191,1,1,0,0,0.159,baseline
+1786661915,e0f632d940b22f8b,npm,npm run <arg>,0,2633,22,4,0,0,12,1,2,0,0,0.465,baseline
+1786662018,e0f632d940b22f8b,make,make test,2,1254,23,4,0,0,103,0,1,0,0,0.141,baseline
+1786662150,e0f632d940b22f8b,make,make <arg>,0,1658,23,4,2,1,132,0,1,0,0,0.217,baseline
+1786662280,e0f632d940b22f8b,npm,npm test,1,1630,23,4,0,0,130,,1,0,0,0.548,baseline
+1786662425,e0f632d940b22f8b,make,make test,0,1127,23,4,1,1,145,0,1,0,0,0.228,baseline
+1786662465,e0f632d940b22f8b,npm,npm run <arg>,0,807,23,4,0,0,40,1,2,0,0,0.397,baseline
+1786662604,e0f632d940b22f8b,git,git push <arg>,0,182,23,4,0,0,139,1,2,0,0,0.031,baseline
+1786690054,67844d2de16dc0eb,kubectl,kubectl get <arg>,0,234,6,5,0,0,27450,1,2,0,0,0.336,baseline
+1786690131,67844d2de16dc0eb,docker,docker compose up <arg>,0,1291,6,5,0,0,77,0,3,0,0,0.259,baseline
+1786690287,67844d2de16dc0eb,kubectl,kubectl get <arg>,1,1026,6,5,0,0,156,0,2,0,0,0.399,baseline
+1786690450,67844d2de16dc0eb,docker,docker ps,0,1115,6,5,1,1,163,0,1,0,0,0.223,baseline
+1786690473,67844d2de16dc0eb,docker,docker ps,0,744,6,5,0,0,23,0,1,0,0,0.073,baseline
+1786690511,67844d2de16dc0eb,ssh,ssh <arg>,0,643,6,5,0,0,38,1,1,0,0,0.042,baseline
+1786690590,67844d2de16dc0eb,systemctl,systemctl status <arg>,0,96,6,5,0,0,79,1,2,0,0,0.04,baseline
+1786690656,67844d2de16dc0eb,kubectl,kubectl apply -f <path>,0,188,6,5,0,0,66,1,3,1,0,0.25,baseline
+1786690695,67844d2de16dc0eb,ssh,ssh -p <arg> <arg>,0,1977,6,5,0,0,39,1,3,0,0,0.165,baseline
+1786690815,67844d2de16dc0eb,ssh,ssh <arg>,0,1755,7,5,0,0,120,0,1,0,0,0.108,baseline
+1786690913,67844d2de16dc0eb,kubectl,kubectl get <arg>,1,400,7,5,0,0,98,0,2,0,0,0.221,baseline
+1786691074,67844d2de16dc0eb,ssh,ssh -p <arg> <arg>,0,834,7,5,1,1,161,0,3,0,0,0.02,baseline
+1786691251,67844d2de16dc0eb,docker,docker build <path>,0,1475,7,5,0,0,177,0,2,0,0,0.188,baseline
+1786691404,67844d2de16dc0eb,kubectl,kubectl apply -f <path>,0,451,7,5,0,0,153,1,3,0,0,0.179,baseline
+1786691588,67844d2de16dc0eb,docker,docker ps,0,796,7,5,0,0,184,,1,0,0,0.094,baseline
+1786691608,67844d2de16dc0eb,kubectl,kubectl get <arg>,0,383,7,5,0,0,20,0,2,0,0,0.183,baseline
+1786691835,67844d2de16dc0eb,ssh,ssh -p <arg> <arg>,0,734,7,5,0,0,227,1,3,0,0,0.11,baseline
+1786692020,67844d2de16dc0eb,systemctl,systemctl status <arg>,0,244,7,5,0,0,185,0,2,0,0,0.286,baseline
+1786692113,67844d2de16dc0eb,kubectl,kubectl apply -f <path>,0,163,7,5,0,0,93,0,3,0,0,0.341,baseline
+1786692261,67844d2de16dc0eb,ssh,ssh <arg>,0,1679,7,5,0,0,148,1,1,0,0,0.033,baseline
+1786692325,67844d2de16dc0eb,docker,docker compose up <arg>,1,1203,7,5,0,0,64,0,3,0,0,0.208,baseline
+1786692452,67844d2de16dc0eb,kubectl,kubectl get <arg>,0,279,7,5,1,1,127,0,2,0,0,0.273,baseline
+1786700940,819dbc88958c1ad1,git,git push <arg>,0,336,9,5,0,0,8488,0,2,0,0,0.057,baseline
+1786701109,819dbc88958c1ad1,grep,grep -r <arg> <path>,0,32,9,5,0,0,169,1,3,0,0,0.033,baseline
+1786701231,819dbc88958c1ad1,grep,grep -r <arg> <path>,0,33,9,5,0,0,122,1,3,0,0,0.02,baseline
+1786701447,819dbc88958c1ad1,grep,grep -r <arg> <path>,0,51,9,5,0,0,216,0,3,0,0,0.02,baseline
+1786701520,819dbc88958c1ad1,grep,grep -r <arg> <path>,0,145,9,5,0,0,73,1,3,0,0,0.02,baseline
+1786701752,819dbc88958c1ad1,grep,grep -r <arg> <path>,0,65,10,5,0,0,232,0,3,0,0,0.02,baseline
+1786701936,819dbc88958c1ad1,grep,grep -r <arg> <path>,0,213,10,5,0,0,184,1,3,0,0,0.02,baseline
+1786702153,819dbc88958c1ad1,git,git diff <path>,0,117,10,5,0,0,217,1,2,0,0,0.036,baseline
+1786702283,819dbc88958c1ad1,git,git commit -m <arg>,0,205,10,5,0,0,130,1,3,0,0,0.02,baseline
+1786702473,819dbc88958c1ad1,git,git diff <path>,0,981,10,5,0,0,190,1,2,0,0,0.044,baseline
+1786702616,819dbc88958c1ad1,git,git commit -m <arg>,0,84,10,5,0,0,143,0,3,0,0,0.069,baseline
+1786702843,819dbc88958c1ad1,grep,grep -r <arg> <path>,0,153,10,5,0,0,227,0,3,0,0,0.02,baseline
+1786702983,819dbc88958c1ad1,git,git diff <path>,0,97,10,5,0,0,140,1,2,0,0,0.02,baseline
+1786703036,819dbc88958c1ad1,git,git status,1,1916,10,5,0,0,53,1,1,0,0,0.081,baseline
+1786703155,819dbc88958c1ad1,git,git diff <path>,0,82,10,5,1,1,119,1,2,0,0,0.099,baseline
+1786703368,819dbc88958c1ad1,grep,grep -r <arg> <path>,0,484,10,5,0,0,213,1,3,0,0,0.177,baseline
+1786703429,819dbc88958c1ad1,grep,grep -r <arg> <path>,0,104,10,5,0,0,61,0,3,0,0,0.102,baseline
+1786703538,819dbc88958c1ad1,git,git commit -m <arg>,0,96,10,5,0,0,109,0,3,0,0,0.069,baseline
+1786703777,819dbc88958c1ad1,git,git commit -m <arg>,0,123,10,5,0,0,239,1,3,0,0,0.036,baseline
+1786703994,819dbc88958c1ad1,git,git status,0,151,10,5,0,0,217,0,1,0,0,0.075,baseline
+1786704142,819dbc88958c1ad1,git,git status,0,427,10,5,0,0,148,0,1,0,0,0.061,baseline
+1786704325,819dbc88958c1ad1,git,git push <arg>,0,138,10,5,0,0,183,1,2,0,0,0.094,baseline
+1786704396,819dbc88958c1ad1,grep,grep -r <arg> <path>,0,79,10,5,0,0,71,1,3,0,0,0.044,baseline
+1786704622,819dbc88958c1ad1,git,git push <arg>,0,315,10,5,0,0,226,1,2,0,0,0.02,baseline
+1786704840,819dbc88958c1ad1,git,git push <arg>,0,396,10,5,0,0,218,0,2,0,0,0.057,baseline
+1786704935,819dbc88958c1ad1,git,git diff <path>,0,235,10,5,0,0,95,,2,0,0,0.02,baseline
+1786704959,819dbc88958c1ad1,git,git commit -m <arg>,0,112,10,5,0,0,24,1,3,0,0,0.086,baseline
+1786771893,684205ec612d8248,python3,python3 <path>,1,1763,5,6,0,0,66934,1,1,0,0,0.197,baseline
+1786771947,684205ec612d8248,git,git push <arg>,0,138,5,6,1,1,54,1,2,0,0,0.145,baseline
+1786772163,684205ec612d8248,python3,python3 -m <arg>,0,273,5,6,0,0,216,1,2,1,0,0.16,baseline
+1786772295,684205ec612d8248,make,make <arg>,0,2883,5,6,0,0,132,0,1,0,0,0.129,baseline
+1786772345,684205ec612d8248,git,git pull,128,335,5,6,0,0,50,0,1,0,0,0.208,baseline
+1786772567,684205ec612d8248,make,make test,0,1623,5,6,128,1,222,1,1,0,0,0.197,baseline
+1786772597,684205ec612d8248,make,make <arg>,0,413,5,6,0,0,30,0,1,0,0,0.046,baseline
+1786772717,684205ec612d8248,make,make test,0,1661,5,6,0,0,120,1,1,0,0,0.106,baseline
+1786772904,684205ec612d8248,python3,python3 <path>,1,308,5,6,0,0,187,0,1,0,1,0.087,baseline
+1786772987,684205ec612d8248,make,make test,0,1090,5,6,1,1,83,0,1,0,0,0.089,baseline
+1786773144,684205ec612d8248,git,git status,0,81,5,6,0,0,157,0,1,0,0,0.088,baseline
+1786773282,684205ec612d8248,pytest,pytest -q <path>,0,1859,5,6,0,0,138,1,2,0,0,0.275,baseline
+1786773306,684205ec612d8248,git,git diff <path>,0,97,5,6,0,0,24,0,2,0,1,0.051,baseline
+1786773412,684205ec612d8248,git,git pull,0,77,5,6,0,0,106,,1,0,0,0.02,baseline
+1786773594,684205ec612d8248,pytest,pytest -q <path>,0,1681,5,6,0,0,182,1,2,0,0,0.411,baseline
+1786773746,684205ec612d8248,pytest,pytest -q <path>,0,933,6,6,0,0,152,0,2,0,0,0.368,baseline
+1786773937,684205ec612d8248,make,make test,0,267,6,6,0,0,191,0,1,0,0,0.209,baseline
+1786774104,684205ec612d8248,git,git pull,0,429,6,6,0,0,167,0,1,0,0,0.241,baseline
+1786774286,684205ec612d8248,make,make test,0,2587,6,6,0,0,182,1,1,0,0,0.246,baseline
+1786774333,684205ec612d8248,python3,python3 -m <arg>,0,982,6,6,0,0,47,1,2,0,0,0.253,baseline
+1786774470,684205ec612d8248,pytest,pytest <arg>,0,1801,6,6,0,0,137,0,1,0,0,0.284,baseline
+1786774550,684205ec612d8248,make,make <arg>,0,2292,6,6,0,0,80,0,1,0,0,0.104,baseline
+1786774636,684205ec612d8248,python3,python3 -m <arg>,0,914,6,6,0,0,86,0,2,0,0,0.193,baseline
+1786774703,684205ec612d8248,pytest,pytest -q <path>,0,2246,6,6,0,0,67,1,2,0,0,0.308,baseline
+1786804166,dfc1277f11c97751,docker,docker build <path>,0,1226,14,6,0,0,29463,0,2,0,0,0.191,baseline
+1786804218,dfc1277f11c97751,git,git pull,0,205,14,6,0,0,52,0,1,0,0,0.02,baseline
+1786804439,dfc1277f11c97751,docker,docker ps,0,3241,14,6,0,0,221,0,1,0,0,0.103,baseline
+1786804505,dfc1277f11c97751,git,git pull,0,184,14,6,0,0,66,1,1,0,0,0.02,baseline
+1786830811,684205ec612d8248,make,make test,0,4356,21,6,0,0,26306,0,1,0,0,0.169,baseline
+1786830983,684205ec612d8248,make,make <arg>,0,1449,21,6,0,0,172,1,1,0,0,0.121,baseline
+1786831058,684205ec612d8248,pytest,pytest <arg>,0,1535,21,6,0,0,75,0,1,0,0,0.302,baseline
+1786831131,684205ec612d8248,git,git pull,0,795,21,6,0,0,73,1,1,0,0,0.02,baseline
+1786831212,684205ec612d8248,python3,python3 -m <arg>,0,222,22,6,0,0,81,0,2,0,0,0.119,baseline
+1786831405,684205ec612d8248,git,git diff <path>,0,277,22,6,0,0,193,1,2,0,0,0.081,baseline
+1786831481,684205ec612d8248,pytest,pytest <arg>,1,3624,22,6,0,0,76,0,1,0,0,0.417,baseline
+1786831687,684205ec612d8248,make,make test,0,529,22,6,1,1,206,0,1,0,0,0.238,baseline
+1786831807,684205ec612d8248,python3,python3 -m <arg>,0,615,22,6,0,0,120,0,2,0,0,0.075,baseline
+1786832028,684205ec612d8248,python3,python3 -m <arg>,0,517,22,6,0,0,221,1,2,0,0,0.253,baseline
+1786832159,684205ec612d8248,git,git commit -m <arg>,0,123,22,6,0,0,131,0,3,0,0,0.02,baseline
+1786832176,684205ec612d8248,python3,python3 -m <arg>,1,281,22,6,0,0,17,1,2,0,0,0.212,baseline
+1786832405,684205ec612d8248,git,git commit -m <arg>,0,183,22,6,1,1,229,1,3,0,0,0.172,baseline
+1786832603,684205ec612d8248,pytest,pytest <arg>,0,2203,22,6,0,0,198,1,1,0,0,0.396,baseline
+1786832828,684205ec612d8248,make,make test,0,1448,22,6,0,0,225,0,1,0,0,0.314,baseline
+1786832868,684205ec612d8248,make,make test,0,2130,22,6,0,0,40,0,1,0,0,0.292,baseline
+1786833064,684205ec612d8248,pytest,pytest <path>,0,4108,22,6,0,0,196,1,1,0,0,0.418,baseline
+1786833219,684205ec612d8248,make,make test,0,999,22,6,0,0,155,0,1,0,0,0.205,baseline
+1786833400,684205ec612d8248,python3,python3 <path>,0,787,22,6,0,0,181,0,1,0,0,0.209,baseline
+1786833466,684205ec612d8248,make,make test,0,635,22,6,0,0,66,,1,0,0,0.02,baseline
+1786833616,684205ec612d8248,make,make test,0,3786,22,6,0,0,150,1,1,0,0,0.176,baseline
+1786833631,684205ec612d8248,python3,python3 -m <arg>,0,505,22,6,0,0,15,0,2,0,0,0.117,baseline
+1786833656,684205ec612d8248,pytest,pytest <arg>,0,1730,22,6,0,0,25,0,1,0,0,0.413,baseline
+1786833839,684205ec612d8248,make,make <arg>,0,623,22,6,0,0,183,0,1,0,1,0.192,baseline
+1786833879,684205ec612d8248,python3,python3 -m <arg>,1,681,22,6,0,0,40,1,2,0,0,0.165,baseline
+1786833952,684205ec612d8248,python3,python3 <path>,0,447,22,6,1,1,73,1,1,0,0,0.116,baseline
+1786870990,67844d2de16dc0eb,docker,docker compose up <arg>,0,910,9,0,0,0,37038,1,3,0,0,0.122,baseline
+1786871033,67844d2de16dc0eb,kubectl,kubectl apply -f <path>,0,1044,9,0,0,0,43,0,3,0,0,0.258,baseline
+1786871068,67844d2de16dc0eb,docker,docker ps,0,848,9,0,0,0,35,1,1,0,1,0.172,baseline
+1786871124,67844d2de16dc0eb,ssh,ssh -p <arg> <arg>,0,642,9,0,0,0,56,0,3,0,0,0.02,baseline
+1786871332,67844d2de16dc0eb,kubectl,kubectl get <arg>,1,681,9,0,0,0,208,0,2,0,0,0.388,baseline
+1786871523,67844d2de16dc0eb,ssh,ssh -p <arg> <arg>,0,1257,9,0,1,1,191,1,3,0,0,0.282,baseline
+1786871587,67844d2de16dc0eb,systemctl,systemctl status <arg>,0,46,9,0,0,0,64,0,2,0,0,0.055,baseline
+1786871797,67844d2de16dc0eb,systemctl,systemctl status <arg>,0,227,9,0,0,0,210,1,2,0,0,0.117,baseline
+1786871829,67844d2de16dc0eb,kubectl,kubectl apply -f <path>,0,310,9,0,0,0,32,0,3,0,0,0.417,baseline
+1786887280,4aa9acb1199c7ec1,python3,python3 -m <arg>,0,767,13,0,0,0,15451,0,2,0,0,0.246,baseline
+1786887494,4aa9acb1199c7ec1,git,git diff <path>,1,573,13,0,0,0,214,1,2,0,0,0.139,baseline
+1786887534,4aa9acb1199c7ec1,npm,npm run build,1,1900,13,0,1,1,40,0,2,0,0,0.613,baseline
+1786887652,4aa9acb1199c7ec1,git,git pull,0,164,13,0,1,2,118,1,1,0,0,0.063,baseline
+1786887711,4aa9acb1199c7ec1,git,git diff <path>,0,203,13,0,0,0,59,1,2,0,0,0.02,baseline
+1786887731,4aa9acb1199c7ec1,npm,npm run <arg>,1,2195,13,0,0,0,20,0,2,0,0,0.604,baseline
+1786887936,4aa9acb1199c7ec1,python3,python3 -m <arg>,0,1004,13,0,1,1,205,1,2,0,0,0.166,baseline
+1786928358,4aa9acb1199c7ec1,curl,curl -s <url>,0,904,0,1,0,0,40422,,2,0,0,0.128,baseline
+1786928462,4aa9acb1199c7ec1,python3,python3 -m <arg>,0,377,1,1,0,0,104,,2,0,0,0.194,baseline
+1786928515,4aa9acb1199c7ec1,curl,curl -s <url>,0,183,1,1,0,0,53,0,2,0,0,0.091,baseline
+1786928553,4aa9acb1199c7ec1,python3,python3 <path>,0,2107,1,1,0,0,38,0,1,0,0,0.259,baseline
+1786928583,4aa9acb1199c7ec1,python3,python3 -m <arg>,0,357,1,1,0,0,30,,2,0,0,0.066,baseline
+1786928731,4aa9acb1199c7ec1,python3,python3 -m <arg>,0,682,1,1,0,0,148,1,2,1,0,0.174,baseline
+1786928882,4aa9acb1199c7ec1,curl,curl -s <url>,0,1484,1,1,0,0,151,,2,0,0,0.042,baseline
+1786929031,4aa9acb1199c7ec1,npm,npm test,0,7858,1,1,0,0,149,0,1,0,0,0.688,baseline
+1786929048,4aa9acb1199c7ec1,curl,curl -X <arg> <url>,0,623,1,1,0,0,17,0,3,0,0,0.103,baseline
+1786929175,4aa9acb1199c7ec1,git,git status,0,153,1,1,0,0,127,1,1,0,0,0.088,baseline
+1786929409,4aa9acb1199c7ec1,npm,npm run <arg>,1,4435,1,1,0,0,234,0,2,0,0,0.659,baseline
+1786929462,4aa9acb1199c7ec1,curl,curl -X <arg> <url>,0,1879,1,1,1,1,53,1,3,0,0,0.089,baseline
+1786929592,4aa9acb1199c7ec1,git,git pull,0,620,1,1,0,0,130,1,1,0,0,0.02,baseline
+1786929671,4aa9acb1199c7ec1,npm,npm test,1,1964,1,1,0,0,79,0,1,0,0,0.683,baseline
+1786929723,4aa9acb1199c7ec1,curl,curl -X <arg> <url>,28,663,1,1,1,1,52,0,3,0,0,0.086,baseline
+1786929899,4aa9acb1199c7ec1,python3,python3 <path>,0,392,1,1,28,2,176,0,1,0,0,0.093,baseline
+1786930025,4aa9acb1199c7ec1,git,git diff <path>,0,368,1,1,0,0,126,0,2,0,0,0.02,baseline
+1786930223,4aa9acb1199c7ec1,curl,curl -X <arg> <url>,0,1069,1,1,0,0,198,1,3,0,0,0.194,baseline
+1786930380,4aa9acb1199c7ec1,python3,python3 <path>,0,2471,1,1,0,0,157,1,1,0,0,0.23,baseline
+1786930455,4aa9acb1199c7ec1,curl,curl -s <url>,0,1133,1,1,0,0,75,0,2,0,0,0.066,baseline
+1786930604,4aa9acb1199c7ec1,npm,npm test,0,3335,1,1,0,0,149,0,1,0,0,0.66,baseline
+1786930767,4aa9acb1199c7ec1,curl,curl -X <arg> <url>,28,890,1,1,0,0,163,1,3,0,0,0.231,baseline
+1786930843,4aa9acb1199c7ec1,curl,curl -X <arg> <url>,0,438,1,1,28,1,76,0,3,0,0,0.049,baseline
+1786930870,4aa9acb1199c7ec1,git,git pull,0,508,1,1,0,0,27,0,1,0,0,0.058,baseline
+1786931004,4aa9acb1199c7ec1,curl,curl -X <arg> <url>,0,402,1,1,0,0,134,0,3,0,0,0.02,baseline
+1786931171,4aa9acb1199c7ec1,npm,npm test,0,981,1,1,0,0,167,0,1,0,0,0.702,baseline
+1786931367,4aa9acb1199c7ec1,npm,npm run <arg>,1,4416,1,1,0,0,196,0,2,0,0,0.767,baseline
+1786931377,4aa9acb1199c7ec1,npm,npm run build,1,4488,1,1,1,1,10,0,2,0,0,0.676,baseline
+1786980683,dfc1277f11c97751,pytest,pytest <arg>,1,5670,15,1,1,2,49306,0,1,0,0,0.585,baseline
+1786980760,dfc1277f11c97751,git,git push <arg>,0,212,15,1,1,3,77,1,2,0,0,0.022,baseline
+1786980841,dfc1277f11c97751,pytest,pytest <arg>,1,12691,15,1,0,0,81,1,1,0,1,0.342,baseline
+1786980973,dfc1277f11c97751,git,git status,0,187,15,1,1,1,132,0,1,0,0,0.02,baseline
+1786981141,dfc1277f11c97751,docker,docker compose up <arg>,0,1368,15,1,0,0,168,,3,0,0,0.02,baseline
+1786981178,dfc1277f11c97751,git,git push <arg>,0,495,15,1,0,0,37,1,2,0,0,0.022,baseline
+1786981410,dfc1277f11c97751,git,git status,0,266,15,1,0,0,232,,1,0,0,0.02,baseline
+1786981433,dfc1277f11c97751,docker,docker ps,0,903,15,1,0,0,23,0,1,0,0,0.049,baseline
+1786981583,dfc1277f11c97751,docker,docker compose up <arg>,0,1530,15,1,0,0,150,0,3,0,0,0.107,baseline
+1786981589,dfc1277f11c97751,docker,docker compose up <arg>,0,1312,15,1,0,0,6,1,3,0,0,0.02,baseline
+1786981697,dfc1277f11c97751,docker,docker compose up <arg>,0,778,15,1,0,0,108,,3,0,0,0.128,baseline
+1786981837,dfc1277f11c97751,pytest,pytest <arg>,1,6268,15,1,0,0,140,1,1,0,0,0.493,baseline
+1786981858,dfc1277f11c97751,cargo,cargo clippy,0,993,15,1,1,1,21,1,1,0,0,0.178,baseline
+1786982093,dfc1277f11c97751,docker,docker compose up <arg>,0,2088,15,1,0,0,235,1,3,0,0,0.153,baseline
+1786982129,dfc1277f11c97751,git,git push <arg>,0,385,15,1,0,0,36,0,2,0,0,0.25,baseline
+1786982161,dfc1277f11c97751,cargo,cargo clippy,101,3403,15,1,0,0,32,0,1,0,0,0.16,baseline
+1787053958,e0f632d940b22f8b,make,make test,0,573,11,2,101,1,71797,1,1,0,0,0.176,baseline
+1787054118,e0f632d940b22f8b,npm,npm run <arg>,0,1348,11,2,0,0,160,1,2,0,0,0.499,baseline
+1787054123,e0f632d940b22f8b,npm,npm run build,0,2284,11,2,0,0,5,0,2,0,0,0.44,baseline
+1787054292,e0f632d940b22f8b,npm,npm test,0,1070,11,2,0,0,169,0,1,0,0,0.418,baseline
+1787054340,e0f632d940b22f8b,git,git status,0,180,11,2,0,0,48,1,1,0,0,0.02,baseline
+1787054447,e0f632d940b22f8b,git,git pull,0,87,12,2,0,0,107,1,1,0,0,0.02,baseline
+1787054668,e0f632d940b22f8b,npm,npm run <arg>,1,8902,12,2,0,0,221,0,2,0,0,0.319,baseline
+1787054898,e0f632d940b22f8b,make,make test,0,681,12,2,1,1,230,1,1,0,0,0.264,baseline
+1787055093,e0f632d940b22f8b,make,make test,0,3808,12,2,0,0,195,1,1,0,0,0.19,baseline
+1787055267,e0f632d940b22f8b,make,make test,0,5062,12,2,0,0,174,,1,0,0,0.125,baseline
+1787055397,e0f632d940b22f8b,git,git pull,0,86,12,2,0,0,130,0,1,0,0,0.02,baseline
+1787055424,e0f632d940b22f8b,git,git status,0,88,12,2,0,0,27,0,1,0,0,0.108,baseline
+1787055587,e0f632d940b22f8b,make,make <arg>,0,1519,12,2,0,0,163,0,1,0,0,0.193,baseline
+1787055708,e0f632d940b22f8b,git,git push <arg>,0,289,12,2,0,0,121,0,2,0,0,0.043,baseline
+1787055917,e0f632d940b22f8b,git,git commit -m <arg>,0,185,12,2,0,0,209,0,3,0,0,0.02,baseline
+1787055987,e0f632d940b22f8b,make,make <arg>,0,855,12,2,0,0,70,0,1,0,0,0.245,baseline
+1787056142,e0f632d940b22f8b,make,make <arg>,2,2684,12,2,0,0,155,0,1,0,0,0.179,baseline
+1787056191,e0f632d940b22f8b,make,make <arg>,0,373,12,2,2,1,49,,1,0,0,0.101,baseline
+1787056283,e0f632d940b22f8b,git,git diff <path>,0,103,12,2,0,0,92,1,2,0,0,0.048,baseline
+1787056470,e0f632d940b22f8b,make,make <arg>,0,1830,12,2,0,0,187,1,1,0,0,0.089,baseline
+1787056520,e0f632d940b22f8b,make,make <arg>,0,2645,12,2,0,0,50,0,1,0,0,0.02,baseline
+1787056697,e0f632d940b22f8b,make,make <arg>,0,2091,12,2,0,0,177,1,1,0,0,0.18,baseline
+1787056753,e0f632d940b22f8b,git,git push <arg>,0,124,12,2,0,0,56,1,2,0,0,0.02,baseline
+1787056810,e0f632d940b22f8b,make,make test,2,4659,12,2,0,0,57,0,1,0,0,0.025,baseline
+1787056921,e0f632d940b22f8b,make,make <arg>,0,1598,12,2,2,1,111,1,1,0,0,0.161,baseline
+1787090084,819dbc88958c1ad1,grep,grep -r <arg> <path>,0,92,21,2,0,0,33163,0,3,0,0,0.028,baseline
+1787090185,819dbc88958c1ad1,git,git diff <path>,0,237,21,2,0,0,101,0,2,0,0,0.092,baseline
+1787090200,819dbc88958c1ad1,git,git diff <path>,0,367,21,2,0,0,15,0,2,0,0,0.083,baseline
+1787090339,819dbc88958c1ad1,git,git commit -m <arg>,0,247,21,2,0,0,139,1,3,0,0,0.02,baseline
+1787090400,819dbc88958c1ad1,git,git diff <path>,0,165,22,2,0,0,61,,2,1,0,0.02,baseline
+1787090519,819dbc88958c1ad1,git,git status,0,315,22,2,0,0,119,0,1,0,0,0.02,baseline
+1787090622,819dbc88958c1ad1,grep,grep -r <arg> <path>,0,148,22,2,0,0,103,0,3,0,0,0.02,baseline
+1787090824,819dbc88958c1ad1,git,git commit -m <arg>,0,86,22,2,0,0,202,0,3,0,0,0.055,baseline
+1787091008,819dbc88958c1ad1,grep,grep -r <arg> <path>,0,37,22,2,0,0,184,1,3,0,0,0.067,baseline
+1787091223,819dbc88958c1ad1,git,git pull,0,179,22,2,0,0,215,1,1,1,0,0.056,baseline
+1787091364,819dbc88958c1ad1,git,git diff <path>,0,393,22,2,0,0,141,1,2,0,0,0.18,baseline
+1787091544,819dbc88958c1ad1,grep,grep -r <arg> <path>,0,35,22,2,0,0,180,0,3,0,0,0.078,baseline
+1787091753,819dbc88958c1ad1,grep,grep -r <arg> <path>,0,21,22,2,0,0,209,0,3,0,0,0.05,baseline
+1787091858,819dbc88958c1ad1,git,git diff <path>,0,159,22,2,0,0,105,1,2,0,0,0.047,baseline
+1787091927,819dbc88958c1ad1,git,git status,0,353,22,2,0,0,69,0,1,0,0,0.147,baseline
+1787091949,819dbc88958c1ad1,grep,grep -r <arg> <path>,0,135,22,2,0,0,22,1,3,0,0,0.02,baseline
+1787092026,819dbc88958c1ad1,git,git diff <path>,0,147,22,2,0,0,77,1,2,0,0,0.02,baseline
+1787092140,819dbc88958c1ad1,git,git pull,128,724,22,2,0,0,114,1,1,0,0,0.02,baseline
+1787158648,dfc1277f11c97751,git,git diff <path>,0,216,16,3,128,1,66508,,2,0,0,0.119,baseline
+1787158813,dfc1277f11c97751,cargo,cargo run <arg>,0,5812,17,3,0,0,165,0,2,0,0,0.228,baseline
+1787159046,dfc1277f11c97751,docker,docker build <path>,0,449,17,3,0,0,233,0,2,0,0,0.114,baseline
+1787159220,dfc1277f11c97751,pytest,pytest <path>,0,8305,17,3,0,0,174,0,1,0,0,0.392,baseline
+1787159369,dfc1277f11c97751,pytest,pytest <path>,0,3102,17,3,0,0,149,1,1,0,0,0.454,baseline
+1787159506,dfc1277f11c97751,git,git push <arg>,0,274,17,3,0,0,137,0,2,0,0,0.02,baseline
+1787159661,dfc1277f11c97751,cargo,cargo run <arg>,0,504,17,3,0,0,155,0,2,0,0,0.115,baseline
+1787159701,dfc1277f11c97751,docker,docker ps,0,587,17,3,0,0,40,0,1,0,0,0.232,baseline
+1787159790,dfc1277f11c97751,cargo,cargo test --workspace,0,2420,17,3,0,0,89,1,2,0,0,0.157,baseline
+1787159829,dfc1277f11c97751,cargo,cargo test --workspace,0,1503,17,3,0,0,39,0,2,0,0,0.142,baseline
+1787160058,dfc1277f11c97751,git,git pull,0,92,17,3,0,0,229,0,1,0,0,0.079,baseline
+1787160109,dfc1277f11c97751,git,git pull,0,249,17,3,0,0,51,1,1,0,0,0.02,baseline
+1787160334,dfc1277f11c97751,docker,docker build <path>,0,1049,17,3,0,0,225,0,2,0,0,0.02,baseline
+1787160569,dfc1277f11c97751,cargo,cargo run <arg>,0,6406,17,3,0,0,235,1,2,0,0,0.116,baseline
+1787227361,67844d2de16dc0eb,systemctl,systemctl status <arg>,0,389,12,4,0,0,66792,1,2,0,0,0.153,baseline
+1787227590,67844d2de16dc0eb,systemctl,systemctl status <arg>,0,155,12,4,0,0,229,0,2,0,0,0.159,baseline
+1787227761,67844d2de16dc0eb,ssh,ssh -p <arg> <arg>,0,1325,12,4,0,0,171,1,3,0,0,0.15,baseline
+1787227811,67844d2de16dc0eb,ssh,ssh -p <arg> <arg>,0,219,12,4,0,0,50,0,3,0,0,0.076,baseline
+1787227846,67844d2de16dc0eb,kubectl,kubectl get <arg>,0,532,12,4,0,0,35,0,2,0,0,0.127,baseline
+1787227950,67844d2de16dc0eb,docker,docker build <path>,0,1876,12,4,0,0,104,1,2,0,0,0.114,baseline
+1787227975,67844d2de16dc0eb,docker,docker build <path>,0,2133,12,4,0,0,25,,2,0,0,0.02,baseline
+1787228092,67844d2de16dc0eb,docker,docker ps,0,2352,12,4,0,0,117,1,1,0,0,0.105,baseline
+1787228275,67844d2de16dc0eb,kubectl,kubectl get <arg>,0,554,12,4,0,0,183,1,2,0,0,0.279,baseline
+1787228383,67844d2de16dc0eb,kubectl,kubectl get <arg>,0,542,12,4,0,0,108,0,2,0,0,0.245,baseline
+1787228476,67844d2de16dc0eb,ssh,ssh -p <arg> <arg>,0,3327,12,4,0,0,93,1,3,0,0,0.031,baseline
+1787276636,0a135305f7a07ab9,grep,grep -r <arg> <path>,0,107,1,5,0,0,48160,0,3,0,0,0.02,baseline
+1787276758,0a135305f7a07ab9,grep,grep -r <arg> <path>,0,89,1,5,0,0,122,0,3,0,0,0.037,baseline
+1787276868,0a135305f7a07ab9,python3,python3 -m <arg>,0,429,1,5,0,0,110,1,2,0,0,0.249,baseline
+1787276963,0a135305f7a07ab9,make,make test,0,1497,1,5,0,0,95,1,1,0,0,0.243,baseline
+1787277007,0a135305f7a07ab9,make,make test,2,4492,1,5,0,0,44,0,1,0,0,0.176,baseline
+1787277170,0a135305f7a07ab9,python3,python3 -m <arg>,0,1431,1,5,2,1,163,1,2,0,0,0.107,baseline
+1787277313,0a135305f7a07ab9,make,make test,0,998,1,5,0,0,143,0,1,0,0,0.28,baseline
+1787277320,0a135305f7a07ab9,make,make <arg>,0,1276,1,5,0,0,7,0,1,0,0,0.169,baseline
+1787277418,0a135305f7a07ab9,make,make <arg>,0,469,1,5,0,0,98,1,1,0,0,0.175,baseline
+1787277569,0a135305f7a07ab9,make,make <arg>,0,4991,1,5,0,0,151,0,1,0,0,0.24,baseline
+1787277695,0a135305f7a07ab9,make,make <arg>,2,3360,2,5,0,0,126,0,1,0,0,0.126,baseline
+1787277801,0a135305f7a07ab9,make,make <arg>,0,1390,2,5,2,1,106,1,1,0,0,0.228,baseline
+1787277894,0a135305f7a07ab9,make,make test,0,858,2,5,0,0,93,0,1,0,0,0.156,baseline
+1787328038,e0f632d940b22f8b,make,make test,0,1227,16,5,0,0,50144,0,1,0,0,0.218,baseline
+1787328275,e0f632d940b22f8b,npm,npm install <arg>,1,1785,16,5,0,0,237,0,2,0,0,0.346,baseline
+1787328479,e0f632d940b22f8b,git,git commit -m <arg>,0,230,16,5,1,1,204,0,3,0,0,0.076,baseline
+1787328504,e0f632d940b22f8b,npm,npm test,1,2782,16,5,0,0,25,,1,0,0,0.434,baseline
+1787328530,e0f632d940b22f8b,make,make <arg>,0,1263,16,5,1,1,26,0,1,0,0,0.136,baseline
+1787328769,e0f632d940b22f8b,git,git push <arg>,0,162,16,5,0,0,239,0,2,0,0,0.063,baseline
+1787328925,e0f632d940b22f8b,make,make <arg>,0,1207,16,5,0,0,156,1,1,0,0,0.217,baseline
+1787329035,e0f632d940b22f8b,git,git push <arg>,0,315,16,5,0,0,110,0,2,0,0,0.02,baseline
+1787329162,e0f632d940b22f8b,git,git status,1,534,16,5,0,0,127,0,1,0,0,0.02,baseline
+1787329332,e0f632d940b22f8b,git,git commit -m <arg>,0,152,16,5,1,1,170,0,3,0,0,0.057,baseline
+1787329406,e0f632d940b22f8b,git,git commit -m <arg>,0,231,16,5,0,0,74,1,3,0,0,0.077,baseline
+1787329480,e0f632d940b22f8b,make,make test,0,468,16,5,0,0,74,0,1,0,0,0.115,baseline
+1787329487,e0f632d940b22f8b,npm,npm install <arg>,1,2846,16,5,0,0,7,1,2,0,0,0.438,baseline
+1787352235,4aa9acb1199c7ec1,curl,curl -s <url>,28,430,22,5,1,1,22748,1,2,0,0,0.04,baseline
+1787352437,4aa9acb1199c7ec1,curl,curl -s <url>,0,956,22,5,28,2,202,1,2,0,0,0.036,baseline
+1787352452,4aa9acb1199c7ec1,npm,npm run build,1,5032,22,5,0,0,15,1,2,0,1,0.658,baseline
+1787352660,4aa9acb1199c7ec1,python3,python3 <path>,0,508,22,5,1,1,208,0,1,0,0,0.106,baseline
+1787352792,4aa9acb1199c7ec1,npm,npm install <arg>,0,2507,22,5,0,0,132,0,2,0,0,0.588,baseline
+1787352856,4aa9acb1199c7ec1,python3,python3 -m <arg>,0,2492,22,5,0,0,64,1,2,0,0,0.178,baseline
+1787420065,67844d2de16dc0eb,ssh,ssh -p <arg> <arg>,0,1167,17,6,0,0,67209,1,3,0,0,0.066,baseline
+1787420223,67844d2de16dc0eb,kubectl,kubectl apply -f <path>,1,285,17,6,0,0,158,0,3,0,0,0.134,baseline
+1787420321,67844d2de16dc0eb,kubectl,kubectl apply -f <path>,0,641,17,6,1,1,98,0,3,0,0,0.304,baseline
+1787420408,67844d2de16dc0eb,docker,docker compose up <arg>,125,502,17,6,0,0,87,0,3,0,0,0.02,baseline
+1787420506,67844d2de16dc0eb,kubectl,kubectl get <arg>,0,201,17,6,125,1,98,0,2,0,0,0.213,baseline
+1787472480,67844d2de16dc0eb,docker,docker compose up <arg>,0,428,8,0,0,0,51974,0,3,0,0,0.151,baseline
+1787472548,67844d2de16dc0eb,kubectl,kubectl apply -f <path>,0,526,8,0,0,0,68,0,3,0,0,0.242,baseline
+1787472755,67844d2de16dc0eb,kubectl,kubectl apply -f <path>,0,406,8,0,0,0,207,,3,0,0,0.388,baseline
+1787472922,67844d2de16dc0eb,systemctl,systemctl status <arg>,0,113,8,0,0,0,167,1,2,0,0,0.039,baseline
+1787473019,67844d2de16dc0eb,systemctl,systemctl status <arg>,0,95,8,0,0,0,97,0,2,0,0,0.03,baseline
+1787473243,67844d2de16dc0eb,ssh,ssh <arg>,255,3360,8,0,0,0,224,1,1,0,0,0.032,baseline
+1787473315,67844d2de16dc0eb,ssh,ssh -p <arg> <arg>,0,801,8,0,255,1,72,0,3,0,0,0.159,baseline
+1787473364,67844d2de16dc0eb,systemctl,systemctl status <arg>,0,256,8,0,0,0,49,0,2,0,0,0.139,baseline
+1787473389,67844d2de16dc0eb,docker,docker ps,0,172,8,0,0,0,25,0,1,0,0,0.02,baseline
+1787473396,67844d2de16dc0eb,systemctl,systemctl status <arg>,1,91,8,0,0,0,7,0,2,0,0,0.171,baseline
+1787473501,67844d2de16dc0eb,systemctl,systemctl status <arg>,0,165,8,0,1,1,105,1,2,0,0,0.103,baseline
+1787473518,67844d2de16dc0eb,systemctl,systemctl status <arg>,0,120,8,0,0,0,17,0,2,0,0,0.168,baseline
+1787473669,67844d2de16dc0eb,kubectl,kubectl apply -f <path>,0,262,8,0,0,0,151,1,3,0,0,0.179,baseline
+1787473763,67844d2de16dc0eb,kubectl,kubectl apply -f <path>,0,448,8,0,0,0,94,1,3,0,0,0.392,baseline
+1787473973,67844d2de16dc0eb,systemctl,systemctl status <arg>,0,58,8,0,0,0,210,,2,0,0,0.121,baseline
+1787474136,67844d2de16dc0eb,kubectl,kubectl apply -f <path>,0,519,8,0,0,0,163,0,3,0,0,0.314,baseline
+1787474280,67844d2de16dc0eb,ssh,ssh -p <arg> <arg>,0,2431,8,0,0,0,144,1,3,0,0,0.02,baseline
+1787513437,4aa9acb1199c7ec1,npm,npm install <arg>,1,2385,19,0,0,0,39157,0,2,0,0,0.589,baseline
+1787513623,4aa9acb1199c7ec1,npm,npm run build,0,1719,19,0,1,1,186,,2,0,0,0.692,baseline
+1787513763,4aa9acb1199c7ec1,python3,python3 -m <arg>,0,515,19,0,0,0,140,0,2,0,0,0.256,baseline
+1787513896,4aa9acb1199c7ec1,python3,python3 <path>,0,2083,19,0,0,0,133,1,1,0,0,0.34,baseline
+1787513936,4aa9acb1199c7ec1,npm,npm run <arg>,0,1944,19,0,0,0,40,1,2,0,0,0.581,baseline
+1787514020,4aa9acb1199c7ec1,python3,python3 <path>,0,168,19,0,0,0,84,0,1,0,0,0.219,baseline
+1787514222,4aa9acb1199c7ec1,git,git status,0,241,19,0,0,0,202,,1,0,0,0.02,baseline
+1787514452,4aa9acb1199c7ec1,git,git pull,0,184,19,0,0,0,230,0,1,0,0,0.046,baseline
+1787514490,4aa9acb1199c7ec1,git,git diff <path>,1,305,19,0,0,0,38,1,2,0,0,0.02,baseline
+1787514671,4aa9acb1199c7ec1,curl,curl -X <arg> <url>,0,1530,19,0,1,1,181,0,3,0,0,0.148,baseline
+1787514679,4aa9acb1199c7ec1,python3,python3 <path>,0,217,19,0,0,0,8,0,1,0,0,0.243,baseline
+1787514905,4aa9acb1199c7ec1,curl,curl -X <arg> <url>,0,474,19,0,0,0,226,0,3,0,0,0.087,baseline
+1787515090,4aa9acb1199c7ec1,npm,npm run <arg>,1,1884,19,0,0,0,185,0,2,0,0,0.571,baseline
+1787515227,4aa9acb1199c7ec1,npm,npm install <arg>,1,2414,20,0,1,1,137,0,2,0,0,0.589,baseline
+1787515444,4aa9acb1199c7ec1,curl,curl -s <url>,7,276,20,0,1,2,217,1,2,0,1,0.158,baseline
+1787515565,4aa9acb1199c7ec1,git,git commit -m <arg>,0,106,20,0,7,3,121,1,3,0,0,0.103,baseline
+1787515704,4aa9acb1199c7ec1,curl,curl -s <url>,0,282,20,0,0,0,139,,2,0,0,0.065,baseline
+1787515747,4aa9acb1199c7ec1,git,git pull,0,57,20,0,0,0,43,0,1,0,0,0.02,baseline
+1787515803,4aa9acb1199c7ec1,npm,npm test,1,2854,20,0,0,0,56,1,1,0,0,0.746,baseline
+1787515912,4aa9acb1199c7ec1,curl,curl -s <url>,7,355,20,0,1,1,109,0,2,0,0,0.158,baseline
+1787516131,4aa9acb1199c7ec1,python3,python3 <path>,0,279,20,0,7,2,219,0,1,0,0,0.232,baseline
+1787516332,4aa9acb1199c7ec1,python3,python3 <path>,0,223,20,0,0,0,201,0,1,0,0,0.161,baseline
+1787516364,4aa9acb1199c7ec1,npm,npm install <arg>,1,1619,20,0,0,0,32,,2,0,0,0.587,baseline
+1787516513,4aa9acb1199c7ec1,curl,curl -s <url>,0,956,20,0,1,1,149,1,2,0,0,0.158,baseline
+1787516637,4aa9acb1199c7ec1,npm,npm test,0,721,20,0,0,0,124,1,1,0,0,0.606,baseline
+1787516805,4aa9acb1199c7ec1,git,git status,128,298,20,0,0,0,168,1,1,1,0,0.02,baseline
+1787516897,4aa9acb1199c7ec1,curl,curl -s <url>,0,807,20,0,128,1,92,1,2,0,0,0.198,baseline
+1787517024,4aa9acb1199c7ec1,curl,curl -X <arg> <url>,0,980,20,0,0,0,127,1,3,0,0,0.168,baseline
+1787517219,4aa9acb1199c7ec1,npm,npm install <arg>,0,749,20,0,0,0,195,0,2,0,0,0.586,baseline
+1787567165,4aa9acb1199c7ec1,git,git diff <path>,0,576,10,1,0,0,49946,1,2,0,0,0.02,baseline
+1787567389,4aa9acb1199c7ec1,python3,python3 <path>,0,444,10,1,0,0,224,1,1,0,0,0.152,baseline
+1787567528,4aa9acb1199c7ec1,python3,python3 <path>,1,2798,10,1,0,0,139,0,1,0,0,0.165,baseline
+1787567720,4aa9acb1199c7ec1,python3,python3 <path>,0,766,10,1,1,1,192,0,1,0,1,0.205,baseline
+1787567736,4aa9acb1199c7ec1,npm,npm run <arg>,1,6801,10,1,0,0,16,1,2,0,0,0.62,baseline
+1787567771,4aa9acb1199c7ec1,python3,python3 -m <arg>,1,649,10,1,1,1,35,0,2,0,0,0.241,baseline
+1787567922,4aa9acb1199c7ec1,git,git status,0,231,10,1,1,2,151,1,1,0,0,0.02,baseline
+1787567972,4aa9acb1199c7ec1,curl,curl -s <url>,0,203,10,1,0,0,50,0,2,0,0,0.119,baseline
+1787568185,4aa9acb1199c7ec1,curl,curl -X <arg> <url>,28,1503,10,1,0,0,213,1,3,0,0,0.02,baseline
+1787568283,4aa9acb1199c7ec1,curl,curl -X <arg> <url>,0,1479,10,1,28,1,98,0,3,0,0,0.151,baseline
+1787568406,4aa9acb1199c7ec1,git,git diff <path>,0,143,10,1,0,0,123,0,2,0,0,0.153,baseline
+1787568547,4aa9acb1199c7ec1,curl,curl -s <url>,0,532,10,1,0,0,141,0,2,0,0,0.178,baseline
+1787568703,4aa9acb1199c7ec1,curl,curl -s <url>,0,485,10,1,0,0,156,0,2,0,0,0.148,baseline
+1787568860,4aa9acb1199c7ec1,curl,curl -X <arg> <url>,0,293,10,1,0,0,157,0,3,0,0,0.192,baseline
+1787569062,4aa9acb1199c7ec1,curl,curl -s <url>,0,842,10,1,0,0,202,0,2,1,0,0.16,baseline
+1787569105,4aa9acb1199c7ec1,curl,curl -s <url>,0,511,10,1,0,0,43,1,2,0,0,0.02,baseline
+1787569313,4aa9acb1199c7ec1,python3,python3 -m <arg>,0,774,11,1,0,0,208,1,2,0,0,0.259,baseline
+1787569318,4aa9acb1199c7ec1,python3,python3 -m <arg>,1,1065,11,1,0,0,5,0,2,0,0,0.068,baseline
+1787569377,4aa9acb1199c7ec1,git,git push <arg>,0,119,11,1,1,1,59,0,2,0,0,0.092,baseline
+1787569386,4aa9acb1199c7ec1,git,git commit -m <arg>,0,213,11,1,0,0,9,1,3,0,0,0.02,baseline
+1787569507,4aa9acb1199c7ec1,curl,curl -X <arg> <url>,0,636,11,1,0,0,121,1,3,1,0,0.062,baseline
+1787569699,4aa9acb1199c7ec1,git,git status,0,241,11,1,0,0,192,0,1,0,0,0.083,baseline
+1787569880,4aa9acb1199c7ec1,npm,npm run build,1,2750,11,1,0,0,181,0,2,0,0,0.643,baseline
+1787570033,4aa9acb1199c7ec1,python3,python3 <path>,0,1701,11,1,1,1,153,0,1,0,0,0.299,baseline
+1787570145,4aa9acb1199c7ec1,python3,python3 <path>,0,993,11,1,0,0,112,1,1,0,0,0.148,baseline
+1787570311,4aa9acb1199c7ec1,curl,curl -X <arg> <url>,0,902,11,1,0,0,166,0,3,0,0,0.02,baseline
+1787570445,4aa9acb1199c7ec1,npm,npm install <arg>,0,1323,11,1,0,0,134,0,2,0,0,0.631,baseline
+1787570618,4aa9acb1199c7ec1,curl,curl -s <url>,0,475,11,1,0,0,173,1,2,0,0,0.153,baseline
+1787570833,4aa9acb1199c7ec1,git,git pull,0,368,11,1,0,0,215,0,1,0,0,0.056,baseline
+1787609087,67844d2de16dc0eb,docker,docker build <path>,1,756,22,1,0,0,38254,,2,0,0,0.245,baseline
+1787609191,67844d2de16dc0eb,systemctl,systemctl status <arg>,0,160,22,1,1,1,104,,2,0,0,0.189,baseline
+1787609430,67844d2de16dc0eb,ssh,ssh -p <arg> <arg>,0,441,22,1,0,0,239,1,3,0,0,0.046,baseline
+1787609602,67844d2de16dc0eb,systemctl,systemctl status <arg>,0,198,22,1,0,0,172,0,2,1,1,0.02,baseline
+1787609624,67844d2de16dc0eb,docker,docker ps,0,991,22,1,0,0,22,1,1,0,0,0.157,baseline
+1787609635,67844d2de16dc0eb,docker,docker build <path>,125,1195,22,1,0,0,11,0,2,0,0,0.24,baseline
+1787609818,67844d2de16dc0eb,kubectl,kubectl apply -f <path>,1,492,22,1,125,1,183,0,3,0,0,0.345,baseline
+1787610020,67844d2de16dc0eb,ssh,ssh <arg>,0,1913,22,1,1,2,202,1,1,0,0,0.073,baseline
+1787610137,67844d2de16dc0eb,docker,docker compose up <arg>,0,3371,22,1,0,0,117,0,3,0,0,0.212,baseline
+1787610299,67844d2de16dc0eb,docker,docker compose up <arg>,0,1200,22,1,0,0,162,0,3,0,0,0.272,baseline
+1787610304,67844d2de16dc0eb,docker,docker ps,0,353,22,1,0,0,5,0,1,0,0,0.218,baseline
+1787610420,67844d2de16dc0eb,systemctl,systemctl status <arg>,0,722,22,1,0,0,116,0,2,0,0,0.274,baseline
+1787610516,67844d2de16dc0eb,ssh,ssh <arg>,0,867,22,1,0,0,96,1,1,0,0,0.084,baseline
+1787610736,67844d2de16dc0eb,systemctl,systemctl status <arg>,0,109,22,1,0,0,220,1,2,0,0,0.201,baseline
+1787610917,67844d2de16dc0eb,ssh,ssh <arg>,0,2733,22,1,0,0,181,1,1,0,0,0.059,baseline
+1787611073,67844d2de16dc0eb,kubectl,kubectl apply -f <path>,0,127,22,1,0,0,156,,3,1,0,0.069,baseline
+1787611164,67844d2de16dc0eb,docker,docker build <path>,0,331,22,1,0,0,91,0,2,0,0,0.17,baseline
+1787611317,67844d2de16dc0eb,kubectl,kubectl get <arg>,0,567,22,1,0,0,153,1,2,0,0,0.255,baseline
+1787611532,67844d2de16dc0eb,docker,docker compose up <arg>,0,342,22,1,0,0,215,1,3,0,0,0.271,baseline
+1787611553,67844d2de16dc0eb,kubectl,kubectl get <arg>,0,549,22,1,0,0,21,1,2,0,0,0.171,baseline
+1787611574,67844d2de16dc0eb,docker,docker ps,0,1305,22,1,0,0,21,0,1,0,0,0.333,baseline
+1787611604,67844d2de16dc0eb,systemctl,systemctl status <arg>,0,48,22,1,0,0,30,0,2,0,0,0.26,baseline
+1787611811,67844d2de16dc0eb,systemctl,systemctl status <arg>,0,56,22,1,0,0,207,1,2,0,0,0.107,baseline
+1787611825,67844d2de16dc0eb,kubectl,kubectl apply -f <path>,0,463,22,1,0,0,14,1,3,0,0,0.246,baseline
+1787662860,819dbc88958c1ad1,git,git status,0,266,13,2,0,0,51035,1,1,0,0,0.055,baseline
+1787663098,819dbc88958c1ad1,grep,grep -r <arg> <path>,0,34,13,2,0,0,238,0,3,0,0,0.02,baseline
+1787663240,819dbc88958c1ad1,git,git status,0,68,13,2,0,0,142,0,1,0,0,0.075,baseline
+1787663295,819dbc88958c1ad1,grep,grep -r <arg> <path>,0,43,13,2,0,0,55,1,3,0,0,0.029,baseline
+1787663424,819dbc88958c1ad1,git,git commit -m <arg>,0,201,13,2,0,0,129,0,3,0,0,0.02,baseline
+1787663514,819dbc88958c1ad1,git,git pull,128,163,13,2,0,0,90,1,1,0,0,0.02,baseline
+1787663721,819dbc88958c1ad1,git,git pull,0,238,13,2,128,1,207,0,1,0,0,0.081,baseline
+1787727976,e0f632d940b22f8b,make,make <arg>,0,2719,7,3,0,0,64255,0,1,0,1,0.02,baseline
+1787727992,e0f632d940b22f8b,npm,npm test,0,3168,7,3,0,0,16,0,1,0,0,0.349,baseline
+1787728112,e0f632d940b22f8b,git,git pull,0,236,7,3,0,0,120,1,1,0,0,0.086,baseline
+1787728239,e0f632d940b22f8b,make,make test,0,8363,7,3,0,0,127,0,1,0,0,0.138,baseline
+1787728291,e0f632d940b22f8b,git,git push <arg>,0,282,7,3,0,0,52,0,2,0,0,0.02,baseline
+1787728349,e0f632d940b22f8b,make,make <arg>,2,3236,7,3,0,0,58,0,1,0,0,0.139,baseline
+1787728447,e0f632d940b22f8b,git,git commit -m <arg>,0,237,7,3,2,1,98,0,3,0,0,0.111,baseline
+1787728675,e0f632d940b22f8b,make,make <arg>,0,2193,7,3,0,0,228,0,1,0,0,0.198,baseline
+1787728775,e0f632d940b22f8b,git,git pull,0,222,7,3,0,0,100,0,1,0,0,0.024,baseline
+1787728957,e0f632d940b22f8b,npm,npm run <arg>,1,1276,7,3,0,0,182,1,2,0,0,0.318,baseline
+1787729032,e0f632d940b22f8b,npm,npm run build,0,1737,7,3,1,1,75,0,2,0,0,0.39,baseline
+1787729202,e0f632d940b22f8b,npm,npm install <arg>,1,6652,7,3,0,0,170,1,2,0,0,0.598,baseline
+1787729290,e0f632d940b22f8b,git,git pull,0,981,7,3,1,1,88,0,1,0,0,0.02,baseline
+1787729390,e0f632d940b22f8b,git,git pull,0,94,7,3,0,0,100,0,1,0,0,0.074,baseline
+1787729441,e0f632d940b22f8b,npm,npm run <arg>,0,3603,7,3,0,0,51,0,2,0,0,0.438,baseline
+1787729498,e0f632d940b22f8b,make,make test,0,696,7,3,0,0,57,0,1,0,0,0.18,baseline
+1787729699,e0f632d940b22f8b,npm,npm install <arg>,0,6244,7,3,0,0,201,,2,0,0,0.385,baseline
+1787729874,e0f632d940b22f8b,npm,npm test,0,1447,7,3,0,0,175,0,1,0,0,0.373,baseline
+1787729981,e0f632d940b22f8b,make,make test,0,1396,7,3,0,0,107,0,1,0,0,0.114,baseline
+1787730007,e0f632d940b22f8b,make,make <arg>,0,3853,7,3,0,0,26,1,1,0,0,0.121,baseline
+1787730244,e0f632d940b22f8b,make,make <arg>,0,1168,7,3,0,0,237,1,1,0,0,0.116,baseline
+1787730476,e0f632d940b22f8b,git,git commit -m <arg>,0,183,7,3,0,0,232,,3,0,0,0.1,baseline
+1787730516,e0f632d940b22f8b,make,make <arg>,0,811,7,3,0,0,40,0,1,0,0,0.313,baseline
+1787730627,e0f632d940b22f8b,npm,npm run <arg>,0,5049,7,3,0,0,111,1,2,0,0,0.492,baseline
+1787730757,e0f632d940b22f8b,npm,npm test,0,1014,7,3,0,0,130,1,1,1,0,0.347,baseline
+1787730925,e0f632d940b22f8b,make,make <arg>,0,8386,7,3,0,0,168,1,1,0,0,0.122,baseline
+1787730937,e0f632d940b22f8b,npm,npm install <arg>,0,1354,7,3,0,0,12,0,2,0,0,0.341,baseline
+1787730972,e0f632d940b22f8b,git,git commit -m <arg>,0,394,7,3,0,0,35,0,3,0,0,0.02,baseline
+1787731068,e0f632d940b22f8b,npm,npm install <arg>,1,958,7,3,0,0,96,0,2,0,0,0.475,baseline
+1787731268,e0f632d940b22f8b,npm,npm install <arg>,0,997,8,3,1,1,200,0,2,0,0,0.458,baseline
+1787782384,4aa9acb1199c7ec1,python3,python3 -m <arg>,0,446,22,3,0,0,51116,1,2,0,0,0.217,baseline
+1787782592,4aa9acb1199c7ec1,npm,npm install <arg>,1,1182,22,3,0,0,208,1,2,0,0,0.62,baseline
+1787782730,4aa9acb1199c7ec1,python3,python3 <path>,1,344,22,3,1,1,138,1,1,0,0,0.249,baseline
+1787782739,4aa9acb1199c7ec1,curl,curl -s <url>,0,1442,22,3,1,2,9,,2,0,0,0.331,baseline
+1787782746,4aa9acb1199c7ec1,npm,npm run <arg>,0,3396,22,3,0,0,7,1,2,0,0,0.666,baseline
+1787782899,4aa9acb1199c7ec1,python3,python3 <path>,0,789,22,3,0,0,153,1,1,0,1,0.24,baseline
+1787782959,4aa9acb1199c7ec1,git,git status,0,44,22,3,0,0,60,1,1,0,0,0.081,baseline
+1787783057,4aa9acb1199c7ec1,git,git commit -m <arg>,0,166,22,3,0,0,98,0,3,0,0,0.045,baseline
+1787783181,4aa9acb1199c7ec1,npm,npm run build,1,8368,22,3,0,0,124,1,2,0,0,0.711,baseline
+1787783361,4aa9acb1199c7ec1,curl,curl -X <arg> <url>,0,382,22,3,1,1,180,0,3,1,0,0.16,baseline
+1787783538,4aa9acb1199c7ec1,npm,npm run build,1,1352,22,3,0,0,177,1,2,0,0,0.632,baseline
+1787783594,4aa9acb1199c7ec1,curl,curl -X <arg> <url>,0,3067,22,3,1,1,56,0,3,0,0,0.02,baseline
+1787783804,4aa9acb1199c7ec1,curl,curl -s <url>,0,322,22,3,0,0,210,0,2,0,0,0.1,baseline
+1787783826,4aa9acb1199c7ec1,curl,curl -X <arg> <url>,0,1753,22,3,0,0,22,1,3,0,0,0.182,baseline
+1787783850,4aa9acb1199c7ec1,curl,curl -X <arg> <url>,0,242,22,3,0,0,24,0,3,1,0,0.02,baseline
+1787783965,4aa9acb1199c7ec1,npm,npm run build,1,6158,22,3,0,0,115,1,2,0,0,0.637,baseline
+1787784047,4aa9acb1199c7ec1,git,git pull,0,46,22,3,1,1,82,0,1,0,0,0.078,baseline
+1787784195,4aa9acb1199c7ec1,git,git pull,0,169,22,3,0,0,148,0,1,0,0,0.02,baseline
+1787784207,4aa9acb1199c7ec1,npm,npm run build,1,1424,22,3,0,0,12,1,2,0,0,0.649,baseline
+1787784317,4aa9acb1199c7ec1,python3,python3 <path>,1,253,22,3,1,1,110,0,1,0,0,0.102,baseline
+1787784327,4aa9acb1199c7ec1,python3,python3 -m <arg>,1,1374,22,3,1,2,10,1,2,0,0,0.298,baseline
+1787784414,4aa9acb1199c7ec1,npm,npm install <arg>,0,410,22,3,1,3,87,0,2,0,0,0.71,baseline
+1787784495,4aa9acb1199c7ec1,python3,python3 <path>,0,224,22,3,0,0,81,1,1,0,0,0.227,baseline
+1787784602,4aa9acb1199c7ec1,git,git push <arg>,0,276,22,3,0,0,107,1,2,0,0,0.02,baseline
+1787784660,4aa9acb1199c7ec1,python3,python3 -m <arg>,0,778,22,3,0,0,58,1,2,0,0,0.1,baseline
+1787784781,4aa9acb1199c7ec1,git,git commit -m <arg>,0,302,22,3,0,0,121,0,3,0,0,0.086,baseline
+1787823499,0a135305f7a07ab9,grep,grep -r <arg> <path>,0,41,9,4,0,0,38718,0,3,0,0,0.064,baseline
+1787823716,0a135305f7a07ab9,make,make <arg>,0,2643,9,4,0,0,217,0,1,0,0,0.182,baseline
+1787823750,0a135305f7a07ab9,make,make <arg>,0,255,9,4,0,0,34,1,1,0,0,0.02,baseline
+1787823824,0a135305f7a07ab9,make,make test,2,3024,9,4,0,0,74,0,1,1,0,0.17,baseline
+1787823850,0a135305f7a07ab9,python3,python3 <path>,0,503,9,4,2,1,26,0,1,0,0,0.093,baseline
+1787823885,0a135305f7a07ab9,grep,grep -r <arg> <path>,0,122,9,4,0,0,35,0,3,0,0,0.121,baseline
+1787823970,0a135305f7a07ab9,python3,python3 <path>,0,2602,9,4,0,0,85,1,1,0,0,0.225,baseline
+1787824079,0a135305f7a07ab9,python3,python3 <path>,0,191,9,4,0,0,109,1,1,0,0,0.161,baseline
+1787824155,0a135305f7a07ab9,make,make test,0,6393,9,4,0,0,76,1,1,0,0,0.057,baseline
+1787824173,0a135305f7a07ab9,grep,grep -r <arg> <path>,0,105,9,4,0,0,18,1,3,0,0,0.02,baseline
+1787824385,0a135305f7a07ab9,grep,grep -r <arg> <path>,0,18,9,4,0,0,212,1,3,0,0,0.181,baseline
+1787824466,0a135305f7a07ab9,make,make <arg>,0,724,9,4,0,0,81,0,1,0,0,0.081,baseline
+1787824692,0a135305f7a07ab9,make,make <arg>,0,4077,9,4,0,0,226,1,1,0,0,0.206,baseline
+1787824738,0a135305f7a07ab9,grep,grep -r <arg> <path>,0,32,9,4,0,0,46,0,3,0,0,0.02,baseline
+1787824904,0a135305f7a07ab9,python3,python3 -m <arg>,0,289,10,4,0,0,166,1,2,0,0,0.169,baseline
+1787825121,0a135305f7a07ab9,grep,grep -r <arg> <path>,0,301,10,4,0,0,217,,3,0,0,0.067,baseline
+1787825277,0a135305f7a07ab9,python3,python3 <path>,0,323,10,4,0,0,156,0,1,0,1,0.127,baseline
+1787825424,0a135305f7a07ab9,grep,grep -r <arg> <path>,0,55,10,4,0,0,147,1,3,0,0,0.082,baseline
+1787885241,684205ec612d8248,pytest,pytest <path>,1,2049,2,5,0,0,59817,0,1,0,0,0.365,baseline
+1787885428,684205ec612d8248,pytest,pytest <path>,1,3094,2,5,1,1,187,1,1,0,0,0.327,baseline
+1787885643,684205ec612d8248,git,git commit -m <arg>,0,139,2,5,1,2,215,1,3,0,0,0.278,baseline
+1787885797,684205ec612d8248,make,make <arg>,2,1251,2,5,0,0,154,0,1,0,0,0.244,baseline
+1787885867,684205ec612d8248,python3,python3 <path>,1,568,2,5,2,1,70,1,1,0,0,0.283,baseline
+1787885905,684205ec612d8248,python3,python3 -m <arg>,0,335,2,5,1,2,38,0,2,0,0,0.223,baseline
+1787885946,684205ec612d8248,git,git push <arg>,0,388,2,5,0,0,41,1,2,0,0,0.02,baseline
+1787885989,684205ec612d8248,make,make <arg>,2,2299,2,5,0,0,43,1,1,0,0,0.202,baseline
+1787886004,684205ec612d8248,make,make <arg>,0,2442,3,5,2,1,15,1,1,0,0,0.315,baseline
+1787886081,684205ec612d8248,pytest,pytest <arg>,0,17370,3,5,0,0,77,0,1,0,0,0.453,baseline
+1787886220,684205ec612d8248,pytest,pytest <path>,0,21101,3,5,0,0,139,1,1,0,0,0.338,baseline
+1787886252,684205ec612d8248,git,git push <arg>,0,312,3,5,0,0,32,0,2,0,0,0.243,baseline
+1787886372,684205ec612d8248,git,git status,0,331,3,5,0,0,120,0,1,0,0,0.068,baseline
+1787886400,684205ec612d8248,make,make <arg>,0,384,3,5,0,0,28,1,1,0,0,0.156,baseline
+1787886604,684205ec612d8248,make,make test,0,3604,3,5,0,0,204,,1,0,0,0.172,baseline
+1787886700,684205ec612d8248,python3,python3 -m <arg>,0,618,3,5,0,0,96,0,2,0,0,0.3,baseline
+1787938565,684205ec612d8248,make,make <arg>,0,549,17,5,0,0,51865,,1,0,0,0.105,baseline
+1787938591,684205ec612d8248,git,git commit -m <arg>,0,301,17,5,0,0,26,0,3,0,0,0.02,baseline
+1787938607,684205ec612d8248,python3,python3 -m <arg>,0,493,17,5,0,0,16,0,2,0,0,0.123,baseline
+1787938813,684205ec612d8248,pytest,pytest <arg>,0,1255,17,5,0,0,206,1,1,0,0,0.373,baseline
+1787938989,684205ec612d8248,make,make test,0,2596,17,5,0,0,176,1,1,0,0,0.325,baseline
+1787938998,684205ec612d8248,python3,python3 -m <arg>,0,553,17,5,0,0,9,1,2,0,0,0.274,baseline
+1787939179,684205ec612d8248,make,make test,0,2004,17,5,0,0,181,0,1,0,0,0.176,baseline
+1787939232,684205ec612d8248,python3,python3 <path>,0,551,17,5,0,0,53,1,1,0,0,0.278,baseline
+1787939350,684205ec612d8248,make,make test,0,4251,17,5,0,0,118,1,1,0,0,0.113,baseline
+1787939571,684205ec612d8248,make,make <arg>,0,7372,17,5,0,0,221,1,1,0,0,0.276,baseline
+1787939761,684205ec612d8248,make,make <arg>,0,1841,17,5,0,0,190,0,1,0,0,0.207,baseline
+1787939944,684205ec612d8248,make,make <arg>,2,4003,17,5,0,0,183,1,1,0,0,0.105,baseline
+1787940035,684205ec612d8248,make,make <arg>,2,3723,18,5,2,1,91,0,1,0,0,0.222,baseline
+1787940199,684205ec612d8248,pytest,pytest <path>,1,6444,18,5,2,2,164,1,1,0,0,0.249,baseline
+1787940330,684205ec612d8248,git,git commit -m <arg>,0,174,18,5,1,3,131,0,3,0,0,0.173,baseline
+1787940393,684205ec612d8248,python3,python3 -m <arg>,0,45,18,5,0,0,63,0,2,0,0,0.303,baseline
+1787940616,684205ec612d8248,python3,python3 -m <arg>,0,1492,18,5,0,0,223,0,2,0,0,0.294,baseline
+1787940647,684205ec612d8248,python3,python3 <path>,0,381,18,5,0,0,31,0,1,0,0,0.153,baseline
+1787940781,684205ec612d8248,make,make <arg>,0,383,18,5,0,0,134,1,1,0,0,0.165,baseline
+1787940787,684205ec612d8248,pytest,pytest <path>,0,3061,18,5,0,0,6,1,1,0,0,0.267,baseline
+1787940884,684205ec612d8248,pytest,pytest -q <path>,1,7638,18,5,0,0,97,,2,0,0,0.239,baseline
+1787940896,684205ec612d8248,make,make test,2,4123,18,5,1,1,12,1,1,0,0,0.207,baseline
+1787940943,684205ec612d8248,make,make test,2,4102,18,5,2,2,47,,1,0,0,0.384,baseline
+1787941174,684205ec612d8248,git,git push <arg>,0,156,18,5,2,3,231,0,2,0,0,0.083,baseline
+1787941343,684205ec612d8248,pytest,pytest -q <path>,0,4731,18,5,0,0,169,0,2,0,0,0.253,baseline
+1787941357,684205ec612d8248,git,git commit -m <arg>,0,232,18,5,0,0,14,1,3,0,0,0.02,baseline
+1787941555,684205ec612d8248,pytest,pytest <arg>,1,1292,18,5,0,0,198,0,1,0,0,0.227,baseline
+1787941591,684205ec612d8248,python3,python3 <path>,0,1569,18,5,1,1,36,,1,0,0,0.239,baseline
+1787941740,684205ec612d8248,pytest,pytest <arg>,0,961,18,5,0,0,149,1,1,0,0,0.266,baseline
+1787970578,819dbc88958c1ad1,grep,grep -r <arg> <path>,0,38,2,6,0,0,28838,1,3,0,0,0.023,baseline
+1787970704,819dbc88958c1ad1,git,git diff <path>,0,157,2,6,0,0,126,0,2,0,0,0.02,baseline
+1787970885,819dbc88958c1ad1,grep,grep -r <arg> <path>,0,71,2,6,0,0,181,0,3,0,0,0.02,baseline
+1787971025,819dbc88958c1ad1,git,git commit -m <arg>,0,208,2,6,0,0,140,0,3,0,0,0.113,baseline
+1787971176,819dbc88958c1ad1,grep,grep -r <arg> <path>,0,41,2,6,0,0,151,1,3,0,0,0.02,baseline
+1787971217,819dbc88958c1ad1,grep,grep -r <arg> <path>,0,78,2,6,0,0,41,0,3,0,0,0.059,baseline
+1787971318,819dbc88958c1ad1,grep,grep -r <arg> <path>,0,126,2,6,0,0,101,0,3,0,0,0.049,baseline
+1787971544,819dbc88958c1ad1,grep,grep -r <arg> <path>,0,119,2,6,0,0,226,,3,0,0,0.048,baseline
+1787971714,819dbc88958c1ad1,git,git push <arg>,0,393,2,6,0,0,170,0,2,0,0,0.12,baseline
+1787971877,819dbc88958c1ad1,git,git diff <path>,0,244,2,6,0,0,163,0,2,1,0,0.078,baseline
+1787971944,819dbc88958c1ad1,grep,grep -r <arg> <path>,0,84,2,6,0,0,67,,3,0,0,0.02,baseline
+1787971955,819dbc88958c1ad1,grep,grep -r <arg> <path>,0,85,2,6,0,0,11,1,3,0,0,0.039,baseline
+1787972117,819dbc88958c1ad1,grep,grep -r <arg> <path>,0,115,2,6,0,0,162,1,3,0,0,0.07,baseline
+1787972218,819dbc88958c1ad1,git,git commit -m <arg>,0,101,2,6,0,0,101,1,3,0,0,0.02,baseline
+1787972341,819dbc88958c1ad1,grep,grep -r <arg> <path>,0,93,2,6,0,0,123,1,3,0,0,0.045,baseline
+1787972423,819dbc88958c1ad1,grep,grep -r <arg> <path>,0,183,3,6,0,0,82,0,3,0,0,0.02,baseline
+1787972543,819dbc88958c1ad1,git,git status,1,274,3,6,0,0,120,0,1,0,0,0.195,baseline
+1787972645,819dbc88958c1ad1,grep,grep -r <arg> <path>,0,58,3,6,1,1,102,1,3,0,0,0.038,baseline
+1787972721,819dbc88958c1ad1,grep,grep -r <arg> <path>,0,82,3,6,0,0,76,,3,0,0,0.107,baseline
+1787972895,819dbc88958c1ad1,grep,grep -r <arg> <path>,0,70,3,6,0,0,174,0,3,1,1,0.072,baseline
+1788030649,684205ec612d8248,make,make test,0,1860,19,6,0,0,57754,,1,0,0,0.131,baseline
+1788030685,684205ec612d8248,git,git pull,0,151,19,6,0,0,36,0,1,0,0,0.103,baseline
+1788030803,684205ec612d8248,python3,python3 -m <arg>,0,269,19,6,0,0,118,1,2,0,0,0.287,baseline
+1788031014,684205ec612d8248,pytest,pytest <arg>,1,4972,19,6,0,0,211,0,1,0,0,0.312,baseline
+1788031145,684205ec612d8248,pytest,pytest <arg>,0,4978,19,6,1,1,131,0,1,0,0,0.365,baseline
+1788031182,684205ec612d8248,git,git status,0,321,19,6,0,0,37,0,1,0,0,0.157,baseline
+1788031296,684205ec612d8248,python3,python3 -m <arg>,0,153,19,6,0,0,114,1,2,0,0,0.175,baseline
+1788031393,684205ec612d8248,python3,python3 -m <arg>,0,379,19,6,0,0,97,1,2,0,0,0.12,baseline
+1788031604,684205ec612d8248,python3,python3 <path>,0,207,19,6,0,0,211,0,1,0,0,0.168,baseline
+1788047882,4aa9acb1199c7ec1,curl,curl -X <arg> <url>,0,942,23,6,0,0,16278,,3,0,0,0.128,baseline
+1788048020,4aa9acb1199c7ec1,git,git status,0,525,0,0,0,0,138,0,1,0,0,0.02,baseline
+1788048033,4aa9acb1199c7ec1,curl,curl -X <arg> <url>,0,633,0,0,0,0,13,0,3,0,0,0.196,baseline
+1788048230,4aa9acb1199c7ec1,curl,curl -s <url>,0,994,0,0,0,0,197,0,2,0,0,0.142,baseline
+1788048260,4aa9acb1199c7ec1,python3,python3 -m <arg>,0,745,0,0,0,0,30,1,2,0,0,0.151,baseline
+1788048480,4aa9acb1199c7ec1,git,git push <arg>,0,88,0,0,0,0,220,1,2,0,0,0.032,baseline
+1788048547,4aa9acb1199c7ec1,git,git pull,0,102,0,0,0,0,67,1,1,0,0,0.02,baseline
+1788048589,4aa9acb1199c7ec1,git,git status,0,262,0,0,0,0,42,0,1,0,0,0.042,baseline
+1788048803,4aa9acb1199c7ec1,npm,npm test,1,1412,0,0,0,0,214,,1,0,0,0.589,baseline
+1788048849,4aa9acb1199c7ec1,npm,npm run <arg>,1,2708,0,0,1,1,46,0,2,0,0,0.623,baseline
+1788049050,4aa9acb1199c7ec1,python3,python3 <path>,0,467,0,0,1,2,201,1,1,0,0,0.202,baseline
+1788049104,4aa9acb1199c7ec1,python3,python3 <path>,1,362,0,0,0,0,54,0,1,0,0,0.201,baseline
+1788049154,4aa9acb1199c7ec1,git,git status,1,310,0,0,1,1,50,0,1,0,0,0.045,baseline
+1788049293,4aa9acb1199c7ec1,curl,curl -X <arg> <url>,0,385,0,0,1,2,139,1,3,0,0,0.181,baseline
+1788049533,4aa9acb1199c7ec1,npm,npm install <arg>,0,3699,0,0,0,0,240,1,2,0,0,0.655,baseline
+1788049755,4aa9acb1199c7ec1,curl,curl -s <url>,0,270,0,0,0,0,222,1,2,0,0,0.04,baseline
+1788049952,4aa9acb1199c7ec1,python3,python3 -m <arg>,0,563,0,0,0,0,197,0,2,0,0,0.101,baseline
+1788050159,4aa9acb1199c7ec1,npm,npm run <arg>,1,2670,0,0,0,0,207,1,2,0,0,0.627,baseline
+1788050379,4aa9acb1199c7ec1,python3,python3 <path>,0,359,0,0,1,1,220,0,1,0,0,0.132,baseline
+1788050589,4aa9acb1199c7ec1,curl,curl -s <url>,0,589,0,0,0,0,210,1,2,0,0,0.061,baseline
+1788050669,4aa9acb1199c7ec1,npm,npm install <arg>,0,1150,0,0,0,0,80,0,2,0,0,0.64,baseline
+1788050709,4aa9acb1199c7ec1,python3,python3 -m <arg>,1,401,0,0,0,0,40,0,2,0,1,0.296,baseline
+1788050881,4aa9acb1199c7ec1,git,git commit -m <arg>,0,67,0,0,1,1,172,0,3,0,0,0.02,baseline
+1788051088,4aa9acb1199c7ec1,npm,npm test,1,659,0,0,0,0,207,1,1,0,0,0.653,baseline
+1788072900,684205ec612d8248,pytest,pytest -q <path>,1,5115,6,0,1,1,21812,0,2,0,0,0.281,baseline
+1788072988,684205ec612d8248,python3,python3 -m <arg>,0,902,6,0,1,2,88,0,2,0,0,0.282,baseline
+1788073041,684205ec612d8248,make,make test,2,3049,6,0,0,0,53,1,1,0,0,0.22,baseline
+1788073093,684205ec612d8248,pytest,pytest <arg>,1,3649,6,0,2,1,52,0,1,0,1,0.374,baseline
+1788073181,684205ec612d8248,make,make <arg>,0,1024,6,0,1,2,88,1,1,0,0,0.325,baseline
+1788073367,684205ec612d8248,make,make test,0,1709,7,0,0,0,186,0,1,0,1,0.111,baseline
+1788073408,684205ec612d8248,make,make <arg>,2,2835,7,0,0,0,41,0,1,0,0,0.272,baseline
+1788073638,684205ec612d8248,make,make test,0,715,7,0,2,1,230,1,1,0,0,0.093,baseline
+1788073753,684205ec612d8248,make,make test,0,2826,7,0,0,0,115,1,1,0,0,0.02,baseline
+1788073918,684205ec612d8248,git,git status,0,140,7,0,0,0,165,0,1,0,0,0.155,baseline
+1788074006,684205ec612d8248,make,make <arg>,0,822,7,0,0,0,88,0,1,0,0,0.249,baseline
+1788074060,684205ec612d8248,make,make <arg>,2,1049,7,0,0,0,54,0,1,0,0,0.167,baseline
+1788074177,684205ec612d8248,pytest,pytest <path>,0,2332,7,0,2,1,117,1,1,0,0,0.286,baseline
+1788074353,684205ec612d8248,python3,python3 <path>,0,313,7,0,0,0,176,,1,0,0,0.153,baseline
+1788074370,684205ec612d8248,python3,python3 <path>,0,470,7,0,0,0,17,1,1,0,0,0.245,baseline
+1788089948,4aa9acb1199c7ec1,npm,npm run build,0,1412,11,0,0,0,15578,1,2,0,0,0.661,baseline
+1788090165,4aa9acb1199c7ec1,git,git push <arg>,0,71,11,0,0,0,217,,2,0,0,0.02,baseline
+1788090229,4aa9acb1199c7ec1,git,git push <arg>,0,141,11,0,0,0,64,0,2,0,0,0.138,baseline
+1788090311,4aa9acb1199c7ec1,curl,curl -s <url>,0,249,11,0,0,0,82,1,2,0,0,0.1,baseline
+1788090513,4aa9acb1199c7ec1,git,git push <arg>,0,892,11,0,0,0,202,0,2,0,1,0.081,baseline
+1788090751,4aa9acb1199c7ec1,curl,curl -s <url>,0,872,11,0,0,0,238,0,2,0,0,0.111,baseline
+1788090914,4aa9acb1199c7ec1,npm,npm test,1,2873,11,0,0,0,163,1,1,0,0,0.736,baseline
+1788091072,4aa9acb1199c7ec1,curl,curl -s <url>,0,526,11,0,1,1,158,0,2,0,0,0.02,baseline
+1788091161,4aa9acb1199c7ec1,python3,python3 <path>,0,994,11,0,0,0,89,0,1,0,0,0.155,baseline
+1788091299,4aa9acb1199c7ec1,python3,python3 -m <arg>,0,708,12,0,0,0,138,0,2,0,0,0.221,baseline
+1788121686,e0f632d940b22f8b,npm,npm run <arg>,0,1716,20,0,0,0,30387,1,2,0,0,0.439,baseline
+1788121764,e0f632d940b22f8b,make,make <arg>,0,1875,20,0,0,0,78,1,1,0,0,0.314,baseline
+1788121898,e0f632d940b22f8b,make,make <arg>,0,8485,20,0,0,0,134,1,1,0,0,0.24,baseline
+1788122097,e0f632d940b22f8b,git,git push <arg>,0,47,20,0,0,0,199,1,2,0,0,0.02,baseline
+1788122187,e0f632d940b22f8b,npm,npm test,0,2800,20,0,0,0,90,,1,0,0,0.461,baseline
+1788122317,e0f632d940b22f8b,git,git status,0,263,20,0,0,0,130,0,1,0,0,0.086,baseline
+1788122519,e0f632d940b22f8b,make,make <arg>,0,2984,20,0,0,0,202,0,1,0,0,0.148,baseline
+1788122586,e0f632d940b22f8b,git,git commit -m <arg>,1,357,20,0,0,0,67,0,3,0,0,0.045,baseline
+1788122806,e0f632d940b22f8b,npm,npm test,1,23196,20,0,1,1,220,,1,0,0,0.517,baseline
+1788123035,e0f632d940b22f8b,git,git diff <path>,0,165,20,0,1,2,229,1,2,0,0,0.191,baseline
+1788123264,e0f632d940b22f8b,make,make <arg>,0,500,20,0,0,0,229,0,1,0,0,0.129,baseline
+1788123447,e0f632d940b22f8b,git,git pull,128,239,20,0,0,0,183,0,1,0,0,0.082,baseline
+1788123567,e0f632d940b22f8b,make,make <arg>,0,308,20,0,128,1,120,,1,0,0,0.23,baseline
+1788123599,e0f632d940b22f8b,make,make <arg>,0,1006,20,0,0,0,32,1,1,0,0,0.166,baseline
+1788123606,e0f632d940b22f8b,npm,npm run build,1,7385,21,0,0,0,7,1,2,0,1,0.427,baseline
+1788123765,e0f632d940b22f8b,make,make <arg>,0,1429,21,0,1,1,159,1,1,0,0,0.115,baseline
+1788123862,e0f632d940b22f8b,make,make test,0,732,21,0,0,0,97,1,1,0,0,0.241,baseline
+1788124046,e0f632d940b22f8b,npm,npm run build,1,3035,21,0,0,0,184,0,2,0,0,0.595,baseline
+1788124257,e0f632d940b22f8b,make,make <arg>,0,1265,21,0,1,1,211,0,1,0,0,0.155,baseline
+1788124383,e0f632d940b22f8b,make,make test,0,1102,21,0,0,0,126,0,1,0,0,0.248,baseline
+1788124410,e0f632d940b22f8b,git,git status,0,149,21,0,0,0,27,0,1,0,0,0.02,baseline
+1788124583,e0f632d940b22f8b,make,make <arg>,2,5156,21,0,0,0,173,1,1,0,0,0.155,baseline
+1788145976,819dbc88958c1ad1,grep,grep -r <arg> <path>,0,483,3,1,2,1,21393,0,3,0,0,0.02,baseline
+1788146078,819dbc88958c1ad1,grep,grep -r <arg> <path>,0,54,3,1,0,0,102,0,3,0,0,0.089,baseline
+1788146115,819dbc88958c1ad1,grep,grep -r <arg> <path>,0,25,3,1,0,0,37,0,3,0,0,0.081,baseline
+1788146323,819dbc88958c1ad1,git,git pull,0,257,3,1,0,0,208,1,1,0,0,0.187,baseline
+1788146384,819dbc88958c1ad1,grep,grep -r <arg> <path>,0,44,3,1,0,0,61,0,3,0,0,0.048,baseline
+1788146606,819dbc88958c1ad1,grep,grep -r <arg> <path>,0,49,3,1,0,0,222,1,3,0,0,0.159,baseline
+1788146818,819dbc88958c1ad1,git,git pull,0,103,3,1,0,0,212,1,1,0,0,0.096,baseline
+1788153244,684205ec612d8248,git,git pull,0,209,5,1,0,0,6426,1,1,0,0,0.02,baseline
+1788153468,684205ec612d8248,make,make test,2,4939,5,1,0,0,224,0,1,0,0,0.204,baseline
+1788153508,684205ec612d8248,make,make test,0,1118,5,1,2,1,40,0,1,0,0,0.185,baseline
+1788153714,684205ec612d8248,pytest,pytest <path>,0,2301,5,1,0,0,206,1,1,0,0,0.256,baseline
+1788153830,684205ec612d8248,pytest,pytest <path>,0,2839,5,1,0,0,116,0,1,0,0,0.253,baseline
+1788154038,684205ec612d8248,python3,python3 -m <arg>,0,2100,5,1,0,0,208,0,2,1,0,0.216,baseline
+1788154074,684205ec612d8248,make,make <arg>,0,2824,5,1,0,0,36,0,1,0,0,0.133,baseline
+1788154190,684205ec612d8248,git,git pull,0,277,5,1,0,0,116,1,1,0,0,0.164,baseline
+1788154404,684205ec612d8248,python3,python3 <path>,0,214,5,1,0,0,214,1,1,0,0,0.22,baseline
+1788163134,4aa9acb1199c7ec1,git,git status,0,113,7,1,0,0,8730,1,1,0,0,0.136,baseline
+1788163278,4aa9acb1199c7ec1,git,git diff <path>,0,244,8,1,0,0,144,0,2,0,0,0.02,baseline
+1788163420,4aa9acb1199c7ec1,git,git status,0,269,8,1,0,0,142,1,1,0,0,0.081,baseline
+1788163459,4aa9acb1199c7ec1,git,git pull,0,82,8,1,0,0,39,1,1,0,0,0.098,baseline
+1788163485,4aa9acb1199c7ec1,python3,python3 -m <arg>,0,229,8,1,0,0,26,0,2,0,0,0.204,baseline
+1788163658,4aa9acb1199c7ec1,git,git diff <path>,0,202,8,1,0,0,173,0,2,0,0,0.051,baseline
+1788163685,4aa9acb1199c7ec1,python3,python3 <path>,0,887,8,1,0,0,27,1,1,0,0,0.236,baseline
+1788216913,0a135305f7a07ab9,make,make test,2,4168,22,1,0,0,53228,0,1,0,0,0.103,baseline
+1788216961,0a135305f7a07ab9,python3,python3 -m <arg>,0,489,22,1,2,1,48,0,2,1,0,0.18,baseline
+1788217005,0a135305f7a07ab9,grep,grep -r <arg> <path>,0,46,22,1,0,0,44,1,3,0,0,0.127,baseline
+1788217117,0a135305f7a07ab9,grep,grep -r <arg> <path>,0,71,22,1,0,0,112,0,3,0,0,0.02,baseline
+1788217347,0a135305f7a07ab9,make,make test,0,1273,23,1,0,0,230,1,1,0,0,0.191,baseline
+1788217373,0a135305f7a07ab9,grep,grep -r <arg> <path>,0,33,23,1,0,0,26,1,3,0,0,0.02,baseline
+1788217568,0a135305f7a07ab9,make,make test,0,3964,23,1,0,0,195,,1,0,0,0.313,baseline
+1788217583,0a135305f7a07ab9,grep,grep -r <arg> <path>,0,43,23,1,0,0,15,,3,0,0,0.036,baseline
+1788217683,0a135305f7a07ab9,make,make test,0,5383,23,1,0,0,100,1,1,1,0,0.19,baseline
+1788217788,0a135305f7a07ab9,make,make <arg>,0,1786,23,1,0,0,105,0,1,0,1,0.288,baseline
+1788217910,0a135305f7a07ab9,python3,python3 <path>,0,290,23,1,0,0,122,1,1,0,0,0.172,baseline
+1788275343,4aa9acb1199c7ec1,curl,curl -X <arg> <url>,28,406,15,2,0,0,57433,1,3,0,0,0.105,baseline
+1788275416,4aa9acb1199c7ec1,npm,npm run <arg>,0,2515,15,2,28,1,73,1,2,0,0,0.615,baseline
+1788275469,4aa9acb1199c7ec1,python3,python3 <path>,1,520,15,2,0,0,53,1,1,0,0,0.239,baseline
+1788275644,4aa9acb1199c7ec1,python3,python3 <path>,1,810,15,2,1,1,175,0,1,0,0,0.146,baseline
+1788275748,4aa9acb1199c7ec1,git,git commit -m <arg>,0,96,15,2,1,2,104,1,3,0,0,0.196,baseline
+1788275905,4aa9acb1199c7ec1,npm,npm test,1,2164,15,2,0,0,157,0,1,0,0,0.641,baseline
+1788276089,4aa9acb1199c7ec1,git,git status,0,187,15,2,1,1,184,0,1,0,0,0.11,baseline
+1788276245,4aa9acb1199c7ec1,git,git status,0,174,15,2,0,0,156,0,1,0,0,0.095,baseline
+1788342654,4aa9acb1199c7ec1,curl,curl -X <arg> <url>,0,507,9,3,0,0,66409,0,3,0,0,0.048,baseline
+1788342705,4aa9acb1199c7ec1,npm,npm run build,1,1494,9,3,0,0,51,0,2,0,0,0.592,baseline
+1788342884,4aa9acb1199c7ec1,git,git diff <path>,0,346,9,3,1,1,179,0,2,0,0,0.092,baseline
+1788342987,4aa9acb1199c7ec1,npm,npm run <arg>,0,597,9,3,0,0,103,1,2,0,0,0.667,baseline
+1788343069,4aa9acb1199c7ec1,curl,curl -s <url>,0,194,9,3,0,0,82,1,2,0,0,0.171,baseline
+1788343302,4aa9acb1199c7ec1,python3,python3 -m <arg>,0,482,10,3,0,0,233,0,2,0,0,0.246,baseline
+1788343485,4aa9acb1199c7ec1,git,git diff <path>,0,464,10,3,0,0,183,,2,0,0,0.08,baseline
+1788343588,4aa9acb1199c7ec1,curl,curl -s <url>,0,500,10,3,0,0,103,1,2,0,0,0.02,baseline
+1788343721,4aa9acb1199c7ec1,python3,python3 <path>,0,189,10,3,0,0,133,1,1,0,0,0.139,baseline
+1788343736,4aa9acb1199c7ec1,git,git status,0,161,10,3,0,0,15,0,1,1,0,0.02,baseline
+1788343895,4aa9acb1199c7ec1,python3,python3 -m <arg>,0,432,10,3,0,0,159,1,2,0,0,0.139,baseline
+1788344110,4aa9acb1199c7ec1,python3,python3 <path>,0,2040,10,3,0,0,215,0,1,0,0,0.162,baseline
+1788344167,4aa9acb1199c7ec1,curl,curl -X <arg> <url>,0,360,10,3,0,0,57,1,3,0,0,0.02,baseline
+1788344266,4aa9acb1199c7ec1,git,git commit -m <arg>,0,121,10,3,0,0,99,,3,0,0,0.067,baseline
+1788344350,4aa9acb1199c7ec1,git,git commit -m <arg>,0,744,10,3,0,0,84,1,3,0,0,0.02,baseline
+1788344587,4aa9acb1199c7ec1,curl,curl -s <url>,0,787,10,3,0,0,237,1,2,0,0,0.046,baseline
+1788344756,4aa9acb1199c7ec1,npm,npm run build,1,5124,10,3,0,0,169,0,2,0,0,0.599,baseline
+1788359492,e0f632d940b22f8b,git,git commit -m <arg>,0,141,14,3,1,1,14736,0,3,0,0,0.171,baseline
+1788359572,e0f632d940b22f8b,npm,npm run <arg>,0,2882,14,3,0,0,80,1,2,0,0,0.457,baseline
+1788359744,e0f632d940b22f8b,git,git status,0,460,14,3,0,0,172,1,1,0,0,0.02,baseline
+1788359768,e0f632d940b22f8b,make,make test,0,162,14,3,0,0,24,0,1,0,0,0.161,baseline
+1788359926,e0f632d940b22f8b,npm,npm install <arg>,0,509,14,3,0,0,158,0,2,0,0,0.379,baseline
+1788359998,e0f632d940b22f8b,make,make <arg>,0,911,14,3,0,0,72,0,1,0,0,0.109,baseline
+1788360150,e0f632d940b22f8b,git,git commit -m <arg>,0,164,14,3,0,0,152,1,3,0,0,0.079,baseline
+1788360260,e0f632d940b22f8b,make,make test,0,545,14,3,0,0,110,1,1,0,0,0.213,baseline
+1788360391,e0f632d940b22f8b,make,make <arg>,0,1053,14,3,0,0,131,0,1,0,0,0.031,baseline
+1788360448,e0f632d940b22f8b,npm,npm run <arg>,1,1276,14,3,0,0,57,1,2,0,0,0.4,baseline
+1788360686,e0f632d940b22f8b,git,git status,0,326,14,3,1,1,238,1,1,0,0,0.046,baseline
+1788360813,e0f632d940b22f8b,make,make test,0,616,14,3,0,0,127,1,1,1,0,0.081,baseline
+1788360924,e0f632d940b22f8b,npm,npm install <arg>,0,1725,14,3,0,0,111,1,2,0,1,0.31,baseline
+1788360957,e0f632d940b22f8b,npm,npm run <arg>,1,3350,14,3,0,0,33,1,2,0,0,0.441,baseline
+1788361186,e0f632d940b22f8b,git,git pull,0,221,14,3,1,1,229,1,1,0,0,0.121,baseline
+1788361381,e0f632d940b22f8b,npm,npm run build,1,1904,15,3,0,0,195,0,2,0,0,0.397,baseline
+1788361597,e0f632d940b22f8b,git,git commit -m <arg>,0,616,15,3,1,1,216,1,3,0,0,0.066,baseline
+1788361663,e0f632d940b22f8b,git,git status,0,120,15,3,0,0,66,0,1,0,0,0.083,baseline
+1788361676,e0f632d940b22f8b,npm,npm run build,1,4147,15,3,0,0,13,1,2,0,0,0.45,baseline
+1788361782,e0f632d940b22f8b,make,make test,0,4517,15,3,1,1,106,0,1,0,0,0.179,baseline
+1788361812,e0f632d940b22f8b,make,make <arg>,0,542,15,3,0,0,30,1,1,0,0,0.02,baseline
+1788361837,e0f632d940b22f8b,make,make test,2,5347,15,3,0,0,25,0,1,0,0,0.17,baseline
+1788361975,e0f632d940b22f8b,git,git diff <path>,0,117,15,3,2,1,138,0,2,0,0,0.116,baseline
+1788362136,e0f632d940b22f8b,make,make test,2,3812,15,3,0,0,161,0,1,0,0,0.092,baseline
+1788362158,e0f632d940b22f8b,git,git pull,0,182,15,3,2,1,22,1,1,0,0,0.066,baseline
+1788362198,e0f632d940b22f8b,npm,npm install <arg>,0,1760,15,3,0,0,40,1,2,0,0,0.499,baseline
+1788423578,dfc1277f11c97751,git,git push <arg>,0,342,8,4,0,0,61380,1,2,0,0,0.205,baseline
+1788423785,dfc1277f11c97751,pytest,pytest <path>,0,3488,8,4,0,0,207,1,1,0,0,0.3,baseline
+1788423808,dfc1277f11c97751,pytest,pytest -q <path>,1,6993,8,4,0,0,23,0,2,0,0,0.356,baseline
+1788423914,dfc1277f11c97751,docker,docker build <path>,0,665,8,4,1,1,106,0,2,0,0,0.023,baseline
+1788423928,dfc1277f11c97751,pytest,pytest <arg>,0,1862,8,4,0,0,14,1,1,0,0,0.543,baseline
+1788424043,dfc1277f11c97751,docker,docker ps,0,1541,8,4,0,0,115,0,1,0,0,0.139,baseline
+1788424124,dfc1277f11c97751,docker,docker ps,0,984,8,4,0,0,81,0,1,0,0,0.129,baseline
+1788424179,dfc1277f11c97751,git,git commit -m <arg>,0,209,8,4,0,0,55,0,3,0,0,0.071,baseline
+1788429080,684205ec612d8248,pytest,pytest <path>,1,7760,9,4,0,0,4901,0,1,0,0,0.43,baseline
+1788429152,684205ec612d8248,python3,python3 <path>,0,937,9,4,1,1,72,1,1,0,0,0.101,baseline
+1788429335,684205ec612d8248,pytest,pytest <path>,0,2078,9,4,0,0,183,1,1,0,1,0.39,baseline
+1788429569,684205ec612d8248,git,git pull,0,955,9,4,0,0,234,1,1,0,0,0.034,baseline
+1788429683,684205ec612d8248,git,git commit -m <arg>,0,111,10,4,0,0,114,1,3,0,0,0.02,baseline
+1788429862,684205ec612d8248,make,make test,0,3331,10,4,0,0,179,0,1,0,0,0.136,baseline
+1788430085,684205ec612d8248,make,make test,0,3148,10,4,0,0,223,1,1,0,0,0.176,baseline
+1788430195,684205ec612d8248,make,make <arg>,2,4776,10,4,0,0,110,0,1,0,0,0.224,baseline
+1788430306,684205ec612d8248,pytest,pytest -q <path>,1,5590,10,4,2,1,111,0,2,0,0,0.23,baseline
+1788430475,684205ec612d8248,make,make test,0,3534,10,4,1,2,169,0,1,0,0,0.342,baseline
+1788430561,684205ec612d8248,pytest,pytest -q <path>,0,3244,10,4,0,0,86,1,2,0,0,0.354,baseline
+1788430618,684205ec612d8248,python3,python3 <path>,1,201,10,4,0,0,57,0,1,0,0,0.098,baseline
+1788430785,684205ec612d8248,git,git commit -m <arg>,0,278,10,4,1,1,167,0,3,0,0,0.02,baseline
+1788430860,684205ec612d8248,python3,python3 <path>,0,916,10,4,0,0,75,1,1,0,0,0.168,baseline
+1788430901,684205ec612d8248,git,git status,0,148,10,4,0,0,41,0,1,0,0,0.02,baseline
+1788431068,684205ec612d8248,make,make test,0,614,10,4,0,0,167,1,1,0,0,0.192,baseline
+1788431230,684205ec612d8248,python3,python3 <path>,1,1131,10,4,0,0,162,0,1,0,0,0.098,baseline
+1788431242,684205ec612d8248,git,git commit -m <arg>,0,118,10,4,1,1,12,0,3,0,0,0.051,baseline
+1788431437,684205ec612d8248,make,make <arg>,0,1031,10,4,0,0,195,0,1,0,0,0.182,baseline
+1788431626,684205ec612d8248,make,make <arg>,0,1277,10,4,0,0,189,0,1,0,0,0.142,baseline
+1788431776,684205ec612d8248,git,git commit -m <arg>,0,260,10,4,0,0,150,1,3,0,0,0.185,baseline
+1788432005,684205ec612d8248,git,git commit -m <arg>,0,198,10,4,0,0,229,1,3,0,0,0.02,baseline
+1788432209,684205ec612d8248,git,git push <arg>,0,149,10,4,0,0,204,1,2,0,0,0.122,baseline
+1788432240,684205ec612d8248,git,git pull,0,356,10,4,0,0,31,0,1,0,0,0.02,baseline
+1788432257,684205ec612d8248,make,make test,0,4148,10,4,0,0,17,0,1,0,1,0.059,baseline
+1788432462,684205ec612d8248,python3,python3 -m <arg>,0,116,10,4,0,0,205,1,2,0,0,0.208,baseline
+1788432553,684205ec612d8248,python3,python3 -m <arg>,1,1181,10,4,0,0,91,1,2,0,0,0.162,baseline
+1788432714,684205ec612d8248,python3,python3 <path>,0,924,10,4,1,1,161,,1,0,0,0.316,baseline
+1788432930,684205ec612d8248,python3,python3 <path>,1,2895,10,4,0,0,216,0,1,0,0,0.202,baseline
+1788433111,684205ec612d8248,python3,python3 -m <arg>,0,881,10,4,1,1,181,1,2,0,0,0.24,baseline
+1788486460,e0f632d940b22f8b,npm,npm install <arg>,0,2017,1,5,0,0,53349,,2,0,0,0.496,baseline
+1788486496,e0f632d940b22f8b,make,make <arg>,0,1977,1,5,0,0,36,1,1,0,0,0.121,baseline
+1788486568,e0f632d940b22f8b,git,git commit -m <arg>,0,75,1,5,0,0,72,1,3,0,0,0.02,baseline
+1788486588,e0f632d940b22f8b,npm,npm test,1,2705,1,5,0,0,20,1,1,0,0,0.324,baseline
+1788486728,e0f632d940b22f8b,make,make <arg>,0,2363,1,5,1,1,140,1,1,0,0,0.154,baseline
+1788486831,e0f632d940b22f8b,git,git commit -m <arg>,0,236,1,5,0,0,103,1,3,0,0,0.02,baseline
+1788487058,e0f632d940b22f8b,make,make <arg>,0,2209,1,5,0,0,227,0,1,0,0,0.216,baseline
+1788487084,e0f632d940b22f8b,git,git diff <path>,0,94,1,5,0,0,26,1,2,0,0,0.066,baseline
+1788487101,e0f632d940b22f8b,make,make test,0,2838,1,5,0,0,17,0,1,0,0,0.133,baseline
+1788487271,e0f632d940b22f8b,npm,npm run build,0,841,2,5,0,0,170,0,2,0,0,0.474,baseline
+1788487379,e0f632d940b22f8b,git,git commit -m <arg>,0,347,2,5,0,0,108,1,3,0,0,0.064,baseline
+1788487408,e0f632d940b22f8b,npm,npm install <arg>,0,2851,2,5,0,0,29,0,2,0,0,0.357,baseline
+1788487455,e0f632d940b22f8b,npm,npm run <arg>,1,2750,2,5,0,0,47,1,2,0,1,0.563,baseline
+1788487550,e0f632d940b22f8b,git,git status,0,215,2,5,1,1,95,1,1,1,0,0.047,baseline
+1788487629,e0f632d940b22f8b,npm,npm run build,0,1127,2,5,0,0,79,1,2,0,0,0.522,baseline
+1788487773,e0f632d940b22f8b,git,git push <arg>,0,127,2,5,0,0,144,1,2,0,0,0.124,baseline
+1788487947,e0f632d940b22f8b,make,make test,0,844,2,5,0,0,174,1,1,0,0,0.253,baseline
+1788487959,e0f632d940b22f8b,npm,npm run <arg>,0,2720,2,5,0,0,12,0,2,0,0,0.478,baseline
+1788488034,e0f632d940b22f8b,make,make test,0,3582,2,5,0,0,75,0,1,0,0,0.2,baseline
+1788488118,e0f632d940b22f8b,npm,npm test,1,4550,2,5,0,0,84,0,1,0,0,0.525,baseline
+1788488125,e0f632d940b22f8b,git,git diff <path>,0,58,2,5,1,1,7,0,2,0,0,0.166,baseline
+1788488133,e0f632d940b22f8b,git,git pull,1,343,2,5,0,0,8,1,1,0,0,0.03,baseline
+1788488138,e0f632d940b22f8b,npm,npm run <arg>,1,3049,2,5,1,1,5,1,2,0,0,0.546,baseline
+1788488378,e0f632d940b22f8b,npm,npm test,1,2739,2,5,1,2,240,1,1,0,0,0.428,baseline
+1788488449,e0f632d940b22f8b,git,git push <arg>,0,109,2,5,1,3,71,0,2,0,0,0.123,baseline
+1788488532,e0f632d940b22f8b,npm,npm test,1,3144,2,5,0,0,83,1,1,0,0,0.384,baseline
+1788488665,e0f632d940b22f8b,make,make <arg>,0,1403,2,5,1,1,133,0,1,0,0,0.306,baseline
+1788488705,e0f632d940b22f8b,make,make <arg>,0,3406,2,5,0,0,40,1,1,0,0,0.191,baseline
+1788488785,e0f632d940b22f8b,npm,npm run build,0,1450,2,5,0,0,80,0,2,0,0,0.304,baseline
+1788506416,dfc1277f11c97751,cargo,cargo build --release,0,3222,7,5,0,0,17631,1,2,0,0,0.228,baseline
+1788506604,dfc1277f11c97751,cargo,cargo run <arg>,0,2614,7,5,0,0,188,0,2,0,0,0.297,baseline
+1788506610,dfc1277f11c97751,docker,docker compose up <arg>,0,928,7,5,0,0,6,0,3,0,0,0.232,baseline
+1788506646,dfc1277f11c97751,git,git diff <path>,0,543,7,5,0,0,36,0,2,0,0,0.02,baseline
+1788506860,dfc1277f11c97751,pytest,pytest <arg>,1,4916,7,5,0,0,214,1,1,0,0,0.324,baseline
+1788506935,dfc1277f11c97751,docker,docker ps,0,1761,7,5,1,1,75,1,1,0,0,0.174,baseline
+1788506948,dfc1277f11c97751,docker,docker build <path>,1,2557,7,5,0,0,13,0,2,0,0,0.166,baseline
+1788507173,dfc1277f11c97751,pytest,pytest <path>,1,5217,7,5,1,1,225,1,1,0,0,0.403,baseline
+1788507249,dfc1277f11c97751,git,git diff <path>,0,130,7,5,1,2,76,0,2,0,0,0.179,baseline
+1788507388,dfc1277f11c97751,git,git pull,0,136,7,5,0,0,139,0,1,0,0,0.066,baseline
+1788507566,dfc1277f11c97751,docker,docker build <path>,0,219,7,5,0,0,178,0,2,0,0,0.127,baseline
+1788507669,dfc1277f11c97751,docker,docker compose up <arg>,0,446,7,5,0,0,103,0,3,0,0,0.136,baseline
+1788507756,dfc1277f11c97751,cargo,cargo clippy,0,2792,7,5,0,0,87,0,1,0,0,0.178,baseline
+1788507872,dfc1277f11c97751,pytest,pytest <path>,1,8174,7,5,0,0,116,1,1,0,0,0.488,baseline
+1788508098,dfc1277f11c97751,cargo,cargo test --workspace,0,4469,7,5,1,1,226,0,2,0,0,0.228,baseline
+1788508261,dfc1277f11c97751,pytest,pytest <path>,0,2630,7,5,0,0,163,0,1,0,0,0.417,baseline
+1788508404,dfc1277f11c97751,git,git push <arg>,1,433,7,5,0,0,143,1,2,0,0,0.035,baseline
+1788508428,dfc1277f11c97751,pytest,pytest -q <path>,0,9028,7,5,1,1,24,0,2,0,0,0.405,baseline
+1788508600,dfc1277f11c97751,cargo,cargo build --release,101,2596,7,5,0,0,172,1,2,0,0,0.14,baseline
+1788508798,dfc1277f11c97751,cargo,cargo build --release,0,3388,7,5,101,1,198,1,2,0,0,0.281,baseline
+1788508930,dfc1277f11c97751,pytest,pytest <path>,0,2843,8,5,0,0,132,1,1,0,0,0.398,baseline
+1788509142,dfc1277f11c97751,pytest,pytest <arg>,0,12472,8,5,0,0,212,1,1,0,0,0.53,baseline
+1788509326,dfc1277f11c97751,docker,docker ps,0,3798,8,5,0,0,184,1,1,0,0,0.129,baseline
+1788509390,dfc1277f11c97751,cargo,cargo build --release,0,682,8,5,0,0,64,0,2,0,0,0.212,baseline
+1788550030,4aa9acb1199c7ec1,python3,python3 <path>,0,286,19,5,0,0,40640,0,1,0,0,0.179,baseline
+1788550215,4aa9acb1199c7ec1,python3,python3 -m <arg>,0,1301,19,5,0,0,185,1,2,0,0,0.294,baseline
+1788550288,4aa9acb1199c7ec1,python3,python3 -m <arg>,0,602,19,5,0,0,73,0,2,0,0,0.136,baseline
+1788550328,4aa9acb1199c7ec1,git,git commit -m <arg>,0,236,19,5,0,0,40,1,3,0,0,0.1,baseline
+1788550338,4aa9acb1199c7ec1,curl,curl -X <arg> <url>,0,358,19,5,0,0,10,0,3,0,0,0.111,baseline
+1788550469,4aa9acb1199c7ec1,npm,npm run <arg>,0,1557,19,5,0,0,131,0,2,0,0,0.565,baseline
+1788550480,4aa9acb1199c7ec1,python3,python3 -m <arg>,0,940,19,5,0,0,11,0,2,0,0,0.251,baseline
+1788550673,4aa9acb1199c7ec1,npm,npm install <arg>,0,6919,19,5,0,0,193,0,2,0,0,0.744,baseline
+1788550719,4aa9acb1199c7ec1,curl,curl -X <arg> <url>,0,1382,19,5,0,0,46,1,3,0,0,0.02,baseline
+1788606040,4aa9acb1199c7ec1,python3,python3 <path>,0,1444,11,6,0,0,55321,1,1,0,0,0.244,baseline
+1788606163,4aa9acb1199c7ec1,npm,npm run <arg>,1,1209,11,6,0,0,123,1,2,0,0,0.704,baseline
+1788606397,4aa9acb1199c7ec1,python3,python3 -m <arg>,0,544,11,6,1,1,234,1,2,0,0,0.195,baseline
+1788606569,4aa9acb1199c7ec1,npm,npm test,1,1334,11,6,0,0,172,0,1,0,0,0.722,baseline
+1788606756,4aa9acb1199c7ec1,python3,python3 <path>,0,1495,11,6,1,1,187,1,1,0,0,0.148,baseline
+1788606821,4aa9acb1199c7ec1,git,git pull,0,92,11,6,0,0,65,1,1,0,0,0.02,baseline
+1788606832,4aa9acb1199c7ec1,python3,python3 -m <arg>,0,1287,11,6,0,0,11,1,2,0,0,0.15,baseline
+1788606843,4aa9acb1199c7ec1,npm,npm install <arg>,1,3054,11,6,0,0,11,0,2,0,0,0.611,baseline
+1788606886,4aa9acb1199c7ec1,curl,curl -s <url>,0,1260,11,6,1,1,43,1,2,0,0,0.169,baseline
+1788607003,4aa9acb1199c7ec1,python3,python3 <path>,0,1061,11,6,0,0,117,1,1,0,0,0.11,baseline
+1788607067,4aa9acb1199c7ec1,curl,curl -X <arg> <url>,0,147,11,6,0,0,64,,3,0,0,0.058,baseline
+1788607186,4aa9acb1199c7ec1,curl,curl -X <arg> <url>,0,1377,11,6,0,0,119,0,3,0,0,0.15,baseline
+1788607278,4aa9acb1199c7ec1,python3,python3 <path>,1,769,11,6,0,0,92,1,1,0,0,0.296,baseline
+1788607424,4aa9acb1199c7ec1,curl,curl -s <url>,0,536,11,6,1,1,146,1,2,0,0,0.036,baseline
+1788657471,4aa9acb1199c7ec1,git,git diff <path>,0,709,1,0,0,0,50047,1,2,0,0,0.137,baseline
+1788657709,4aa9acb1199c7ec1,curl,curl -X <arg> <url>,0,1168,1,0,0,0,238,0,3,0,0,0.17,baseline
+1788657923,4aa9acb1199c7ec1,npm,npm test,1,3441,1,0,0,0,214,0,1,0,0,0.585,baseline
+1788658004,4aa9acb1199c7ec1,curl,curl -X <arg> <url>,0,1481,1,0,1,1,81,1,3,0,0,0.172,baseline
+1788658045,4aa9acb1199c7ec1,npm,npm install <arg>,0,873,1,0,0,0,41,1,2,0,0,0.686,baseline
+1788658276,4aa9acb1199c7ec1,git,git commit -m <arg>,0,277,1,0,0,0,231,0,3,0,0,0.084,baseline
+1788658291,4aa9acb1199c7ec1,git,git diff <path>,128,176,1,0,0,0,15,1,2,0,0,0.02,baseline
+1788658479,4aa9acb1199c7ec1,npm,npm run <arg>,1,2854,1,0,128,1,188,0,2,0,0,0.694,baseline
+1788658504,4aa9acb1199c7ec1,git,git push <arg>,0,144,1,0,1,2,25,0,2,0,0,0.02,baseline
+1788658518,4aa9acb1199c7ec1,curl,curl -s <url>,0,1170,1,0,0,0,14,0,2,0,0,0.133,baseline
+1788658685,4aa9acb1199c7ec1,npm,npm run <arg>,1,5107,1,0,0,0,167,0,2,0,0,0.636,baseline
+1788658914,4aa9acb1199c7ec1,npm,npm run <arg>,0,1964,1,0,1,1,229,1,2,0,0,0.7,baseline
+1788659080,4aa9acb1199c7ec1,git,git commit -m <arg>,0,208,1,0,0,0,166,0,3,0,0,0.147,baseline
+1788659238,4aa9acb1199c7ec1,python3,python3 -m <arg>,0,438,1,0,0,0,158,1,2,0,0,0.087,baseline
+1788659351,4aa9acb1199c7ec1,npm,npm test,1,3870,1,0,0,0,113,0,1,0,0,0.606,baseline
+1788659416,4aa9acb1199c7ec1,npm,npm test,1,1892,1,0,1,1,65,0,1,0,0,0.544,baseline
+1788659545,4aa9acb1199c7ec1,git,git pull,0,382,1,0,1,2,129,0,1,0,0,0.116,baseline
+1788706357,4aa9acb1199c7ec1,npm,npm install <arg>,0,712,14,0,0,0,46812,0,2,0,0,0.781,baseline
+1788706494,4aa9acb1199c7ec1,git,git diff <path>,0,143,14,0,0,0,137,1,2,0,0,0.02,baseline
+1788706604,4aa9acb1199c7ec1,git,git pull,0,234,14,0,0,0,110,1,1,0,1,0.118,baseline
+1788706770,4aa9acb1199c7ec1,git,git pull,128,402,14,0,0,0,166,1,1,0,0,0.128,baseline
+1788706959,4aa9acb1199c7ec1,curl,curl -X <arg> <url>,7,215,15,0,128,1,189,1,3,0,0,0.204,baseline
+1788707046,4aa9acb1199c7ec1,curl,curl -s <url>,0,318,15,0,7,2,87,0,2,0,0,0.29,baseline
+1788707155,4aa9acb1199c7ec1,python3,python3 <path>,0,1712,15,0,0,0,109,1,1,0,0,0.288,baseline
+1788707255,4aa9acb1199c7ec1,npm,npm install <arg>,1,2452,15,0,0,0,100,1,2,0,0,0.607,baseline
+1788707281,4aa9acb1199c7ec1,npm,npm run <arg>,1,6796,15,0,1,1,26,1,2,0,0,0.665,baseline
+1788707419,4aa9acb1199c7ec1,git,git push <arg>,1,142,15,0,1,2,138,0,2,0,0,0.1,baseline
+1788707477,4aa9acb1199c7ec1,curl,curl -X <arg> <url>,0,367,15,0,1,3,58,0,3,0,0,0.144,baseline
+1788707669,4aa9acb1199c7ec1,npm,npm run <arg>,0,1634,15,0,0,0,192,0,2,0,0,0.642,baseline
+1788707683,4aa9acb1199c7ec1,curl,curl -s <url>,0,962,15,0,0,0,14,0,2,0,0,0.058,baseline
+1788707799,4aa9acb1199c7ec1,python3,python3 -m <arg>,0,1122,15,0,0,0,116,0,2,0,0,0.129,baseline
+1788707961,4aa9acb1199c7ec1,python3,python3 -m <arg>,0,344,15,0,0,0,162,0,2,0,0,0.135,baseline
+1788708100,4aa9acb1199c7ec1,curl,curl -s <url>,28,338,15,0,0,0,139,0,2,0,0,0.083,baseline
+1788708224,4aa9acb1199c7ec1,git,git pull,128,131,15,0,28,1,124,0,1,0,0,0.112,baseline
+1788708294,4aa9acb1199c7ec1,git,git commit -m <arg>,128,119,15,0,128,2,70,0,3,0,0,0.087,baseline
+1788708496,4aa9acb1199c7ec1,python3,python3 -m <arg>,0,1259,15,0,128,3,202,1,2,1,0,0.272,baseline
+1788708556,4aa9acb1199c7ec1,npm,npm test,0,2114,15,0,0,0,60,0,1,0,0,0.684,baseline
+1788708731,4aa9acb1199c7ec1,curl,curl -X <arg> <url>,0,700,15,0,0,0,175,1,3,0,0,0.056,baseline
+1788708815,4aa9acb1199c7ec1,python3,python3 -m <arg>,0,2403,15,0,0,0,84,0,2,0,0,0.105,baseline
+1788708909,4aa9acb1199c7ec1,git,git diff <path>,1,159,15,0,0,0,94,,2,0,0,0.02,baseline
+1788713907,4aa9acb1199c7ec1,python3,python3 -m <arg>,0,277,16,0,1,1,4998,1,2,0,0,0.189,baseline
+1788714013,4aa9acb1199c7ec1,npm,npm run build,0,2523,17,0,0,0,106,0,2,0,0,0.64,baseline
+1788714173,4aa9acb1199c7ec1,curl,curl -s <url>,0,542,17,0,0,0,160,0,2,0,0,0.116,baseline
+1788714211,4aa9acb1199c7ec1,npm,npm run build,1,1112,17,0,0,0,38,1,2,0,0,0.644,baseline
+1788714445,4aa9acb1199c7ec1,git,git diff <path>,0,1430,17,0,1,1,234,1,2,0,0,0.173,baseline
+1788714499,4aa9acb1199c7ec1,git,git push <arg>,0,89,17,0,0,0,54,0,2,0,0,0.059,baseline
+1788714719,4aa9acb1199c7ec1,npm,npm run build,1,1217,17,0,0,0,220,1,2,0,0,0.569,baseline
+1788714771,4aa9acb1199c7ec1,python3,python3 -m <arg>,0,934,17,0,1,1,52,,2,0,0,0.168,baseline
+1788714950,4aa9acb1199c7ec1,git,git pull,0,333,17,0,0,0,179,1,1,0,0,0.038,baseline
+1788754306,819dbc88958c1ad1,git,git status,0,131,4,1,0,0,39356,0,1,0,0,0.02,baseline
+1788754426,819dbc88958c1ad1,git,git pull,1,84,4,1,0,0,120,0,1,0,0,0.02,baseline
+1788754643,819dbc88958c1ad1,grep,grep -r <arg> <path>,0,124,4,1,1,1,217,1,3,0,0,0.165,baseline
+1788754809,819dbc88958c1ad1,git,git diff <path>,0,207,4,1,0,0,166,1,2,0,0,0.02,baseline
+1788755036,819dbc88958c1ad1,git,git status,0,210,4,1,0,0,227,1,1,0,0,0.115,baseline
+1788755180,819dbc88958c1ad1,git,git diff <path>,0,181,4,1,0,0,144,1,2,0,0,0.02,baseline
+1788755280,819dbc88958c1ad1,grep,grep -r <arg> <path>,0,70,4,1,0,0,100,,3,0,0,0.02,baseline
+1788755483,819dbc88958c1ad1,grep,grep -r <arg> <path>,0,70,4,1,0,0,203,,3,0,0,0.169,baseline
+1788755680,819dbc88958c1ad1,git,git commit -m <arg>,0,498,4,1,0,0,197,0,3,0,1,0.02,baseline
+1788755722,819dbc88958c1ad1,git,git commit -m <arg>,0,169,4,1,0,0,42,0,3,0,0,0.097,baseline
+1788821888,4aa9acb1199c7ec1,npm,npm run <arg>,1,9555,22,1,0,0,66166,0,2,0,0,0.582,baseline
+1788821927,4aa9acb1199c7ec1,curl,curl -X <arg> <url>,0,1132,22,1,1,1,39,,3,0,0,0.057,baseline
+1788821977,4aa9acb1199c7ec1,git,git diff <path>,0,74,22,1,0,0,50,0,2,0,0,0.036,baseline
+1788822109,4aa9acb1199c7ec1,git,git commit -m <arg>,1,195,23,1,0,0,132,1,3,0,0,0.02,baseline
+1788849238,4aa9acb1199c7ec1,npm,npm test,1,1443,6,2,1,1,27129,0,1,0,0,0.686,baseline
+1788849341,4aa9acb1199c7ec1,curl,curl -X <arg> <url>,28,634,6,2,1,2,103,0,3,0,0,0.135,baseline
+1788849467,4aa9acb1199c7ec1,python3,python3 -m <arg>,0,307,6,2,28,3,126,0,2,1,0,0.339,baseline
+1788849653,4aa9acb1199c7ec1,python3,python3 -m <arg>,0,2383,6,2,0,0,186,1,2,0,0,0.108,baseline
+1788849670,4aa9acb1199c7ec1,python3,python3 <path>,0,454,6,2,0,0,17,0,1,0,1,0.211,baseline
+1788849758,4aa9acb1199c7ec1,python3,python3 <path>,0,717,6,2,0,0,88,1,1,0,0,0.111,baseline
+1788849800,4aa9acb1199c7ec1,curl,curl -X <arg> <url>,0,945,6,2,0,0,42,1,3,0,0,0.086,baseline
+1788849960,4aa9acb1199c7ec1,npm,npm install <arg>,1,1683,6,2,0,0,160,0,2,0,0,0.627,baseline
+1788850179,4aa9acb1199c7ec1,curl,curl -X <arg> <url>,0,1592,6,2,1,1,219,0,3,0,0,0.127,baseline
+1788850196,4aa9acb1199c7ec1,python3,python3 <path>,0,251,6,2,0,0,17,,1,0,0,0.162,baseline
+1788850305,4aa9acb1199c7ec1,git,git pull,1,285,6,2,0,0,109,,1,0,0,0.153,baseline
+1788850314,4aa9acb1199c7ec1,python3,python3 -m <arg>,0,981,6,2,1,1,9,1,2,0,0,0.115,baseline
+1788850322,4aa9acb1199c7ec1,python3,python3 -m <arg>,0,430,6,2,0,0,8,0,2,0,0,0.128,baseline
+1788850426,4aa9acb1199c7ec1,python3,python3 <path>,0,941,6,2,0,0,104,1,1,0,0,0.119,baseline
+1788850525,4aa9acb1199c7ec1,python3,python3 <path>,0,303,6,2,0,0,99,1,1,0,0,0.114,baseline
+1788850674,4aa9acb1199c7ec1,curl,curl -X <arg> <url>,0,2516,6,2,0,0,149,1,3,0,0,0.024,baseline
+1788850834,4aa9acb1199c7ec1,npm,npm install <arg>,1,1948,7,2,0,0,160,1,2,0,0,0.612,baseline
+1788907009,684205ec612d8248,git,git push <arg>,0,172,22,2,1,1,56175,0,2,0,0,0.083,baseline
+1788907142,684205ec612d8248,make,make <arg>,0,933,22,2,0,0,133,0,1,0,0,0.112,baseline
+1788907220,684205ec612d8248,python3,python3 <path>,0,413,22,2,0,0,78,0,1,0,0,0.167,baseline
+1788907232,684205ec612d8248,pytest,pytest <path>,1,8000,22,2,0,0,12,1,1,0,0,0.351,baseline
+1788907357,684205ec612d8248,python3,python3 <path>,0,1061,22,2,1,1,125,1,1,0,0,0.224,baseline
+1788907544,684205ec612d8248,pytest,pytest <arg>,1,6081,22,2,0,0,187,,1,0,0,0.346,baseline
+1788907677,684205ec612d8248,python3,python3 <path>,0,1149,22,2,1,1,133,,1,0,0,0.218,baseline
+1788907700,684205ec612d8248,make,make test,0,4057,22,2,0,0,23,1,1,0,0,0.211,baseline
+1788907912,684205ec612d8248,make,make <arg>,0,1987,22,2,0,0,212,0,1,0,0,0.193,baseline
+1788907984,684205ec612d8248,python3,python3 <path>,0,376,22,2,0,0,72,0,1,0,0,0.098,baseline
+1788908153,684205ec612d8248,python3,python3 -m <arg>,0,1654,22,2,0,0,169,1,2,0,0,0.121,baseline
+1788908228,684205ec612d8248,python3,python3 <path>,0,331,22,2,0,0,75,0,1,0,0,0.269,baseline
+1788908416,684205ec612d8248,pytest,pytest <arg>,0,1413,23,2,0,0,188,0,1,0,0,0.348,baseline
+1788908584,684205ec612d8248,pytest,pytest <path>,1,5756,23,2,0,0,168,1,1,0,0,0.491,baseline
+1788908721,684205ec612d8248,make,make <arg>,0,2279,23,2,1,1,137,0,1,0,0,0.163,baseline
+1788908849,684205ec612d8248,make,make test,2,1824,23,2,0,0,128,1,1,0,0,0.2,baseline
+1788908884,684205ec612d8248,pytest,pytest <path>,1,6448,23,2,2,1,35,0,1,0,0,0.473,baseline
+1788909059,684205ec612d8248,python3,python3 <path>,0,292,23,2,1,2,175,1,1,0,0,0.106,baseline
+1788909201,684205ec612d8248,python3,python3 <path>,0,175,23,2,0,0,142,1,1,0,0,0.184,baseline
+1788909264,684205ec612d8248,make,make test,2,2569,23,2,0,0,63,,1,0,0,0.335,baseline
+1788909346,684205ec612d8248,python3,python3 -m <arg>,0,165,23,2,2,1,82,0,2,0,0,0.115,baseline
+1788909380,684205ec612d8248,make,make <arg>,2,744,23,2,0,0,34,1,1,1,0,0.229,baseline
+1788909616,684205ec612d8248,python3,python3 -m <arg>,0,494,23,2,2,1,236,1,2,0,0,0.253,baseline
+1788909705,684205ec612d8248,make,make test,0,3252,23,2,0,0,89,1,1,0,0,0.207,baseline
+1788909870,684205ec612d8248,make,make <arg>,2,2347,23,2,0,0,165,0,1,0,0,0.166,baseline
+1788909962,684205ec612d8248,pytest,pytest <arg>,1,7646,23,2,2,1,92,1,1,0,0,0.401,baseline
+1788910142,684205ec612d8248,git,git push <arg>,0,76,23,2,1,2,180,,2,0,0,0.156,baseline
+1788975840,684205ec612d8248,make,make <arg>,0,1186,17,3,0,0,65698,1,1,0,0,0.249,baseline
+1788976057,684205ec612d8248,git,git pull,0,189,17,3,0,0,217,1,1,0,0,0.216,baseline
+1788976097,684205ec612d8248,make,make <arg>,0,436,17,3,0,0,40,0,1,0,0,0.156,baseline
+1788976244,684205ec612d8248,pytest,pytest -q <path>,0,4117,17,3,0,0,147,1,2,0,0,0.341,baseline
+1788976369,684205ec612d8248,python3,python3 -m <arg>,0,835,17,3,0,0,125,1,2,0,0,0.212,baseline
+1788976511,684205ec612d8248,git,git status,0,134,17,3,0,0,142,1,1,0,0,0.02,baseline
+1788976592,684205ec612d8248,pytest,pytest <arg>,0,2865,17,3,0,0,81,0,1,0,0,0.408,baseline
+1788976602,684205ec612d8248,pytest,pytest -q <path>,0,4632,17,3,0,0,10,0,2,0,0,0.363,baseline
+1788976692,684205ec612d8248,pytest,pytest <arg>,0,4447,17,3,0,0,90,0,1,0,0,0.257,baseline
+1788976903,684205ec612d8248,make,make <arg>,0,3834,18,3,0,0,211,0,1,0,0,0.327,baseline
+1788976993,684205ec612d8248,python3,python3 <path>,0,1232,18,3,0,0,90,0,1,0,0,0.175,baseline
+1788977016,684205ec612d8248,make,make test,0,1033,18,3,0,0,23,0,1,0,0,0.134,baseline
+1788977230,684205ec612d8248,make,make <arg>,0,1268,18,3,0,0,214,1,1,0,0,0.128,baseline
+1788977301,684205ec612d8248,pytest,pytest <arg>,0,6364,18,3,0,0,71,0,1,0,0,0.239,baseline
+1788977345,684205ec612d8248,pytest,pytest <path>,0,2079,18,3,0,0,44,,1,0,0,0.197,baseline
+1788977439,684205ec612d8248,python3,python3 <path>,0,449,18,3,0,0,94,0,1,0,0,0.192,baseline
+1788977450,684205ec612d8248,pytest,pytest -q <path>,0,2918,18,3,0,0,11,0,2,0,0,0.34,baseline
+1788977603,684205ec612d8248,python3,python3 -m <arg>,1,245,18,3,0,0,153,1,2,0,0,0.18,baseline
+1788977700,684205ec612d8248,make,make test,0,635,18,3,1,1,97,1,1,0,0,0.109,baseline
+1788977730,684205ec612d8248,git,git push <arg>,0,172,18,3,0,0,30,0,2,0,1,0.064,baseline
+1789023701,4aa9acb1199c7ec1,git,git status,0,97,7,4,0,0,45971,1,1,0,0,0.158,baseline
+1789023875,4aa9acb1199c7ec1,python3,python3 <path>,0,531,7,4,0,0,174,1,1,0,0,0.219,baseline
+1789023973,4aa9acb1199c7ec1,npm,npm install <arg>,0,1496,7,4,0,0,98,0,2,0,1,0.715,baseline
+1789024098,4aa9acb1199c7ec1,npm,npm test,0,875,7,4,0,0,125,1,1,0,0,0.649,baseline
+1789024160,4aa9acb1199c7ec1,npm,npm test,1,1184,7,4,0,0,62,0,1,0,0,0.528,baseline
+1789024328,4aa9acb1199c7ec1,npm,npm install <arg>,1,5492,7,4,1,1,168,0,2,0,0,0.623,baseline
+1789024551,4aa9acb1199c7ec1,git,git commit -m <arg>,0,240,7,4,1,2,223,1,3,0,0,0.034,baseline
+1789024659,4aa9acb1199c7ec1,python3,python3 <path>,0,325,7,4,0,0,108,0,1,0,0,0.173,baseline
+1789024890,4aa9acb1199c7ec1,python3,python3 <path>,0,279,7,4,0,0,231,,1,0,0,0.121,baseline
+1789024993,4aa9acb1199c7ec1,npm,npm run <arg>,0,4806,7,4,0,0,103,0,2,0,0,0.672,baseline
+1789025207,4aa9acb1199c7ec1,curl,curl -X <arg> <url>,0,283,7,4,0,0,214,1,3,0,0,0.153,baseline
+1789025298,4aa9acb1199c7ec1,python3,python3 -m <arg>,0,338,7,4,0,0,91,1,2,0,0,0.191,baseline
+1789037170,67844d2de16dc0eb,systemctl,systemctl status <arg>,0,81,10,4,0,0,11872,1,2,0,0,0.023,baseline
+1789037263,67844d2de16dc0eb,ssh,ssh <arg>,0,3459,10,4,0,0,93,0,1,0,0,0.02,baseline
+1789037272,67844d2de16dc0eb,kubectl,kubectl get <arg>,0,257,10,4,0,0,9,0,2,0,0,0.35,baseline
+1789037415,67844d2de16dc0eb,kubectl,kubectl get <arg>,0,110,10,4,0,0,143,1,2,0,0,0.315,baseline
+1789037639,67844d2de16dc0eb,kubectl,kubectl apply -f <path>,0,382,10,4,0,0,224,1,3,0,0,0.153,baseline
+1789037723,67844d2de16dc0eb,kubectl,kubectl get <arg>,0,162,10,4,0,0,84,,2,0,0,0.209,baseline
+1789037768,67844d2de16dc0eb,systemctl,systemctl status <arg>,0,121,10,4,0,0,45,1,2,0,0,0.105,baseline
+1789037799,67844d2de16dc0eb,systemctl,systemctl status <arg>,0,98,10,4,0,0,31,0,2,0,0,0.182,baseline
+1789037814,67844d2de16dc0eb,systemctl,systemctl status <arg>,0,68,10,4,0,0,15,,2,0,0,0.219,baseline
+1789038013,67844d2de16dc0eb,ssh,ssh -p <arg> <arg>,0,1635,11,4,0,0,199,0,3,0,0,0.087,baseline
+1789038044,67844d2de16dc0eb,ssh,ssh -p <arg> <arg>,0,1542,11,4,0,0,31,0,3,0,0,0.216,baseline
+1789038111,67844d2de16dc0eb,systemctl,systemctl status <arg>,0,134,11,4,0,0,67,1,2,0,0,0.02,baseline
+1789047229,684205ec612d8248,python3,python3 -m <arg>,0,359,13,4,0,0,9118,0,2,0,0,0.13,baseline
+1789047346,684205ec612d8248,make,make <arg>,0,2369,13,4,0,0,117,0,1,0,0,0.142,baseline
+1789047586,684205ec612d8248,make,make <arg>,0,9321,13,4,0,0,240,1,1,0,0,0.136,baseline
+1789047654,684205ec612d8248,git,git push <arg>,0,80,13,4,0,0,68,,2,0,0,0.055,baseline
+1789047851,684205ec612d8248,git,git status,0,100,13,4,0,0,197,1,1,0,0,0.02,baseline
+1789048070,684205ec612d8248,pytest,pytest <arg>,0,1398,13,4,0,0,219,1,1,0,0,0.255,baseline
+1789048164,684205ec612d8248,git,git status,0,496,13,4,0,0,94,1,1,0,0,0.051,baseline
+1789048333,684205ec612d8248,git,git status,0,237,13,4,0,0,169,,1,0,0,0.06,baseline
+1789048521,684205ec612d8248,git,git status,0,45,13,4,0,0,188,0,1,0,0,0.079,baseline
+1789048683,684205ec612d8248,python3,python3 -m <arg>,0,418,13,4,0,0,162,0,2,0,0,0.229,baseline
+1789048895,684205ec612d8248,pytest,pytest -q <path>,1,11758,14,4,0,0,212,,2,0,0,0.308,baseline
+1789049032,684205ec612d8248,make,make <arg>,0,4120,14,4,1,1,137,1,1,0,0,0.188,baseline
+1789049118,684205ec612d8248,git,git commit -m <arg>,0,309,14,4,0,0,86,0,3,0,0,0.02,baseline
+1789049252,684205ec612d8248,make,make test,0,908,14,4,0,0,134,1,1,0,0,0.061,baseline
+1789049368,684205ec612d8248,python3,python3 <path>,0,244,14,4,0,0,116,0,1,0,0,0.2,baseline
+1789049463,684205ec612d8248,python3,python3 <path>,0,418,14,4,0,0,95,,1,0,0,0.162,baseline
+1789093672,684205ec612d8248,git,git pull,0,432,2,5,0,0,44209,1,1,0,0,0.02,baseline
+1789093757,684205ec612d8248,python3,python3 <path>,0,956,2,5,0,0,85,0,1,0,0,0.115,baseline
+1789093956,684205ec612d8248,pytest,pytest <path>,0,4826,2,5,0,0,199,0,1,0,0,0.324,baseline
+1789094065,684205ec612d8248,make,make test,0,774,2,5,0,0,109,1,1,0,0,0.194,baseline
+1789094136,684205ec612d8248,make,make <arg>,2,1104,2,5,0,0,71,1,1,0,0,0.251,baseline
+1789094156,684205ec612d8248,git,git push <arg>,0,92,2,5,2,1,20,,2,0,0,0.22,baseline
+1789094319,684205ec612d8248,make,make <arg>,2,3112,2,5,0,0,163,,1,0,0,0.236,baseline
+1789094369,684205ec612d8248,pytest,pytest <arg>,0,2687,2,5,2,1,50,1,1,0,0,0.495,baseline
+1789094401,684205ec612d8248,git,git status,0,250,2,5,0,0,32,0,1,0,0,0.02,baseline
+1789094522,684205ec612d8248,make,make test,0,750,2,5,0,0,121,1,1,0,0,0.219,baseline
+1789094761,684205ec612d8248,make,make <arg>,0,1610,2,5,0,0,239,0,1,0,0,0.339,baseline
+1789094959,684205ec612d8248,pytest,pytest <arg>,1,4734,2,5,0,0,198,1,1,0,0,0.313,baseline
+1789095107,684205ec612d8248,make,make test,0,6198,2,5,1,1,148,0,1,0,0,0.263,baseline
+1789095262,684205ec612d8248,pytest,pytest <path>,0,5930,2,5,0,0,155,1,1,0,0,0.448,baseline
+1789095442,684205ec612d8248,make,make <arg>,0,1553,2,5,0,0,180,0,1,0,0,0.196,baseline
+1789095494,684205ec612d8248,pytest,pytest <path>,0,1680,2,5,0,0,52,1,1,0,0,0.293,baseline
+1789095528,684205ec612d8248,git,git pull,128,171,2,5,0,0,34,0,1,0,0,0.02,baseline
+1789095569,684205ec612d8248,pytest,pytest <arg>,0,6757,2,5,128,1,41,,1,0,1,0.339,baseline
+1789153385,dfc1277f11c97751,pytest,pytest <arg>,0,3088,19,5,0,0,57816,0,1,0,0,0.605,baseline
+1789153566,dfc1277f11c97751,pytest,pytest -q <path>,1,5033,19,5,0,0,181,0,2,0,0,0.507,baseline
+1789153644,dfc1277f11c97751,git,git pull,0,66,19,5,1,1,78,,1,0,0,0.17,baseline
+1789153776,dfc1277f11c97751,pytest,pytest <path>,1,4908,19,5,0,0,132,1,1,0,0,0.517,baseline
+1789153892,dfc1277f11c97751,git,git status,0,75,19,5,1,1,116,0,1,0,0,0.086,baseline
+1789154082,dfc1277f11c97751,git,git push <arg>,128,498,19,5,0,0,190,1,2,0,0,0.107,baseline
+1789154126,dfc1277f11c97751,git,git push <arg>,0,90,19,5,128,1,44,0,2,0,0,0.039,baseline
+1789154193,dfc1277f11c97751,git,git diff <path>,0,174,19,5,0,0,67,1,2,0,0,0.029,baseline
+1789154373,dfc1277f11c97751,pytest,pytest <arg>,1,7670,19,5,0,0,180,1,1,0,0,0.34,baseline
+1789154522,dfc1277f11c97751,cargo,cargo run <arg>,101,2025,19,5,1,1,149,0,2,0,0,0.264,baseline
+1789154649,dfc1277f11c97751,pytest,pytest <arg>,1,3214,19,5,101,2,127,1,1,0,0,0.462,baseline
+1789154879,dfc1277f11c97751,pytest,pytest <path>,1,4553,19,5,1,3,230,0,1,0,0,0.403,baseline
+1789154974,dfc1277f11c97751,pytest,pytest <arg>,0,2719,19,5,1,4,95,,1,0,0,0.557,baseline
+1789155149,dfc1277f11c97751,docker,docker build <path>,0,943,19,5,0,0,175,0,2,0,0,0.137,baseline
+1789155294,dfc1277f11c97751,docker,docker ps,0,614,19,5,0,0,145,1,1,0,0,0.163,baseline
+1789155512,dfc1277f11c97751,docker,docker build <path>,125,153,19,5,0,0,218,1,2,0,0,0.057,baseline
+1789155615,dfc1277f11c97751,pytest,pytest <path>,1,7630,19,5,125,1,103,1,1,0,0,0.526,baseline
+1789155809,dfc1277f11c97751,pytest,pytest <arg>,0,3071,19,5,1,2,194,1,1,0,0,0.393,baseline
+1789155819,dfc1277f11c97751,cargo,cargo build --release,0,4854,19,5,0,0,10,1,2,0,0,0.181,baseline
+1789155862,dfc1277f11c97751,pytest,pytest <arg>,1,833,19,5,0,0,43,1,1,0,0,0.513,baseline
+1789156072,dfc1277f11c97751,pytest,pytest <arg>,0,1566,19,5,1,1,210,0,1,0,0,0.427,baseline
+1789156256,dfc1277f11c97751,git,git pull,0,277,19,5,0,0,184,0,1,0,0,0.066,baseline
+1789156411,dfc1277f11c97751,git,git status,0,249,19,5,0,0,155,,1,0,0,0.061,baseline
+1789156437,dfc1277f11c97751,git,git pull,0,117,19,5,0,0,26,,1,0,0,0.079,baseline
+1789156516,dfc1277f11c97751,cargo,cargo run <arg>,0,7890,19,5,0,0,79,0,2,0,0,0.183,baseline
+1789156654,dfc1277f11c97751,cargo,cargo run <arg>,0,1590,19,5,0,0,138,1,2,0,0,0.264,baseline
+1789156827,dfc1277f11c97751,cargo,cargo test --workspace,0,2838,20,5,0,0,173,0,2,0,0,0.198,baseline
+1789157010,dfc1277f11c97751,docker,docker ps,0,1600,20,5,0,0,183,1,1,0,0,0.163,baseline
+1789157036,dfc1277f11c97751,docker,docker compose up <arg>,0,577,20,5,0,0,26,1,3,0,0,0.168,baseline
+1789157103,dfc1277f11c97751,cargo,cargo run <arg>,101,4726,20,5,0,0,67,0,2,0,0,0.157,baseline
+1789171340,4aa9acb1199c7ec1,npm,npm test,1,841,0,6,101,1,14237,1,1,0,0,0.614,baseline
+1789171395,4aa9acb1199c7ec1,curl,curl -s <url>,0,412,0,6,1,2,55,1,2,0,0,0.062,baseline
+1789171624,4aa9acb1199c7ec1,git,git commit -m <arg>,0,286,0,6,0,0,229,0,3,0,0,0.079,baseline
+1789171843,4aa9acb1199c7ec1,python3,python3 -m <arg>,0,606,0,6,0,0,219,1,2,1,0,0.18,baseline
+1789172022,4aa9acb1199c7ec1,python3,python3 <path>,0,556,0,6,0,0,179,0,1,0,0,0.244,baseline
+1789172210,4aa9acb1199c7ec1,curl,curl -X <arg> <url>,7,269,0,6,0,0,188,0,3,0,0,0.069,baseline
+1789172306,4aa9acb1199c7ec1,curl,curl -s <url>,0,437,0,6,7,1,96,1,2,0,0,0.03,baseline
+1789172415,4aa9acb1199c7ec1,curl,curl -X <arg> <url>,0,248,0,6,0,0,109,0,3,0,0,0.02,baseline
+1789172426,4aa9acb1199c7ec1,git,git commit -m <arg>,0,73,0,6,0,0,11,1,3,1,0,0.084,baseline
+1789172600,4aa9acb1199c7ec1,git,git status,0,436,0,6,0,0,174,1,1,0,0,0.02,baseline
+1789172682,4aa9acb1199c7ec1,python3,python3 -m <arg>,0,565,0,6,0,0,82,1,2,0,0,0.205,baseline
+1789172857,4aa9acb1199c7ec1,npm,npm test,1,1334,0,6,0,0,175,0,1,0,0,0.61,baseline
+1789172940,4aa9acb1199c7ec1,git,git diff <path>,0,121,0,6,1,1,83,1,2,0,0,0.046,baseline
+1789173130,4aa9acb1199c7ec1,python3,python3 -m <arg>,0,1200,0,6,0,0,190,1,2,0,0,0.25,baseline
+1789173194,4aa9acb1199c7ec1,python3,python3 -m <arg>,0,1507,0,6,0,0,64,0,2,0,0,0.209,baseline
+1789173231,4aa9acb1199c7ec1,python3,python3 <path>,0,1597,0,6,0,0,37,,1,0,0,0.201,baseline
+1789173334,4aa9acb1199c7ec1,git,git diff <path>,0,81,0,6,0,0,103,,2,0,0,0.02,baseline
+1789173438,4aa9acb1199c7ec1,git,git status,0,160,0,6,0,0,104,1,1,0,0,0.02,baseline
+1789173586,4aa9acb1199c7ec1,git,git push <arg>,0,637,0,6,0,0,148,0,2,0,0,0.058,baseline
+1789173743,4aa9acb1199c7ec1,npm,npm install <arg>,1,4091,0,6,0,0,157,,2,0,0,0.641,baseline
+1789173823,4aa9acb1199c7ec1,npm,npm run <arg>,1,1118,0,6,1,1,80,1,2,0,0,0.728,baseline
+1789173941,4aa9acb1199c7ec1,python3,python3 -m <arg>,1,561,0,6,1,2,118,1,2,1,0,0.2,baseline
+1789174029,4aa9acb1199c7ec1,curl,curl -s <url>,0,316,0,6,1,3,88,0,2,0,0,0.251,baseline
+1789174248,4aa9acb1199c7ec1,npm,npm run build,0,755,0,6,0,0,219,0,2,0,0,0.658,baseline
+1789174291,4aa9acb1199c7ec1,npm,npm install <arg>,1,1337,0,6,0,0,43,1,2,0,0,0.624,baseline
+1789174422,4aa9acb1199c7ec1,curl,curl -X <arg> <url>,0,760,0,6,1,1,131,1,3,0,0,0.09,baseline
+1789174622,4aa9acb1199c7ec1,python3,python3 <path>,0,945,0,6,0,0,200,1,1,0,0,0.097,baseline
+1789243834,e0f632d940b22f8b,git,git pull,0,412,20,6,0,0,69212,0,1,0,1,0.031,baseline
+1789244018,e0f632d940b22f8b,npm,npm run <arg>,0,377,20,6,0,0,184,1,2,0,1,0.414,baseline
+1789244183,e0f632d940b22f8b,make,make <arg>,0,956,20,6,0,0,165,0,1,0,0,0.175,baseline
+1789244218,e0f632d940b22f8b,make,make <arg>,0,2176,20,6,0,0,35,1,1,0,0,0.19,baseline
+1789244250,e0f632d940b22f8b,make,make <arg>,0,344,20,6,0,0,32,0,1,0,0,0.202,baseline
+1789244415,e0f632d940b22f8b,npm,npm run build,0,3337,20,6,0,0,165,1,2,0,0,0.329,baseline
+1789244505,e0f632d940b22f8b,npm,npm test,0,4622,20,6,0,0,90,1,1,0,0,0.515,baseline
+1789244583,e0f632d940b22f8b,make,make test,0,682,20,6,0,0,78,0,1,0,0,0.141,baseline
+1789287956,dfc1277f11c97751,pytest,pytest -q <path>,1,3355,8,0,0,0,43373,1,2,0,0,0.447,baseline
+1789287969,dfc1277f11c97751,cargo,cargo build --release,0,6285,8,0,1,1,13,,2,0,0,0.152,baseline
+1789288159,dfc1277f11c97751,pytest,pytest -q <path>,0,14647,8,0,0,0,190,0,2,0,0,0.436,baseline
+1789288337,dfc1277f11c97751,docker,docker compose up <arg>,1,773,8,0,0,0,178,0,3,0,0,0.228,baseline
+1789328745,67844d2de16dc0eb,systemctl,systemctl status <arg>,0,64,19,0,1,1,40408,1,2,0,0,0.127,baseline
+1789328963,67844d2de16dc0eb,systemctl,systemctl status <arg>,0,484,19,0,0,0,218,1,2,0,0,0.176,baseline
+1789329178,67844d2de16dc0eb,systemctl,systemctl status <arg>,0,31,19,0,0,0,215,1,2,0,0,0.057,baseline
+1789329271,67844d2de16dc0eb,ssh,ssh -p <arg> <arg>,0,7826,19,0,0,0,93,1,3,0,0,0.17,baseline
+1789329502,67844d2de16dc0eb,kubectl,kubectl get <arg>,0,290,19,0,0,0,231,,2,0,0,0.299,baseline
+1789329668,67844d2de16dc0eb,kubectl,kubectl get <arg>,0,197,20,0,0,0,166,0,2,0,0,0.209,baseline
+1789329738,67844d2de16dc0eb,kubectl,kubectl apply -f <path>,0,1132,20,0,0,0,70,0,3,0,0,0.334,baseline
+1789329843,67844d2de16dc0eb,kubectl,kubectl get <arg>,0,1045,20,0,0,0,105,1,2,0,0,0.326,baseline
+1789330025,67844d2de16dc0eb,kubectl,kubectl get <arg>,0,816,20,0,0,0,182,0,2,0,0,0.23,baseline
+1789330238,67844d2de16dc0eb,kubectl,kubectl get <arg>,1,293,20,0,0,0,213,1,2,0,0,0.194,baseline
+1789330334,67844d2de16dc0eb,systemctl,systemctl status <arg>,1,110,20,0,1,1,96,0,2,0,0,0.036,baseline
+1789330347,67844d2de16dc0eb,systemctl,systemctl status <arg>,0,303,20,0,1,2,13,1,2,0,0,0.181,baseline
+1789330527,67844d2de16dc0eb,systemctl,systemctl status <arg>,0,210,20,0,0,0,180,0,2,0,0,0.072,baseline
+1789330723,67844d2de16dc0eb,ssh,ssh -p <arg> <arg>,0,430,20,0,0,0,196,1,3,0,1,0.072,baseline
+1789330760,67844d2de16dc0eb,docker,docker ps,0,787,20,0,0,0,37,0,1,0,0,0.106,baseline
+1789330795,67844d2de16dc0eb,systemctl,systemctl status <arg>,0,100,20,0,0,0,35,1,2,0,0,0.189,baseline
+1789330839,67844d2de16dc0eb,docker,docker build <path>,0,885,20,0,0,0,44,0,2,0,0,0.173,baseline
+1789331018,67844d2de16dc0eb,systemctl,systemctl status <arg>,0,120,20,0,0,0,179,1,2,0,0,0.02,baseline
+1789331177,67844d2de16dc0eb,docker,docker compose up <arg>,0,528,20,0,0,0,159,1,3,0,0,0.081,baseline
+1789331190,67844d2de16dc0eb,ssh,ssh <arg>,0,1556,20,0,0,0,13,1,1,0,0,0.02,baseline
+1789331297,67844d2de16dc0eb,kubectl,kubectl get <arg>,0,155,20,0,0,0,107,1,2,0,0,0.028,baseline
+1789331504,67844d2de16dc0eb,kubectl,kubectl apply -f <path>,0,240,20,0,0,0,207,1,3,0,0,0.328,baseline
+1789331537,67844d2de16dc0eb,ssh,ssh -p <arg> <arg>,0,588,20,0,0,0,33,0,3,0,0,0.09,baseline
+1789331712,67844d2de16dc0eb,kubectl,kubectl get <arg>,0,28,20,0,0,0,175,0,2,0,0,0.292,baseline
+1789331809,67844d2de16dc0eb,kubectl,kubectl get <arg>,0,254,20,0,0,0,97,1,2,0,0,0.334,baseline
+1789331914,67844d2de16dc0eb,systemctl,systemctl status <arg>,0,46,20,0,0,0,105,0,2,0,0,0.02,baseline
+1789331992,67844d2de16dc0eb,systemctl,systemctl status <arg>,0,138,20,0,0,0,78,0,2,0,0,0.02,baseline
+1789332068,67844d2de16dc0eb,systemctl,systemctl status <arg>,0,364,20,0,0,0,76,,2,0,0,0.059,baseline
+1789353659,dfc1277f11c97751,cargo,cargo clippy,0,2902,2,1,0,0,21591,0,1,0,0,0.551,baseline
+1789353725,dfc1277f11c97751,pytest,pytest <arg>,1,2934,2,1,0,0,66,1,1,0,0,0.473,baseline
+1789353898,dfc1277f11c97751,pytest,pytest <arg>,0,5067,2,1,1,1,173,0,1,0,0,0.507,baseline
+1789353933,dfc1277f11c97751,git,git push <arg>,0,40,2,1,0,0,35,1,2,0,0,0.02,baseline
+1789354000,dfc1277f11c97751,docker,docker build <path>,0,475,2,1,0,0,67,1,2,0,0,0.141,baseline
+1789354145,dfc1277f11c97751,docker,docker ps,125,1487,2,1,0,0,145,,1,0,0,0.215,baseline
+1789354295,dfc1277f11c97751,docker,docker ps,0,350,2,1,125,1,150,1,1,0,0,0.124,baseline
+1789354392,dfc1277f11c97751,cargo,cargo clippy,101,2211,2,1,0,0,97,1,1,0,0,0.375,baseline
+1789354505,dfc1277f11c97751,pytest,pytest <arg>,1,2104,2,1,101,1,113,1,1,0,0,0.539,baseline
+1789354702,dfc1277f11c97751,git,git status,0,174,2,1,1,2,197,0,1,0,0,0.034,baseline
+1789354918,dfc1277f11c97751,docker,docker ps,0,883,3,1,0,0,216,1,1,0,0,0.184,baseline
+1789354950,dfc1277f11c97751,cargo,cargo run <arg>,101,2284,3,1,0,0,32,1,2,0,0,0.496,baseline
+1789355059,dfc1277f11c97751,docker,docker build <path>,0,1435,3,1,101,1,109,0,2,0,0,0.19,baseline
+1789355288,dfc1277f11c97751,git,git pull,0,219,3,1,0,0,229,0,1,0,0,0.035,baseline
+1789355471,dfc1277f11c97751,docker,docker ps,1,538,3,1,0,0,183,0,1,0,0,0.153,baseline
+1789355651,dfc1277f11c97751,pytest,pytest -q <path>,0,2693,3,1,1,1,180,,2,0,0,0.66,baseline
+1789355714,dfc1277f11c97751,git,git commit -m <arg>,0,339,3,1,0,0,63,1,3,0,0,0.16,baseline
+1789355953,dfc1277f11c97751,pytest,pytest -q <path>,1,2721,3,1,0,0,239,0,2,0,0,0.37,baseline
+1789356192,dfc1277f11c97751,pytest,pytest <arg>,1,16627,3,1,1,1,239,,1,0,0,0.481,baseline
+1789356305,dfc1277f11c97751,pytest,pytest <path>,1,5851,3,1,1,2,113,1,1,0,0,0.469,baseline
+1789356509,dfc1277f11c97751,docker,docker build <path>,0,743,3,1,1,3,204,1,2,0,0,0.278,baseline
+1789356645,dfc1277f11c97751,cargo,cargo test --workspace,0,5465,3,1,0,0,136,1,2,0,0,0.398,baseline
+1789356870,dfc1277f11c97751,git,git commit -m <arg>,0,154,3,1,0,0,225,1,3,0,0,0.023,baseline
+1789356971,dfc1277f11c97751,pytest,pytest -q <path>,1,5480,3,1,0,0,101,0,2,0,0,0.423,baseline
+1789357141,dfc1277f11c97751,git,git pull,0,390,3,1,1,1,170,1,1,0,0,0.071,baseline
+1789357352,dfc1277f11c97751,cargo,cargo run <arg>,101,6363,3,1,0,0,211,1,2,0,1,0.335,baseline
+1789357481,dfc1277f11c97751,pytest,pytest <path>,0,700,3,1,101,1,129,0,1,0,0,0.461,baseline
+1789357522,dfc1277f11c97751,cargo,cargo run <arg>,0,4783,3,1,0,0,41,0,2,0,0,0.449,baseline
+1789367852,e0f632d940b22f8b,npm,npm run build,0,3699,6,1,0,0,10330,,2,0,0,0.329,baseline
+1789368067,e0f632d940b22f8b,make,make test,0,1118,6,1,0,0,215,1,1,0,0,0.274,baseline
+1789368215,e0f632d940b22f8b,git,git push <arg>,0,226,6,1,0,0,148,0,2,0,0,0.12,baseline
+1789368233,e0f632d940b22f8b,make,make test,0,1272,6,1,0,0,18,0,1,0,0,0.161,baseline
+1789368420,e0f632d940b22f8b,git,git commit -m <arg>,0,265,6,1,0,0,187,1,3,0,0,0.107,baseline
+1789368459,e0f632d940b22f8b,npm,npm run <arg>,1,1630,6,1,0,0,39,1,2,0,0,0.458,baseline
+1789368517,e0f632d940b22f8b,npm,npm run <arg>,0,6481,6,1,1,1,58,0,2,0,0,0.247,baseline
+1789368752,e0f632d940b22f8b,git,git diff <path>,0,459,6,1,0,0,235,,2,0,0,0.089,baseline
+1789368840,e0f632d940b22f8b,make,make <arg>,0,3242,6,1,0,0,88,1,1,0,0,0.192,baseline
+1789368914,e0f632d940b22f8b,git,git push <arg>,0,383,6,1,0,0,74,1,2,0,0,0.02,baseline
+1789369119,e0f632d940b22f8b,npm,npm test,0,1821,6,1,0,0,205,1,1,0,0,0.365,baseline
+1789369293,e0f632d940b22f8b,npm,npm test,0,1475,7,1,0,0,174,0,1,0,0,0.45,baseline
+1789369358,e0f632d940b22f8b,git,git diff <path>,0,174,7,1,0,0,65,1,2,0,0,0.067,baseline
+1789369449,e0f632d940b22f8b,npm,npm run build,0,3865,7,1,0,0,91,1,2,0,1,0.492,baseline
+1789369592,e0f632d940b22f8b,git,git status,0,629,7,1,0,0,143,1,1,0,0,0.094,baseline
+1789369772,e0f632d940b22f8b,make,make <arg>,0,1641,7,1,0,0,180,1,1,0,0,0.151,baseline
+1789369787,e0f632d940b22f8b,make,make <arg>,2,5150,7,1,0,0,15,0,1,0,0,0.069,baseline
+1789407463,4aa9acb1199c7ec1,npm,npm install <arg>,1,3640,17,1,2,1,37676,0,2,0,0,0.606,baseline
+1789407598,4aa9acb1199c7ec1,python3,python3 <path>,0,906,17,1,1,2,135,0,1,0,0,0.257,baseline
+1789407612,4aa9acb1199c7ec1,npm,npm install <arg>,1,1945,17,1,0,0,14,0,2,0,0,0.51,baseline
+1789407781,4aa9acb1199c7ec1,python3,python3 <path>,0,309,17,1,1,1,169,1,1,0,0,0.154,baseline
+1789407991,4aa9acb1199c7ec1,python3,python3 -m <arg>,0,1207,17,1,0,0,210,,2,0,0,0.233,baseline
+1789408186,4aa9acb1199c7ec1,curl,curl -s <url>,0,1203,17,1,0,0,195,,2,0,0,0.17,baseline
+1789408252,4aa9acb1199c7ec1,curl,curl -X <arg> <url>,0,455,17,1,0,0,66,0,3,0,1,0.079,baseline
+1789408380,4aa9acb1199c7ec1,git,git diff <path>,0,122,17,1,0,0,128,0,2,0,0,0.04,baseline
+1789408582,4aa9acb1199c7ec1,npm,npm run build,1,3484,17,1,0,0,202,1,2,1,0,0.709,baseline
+1789408789,4aa9acb1199c7ec1,npm,npm install <arg>,1,3412,17,1,1,1,207,1,2,0,0,0.685,baseline
+1789409003,4aa9acb1199c7ec1,git,git status,0,257,18,1,1,2,214,0,1,0,0,0.047,baseline
+1789409109,4aa9acb1199c7ec1,npm,npm test,1,4747,18,1,0,0,106,0,1,0,0,0.78,baseline
+1789409283,4aa9acb1199c7ec1,npm,npm run build,1,3155,18,1,1,1,174,,2,0,0,0.674,baseline
+1789409333,4aa9acb1199c7ec1,git,git push <arg>,1,94,18,1,1,2,50,1,2,0,0,0.02,baseline
+1789409411,4aa9acb1199c7ec1,python3,python3 <path>,0,1134,18,1,1,3,78,,1,0,1,0.317,baseline
+1789409477,4aa9acb1199c7ec1,npm,npm test,0,1684,18,1,0,0,66,0,1,0,0,0.56,baseline
+1789409527,4aa9acb1199c7ec1,curl,curl -s <url>,0,752,18,1,0,0,50,0,2,0,0,0.095,baseline
+1789409548,4aa9acb1199c7ec1,git,git push <arg>,0,238,18,1,0,0,21,0,2,0,0,0.185,baseline
+1789409656,4aa9acb1199c7ec1,git,git diff <path>,0,291,18,1,0,0,108,0,2,0,0,0.076,baseline
+1789409829,4aa9acb1199c7ec1,curl,curl -X <arg> <url>,0,649,18,1,0,0,173,0,3,0,0,0.106,baseline
+1789409929,4aa9acb1199c7ec1,python3,python3 <path>,0,1657,18,1,0,0,100,0,1,0,0,0.199,baseline
+1789410128,4aa9acb1199c7ec1,python3,python3 <path>,1,1550,18,1,0,0,199,1,1,0,0,0.131,baseline
+1789410209,4aa9acb1199c7ec1,git,git status,0,38,18,1,1,1,81,0,1,0,0,0.19,baseline
+1789416788,4aa9acb1199c7ec1,python3,python3 <path>,0,4213,20,1,0,0,6579,1,1,0,0,0.16,baseline
+1789416839,4aa9acb1199c7ec1,git,git diff <path>,0,85,20,1,0,0,51,0,2,0,0,0.074,baseline
+1789417066,4aa9acb1199c7ec1,python3,python3 -m <arg>,0,740,20,1,0,0,227,0,2,0,0,0.18,baseline
+1789417084,4aa9acb1199c7ec1,git,git status,0,815,20,1,0,0,18,0,1,0,0,0.03,baseline
+1789417116,4aa9acb1199c7ec1,python3,python3 <path>,1,907,20,1,0,0,32,1,1,0,0,0.171,baseline
+1789417331,4aa9acb1199c7ec1,git,git commit -m <arg>,0,58,20,1,1,1,215,0,3,0,0,0.061,baseline
+1789417435,4aa9acb1199c7ec1,git,git diff <path>,0,164,20,1,0,0,104,1,2,0,0,0.02,baseline
+1789417620,4aa9acb1199c7ec1,curl,curl -X <arg> <url>,0,225,20,1,0,0,185,0,3,0,0,0.149,baseline
+1789417796,4aa9acb1199c7ec1,git,git pull,0,657,20,1,0,0,176,0,1,0,0,0.083,baseline
+1789418013,4aa9acb1199c7ec1,npm,npm run build,1,1905,20,1,0,0,217,0,2,0,0,0.676,baseline
+1789418192,4aa9acb1199c7ec1,python3,python3 <path>,0,224,20,1,1,1,179,,1,0,0,0.165,baseline
+1789418267,4aa9acb1199c7ec1,curl,curl -s <url>,7,636,20,1,0,0,75,0,2,0,0,0.129,baseline
+1789418345,4aa9acb1199c7ec1,git,git pull,0,41,20,1,7,1,78,0,1,0,0,0.089,baseline
+1789418526,4aa9acb1199c7ec1,python3,python3 -m <arg>,0,1285,20,1,0,0,181,1,2,0,1,0.096,baseline
+1789418591,4aa9acb1199c7ec1,curl,curl -X <arg> <url>,0,854,20,1,0,0,65,0,3,0,0,0.085,baseline
+1789418787,4aa9acb1199c7ec1,curl,curl -s <url>,7,453,20,1,0,0,196,0,2,0,0,0.02,baseline
+1789418996,4aa9acb1199c7ec1,git,git diff <path>,0,498,20,1,7,1,209,0,2,0,0,0.02,baseline
+1789455517,67844d2de16dc0eb,ssh,ssh -p <arg> <arg>,0,1917,6,2,0,0,36521,1,3,0,0,0.111,baseline
+1789455584,67844d2de16dc0eb,ssh,ssh -p <arg> <arg>,255,588,6,2,0,0,67,0,3,0,0,0.02,baseline
+1789455648,67844d2de16dc0eb,systemctl,systemctl status <arg>,0,82,7,2,255,1,64,1,2,0,0,0.123,baseline
+1789455836,67844d2de16dc0eb,kubectl,kubectl apply -f <path>,1,275,7,2,0,0,188,1,3,0,0,0.343,baseline
+1789455956,67844d2de16dc0eb,kubectl,kubectl apply -f <path>,1,463,7,2,1,1,120,0,3,0,0,0.277,baseline
+1789455972,67844d2de16dc0eb,systemctl,systemctl status <arg>,0,173,7,2,1,2,16,0,2,0,0,0.213,baseline
+1789456105,67844d2de16dc0eb,kubectl,kubectl apply -f <path>,0,250,7,2,0,0,133,0,3,0,0,0.214,baseline
+1789456299,67844d2de16dc0eb,docker,docker compose up <arg>,0,1165,7,2,0,0,194,0,3,0,0,0.139,baseline
+1789456337,67844d2de16dc0eb,ssh,ssh <arg>,0,1541,7,2,0,0,38,1,1,0,0,0.116,baseline
+1789456435,67844d2de16dc0eb,ssh,ssh <arg>,0,923,7,2,0,0,98,1,1,0,0,0.071,baseline
+1789456668,67844d2de16dc0eb,systemctl,systemctl status <arg>,0,224,7,2,0,0,233,1,2,0,0,0.101,baseline
+1789456715,67844d2de16dc0eb,ssh,ssh -p <arg> <arg>,0,1744,7,2,0,0,47,0,3,0,0,0.111,baseline
+1789456828,67844d2de16dc0eb,kubectl,kubectl apply -f <path>,0,653,7,2,0,0,113,,3,0,0,0.223,baseline
+1789456883,67844d2de16dc0eb,systemctl,systemctl status <arg>,0,276,7,2,0,0,55,,2,0,0,0.124,baseline
+1789457107,67844d2de16dc0eb,docker,docker build <path>,0,627,7,2,0,0,224,0,2,0,0,0.095,baseline
+1789457171,67844d2de16dc0eb,kubectl,kubectl get <arg>,1,410,7,2,0,0,64,1,2,0,0,0.255,baseline
+1789457261,67844d2de16dc0eb,kubectl,kubectl get <arg>,0,136,7,2,1,1,90,1,2,0,0,0.359,baseline
+1789528750,4aa9acb1199c7ec1,curl,curl -s <url>,7,1066,3,3,0,0,71489,1,2,0,1,0.02,baseline
+1789528761,4aa9acb1199c7ec1,npm,npm run <arg>,0,2411,3,3,7,1,11,0,2,0,0,0.46,baseline
+1789528814,4aa9acb1199c7ec1,curl,curl -s <url>,0,754,3,3,0,0,53,1,2,0,0,0.06,baseline
+1789528948,4aa9acb1199c7ec1,python3,python3 <path>,0,438,3,3,0,0,134,0,1,0,0,0.02,baseline
+1789529186,4aa9acb1199c7ec1,npm,npm install <arg>,1,2902,3,3,0,0,238,1,2,0,0,0.625,baseline
+1789529191,4aa9acb1199c7ec1,python3,python3 <path>,0,400,3,3,1,1,5,1,1,0,0,0.214,baseline
+1789582299,684205ec612d8248,pytest,pytest -q <path>,0,6654,18,3,0,0,53108,1,2,0,0,0.285,baseline
+1789582490,684205ec612d8248,python3,python3 -m <arg>,0,211,18,3,0,0,191,1,2,0,0,0.196,baseline
+1789582637,684205ec612d8248,make,make test,0,2261,18,3,0,0,147,,1,0,0,0.167,baseline
+1789582777,684205ec612d8248,python3,python3 <path>,0,205,18,3,0,0,140,0,1,0,0,0.198,baseline
+1789582831,684205ec612d8248,make,make <arg>,0,517,18,3,0,0,54,1,1,0,0,0.145,baseline
+1789582911,684205ec612d8248,pytest,pytest -q <path>,0,5401,18,3,0,0,80,1,2,0,0,0.34,baseline
+1789583023,684205ec612d8248,pytest,pytest <path>,0,5677,18,3,0,0,112,1,1,0,0,0.441,baseline
+1789583127,684205ec612d8248,git,git push <arg>,0,265,18,3,0,0,104,,2,0,0,0.158,baseline
+1789583190,684205ec612d8248,git,git status,0,300,18,3,0,0,63,1,1,0,0,0.02,baseline
+1789583326,684205ec612d8248,python3,python3 <path>,0,930,18,3,0,0,136,0,1,0,0,0.111,baseline
+1789583487,684205ec612d8248,python3,python3 <path>,0,457,18,3,0,0,161,1,1,0,0,0.238,baseline
+1789583702,684205ec612d8248,git,git status,0,237,18,3,0,0,215,1,1,0,0,0.047,baseline
+1789583733,684205ec612d8248,python3,python3 <path>,1,671,18,3,0,0,31,1,1,0,0,0.088,baseline
+1789583788,684205ec612d8248,make,make test,0,1267,18,3,1,1,55,1,1,0,0,0.144,baseline
+1789583812,684205ec612d8248,python3,python3 -m <arg>,0,787,18,3,0,0,24,,2,0,0,0.211,baseline
+1789583951,684205ec612d8248,python3,python3 -m <arg>,1,1477,18,3,0,0,139,0,2,0,0,0.178,baseline
+1789619583,67844d2de16dc0eb,ssh,ssh -p <arg> <arg>,0,1670,4,4,1,1,35632,,3,0,0,0.142,baseline
+1789619762,67844d2de16dc0eb,kubectl,kubectl get <arg>,0,489,4,4,0,0,179,1,2,0,0,0.165,baseline
+1789619989,67844d2de16dc0eb,ssh,ssh -p <arg> <arg>,0,867,4,4,0,0,227,1,3,0,0,0.071,baseline
+1789620202,67844d2de16dc0eb,kubectl,kubectl get <arg>,0,518,4,4,0,0,213,1,2,0,0,0.264,baseline
+1789635890,e0f632d940b22f8b,npm,npm test,0,3305,9,4,0,0,15688,1,1,0,0,0.439,baseline
+1789635955,e0f632d940b22f8b,git,git status,0,17,9,4,0,0,65,0,1,0,0,0.042,baseline
+1789636176,e0f632d940b22f8b,npm,npm run build,0,1365,9,4,0,0,221,1,2,0,0,0.469,baseline
+1789636371,e0f632d940b22f8b,npm,npm install <arg>,1,4430,9,4,0,0,195,1,2,0,0,0.312,baseline
+1789636422,e0f632d940b22f8b,git,git pull,0,196,9,4,1,1,51,1,1,0,0,0.078,baseline
+1789636494,e0f632d940b22f8b,git,git diff <path>,0,106,9,4,0,0,72,1,2,0,0,0.02,baseline
+1789685000,e0f632d940b22f8b,git,git commit -m <arg>,0,233,22,4,0,0,48506,0,3,0,0,0.057,baseline
+1789685182,e0f632d940b22f8b,npm,npm run build,0,761,22,4,0,0,182,0,2,0,1,0.487,baseline
+1789685302,e0f632d940b22f8b,git,git diff <path>,0,42,22,4,0,0,120,0,2,0,0,0.02,baseline
+1789685382,e0f632d940b22f8b,make,make <arg>,0,5116,22,4,0,0,80,1,1,0,0,0.141,baseline
+1789685587,e0f632d940b22f8b,git,git commit -m <arg>,0,321,22,4,0,0,205,1,3,0,0,0.034,baseline
+1789685750,e0f632d940b22f8b,npm,npm test,0,395,22,4,0,0,163,1,1,0,0,0.449,baseline
+1789685859,e0f632d940b22f8b,make,make <arg>,0,4581,22,4,0,0,109,1,1,0,0,0.161,baseline
+1789685908,e0f632d940b22f8b,make,make <arg>,0,653,22,4,0,0,49,0,1,0,0,0.15,baseline
+1789686046,e0f632d940b22f8b,npm,npm install <arg>,0,1939,23,4,0,0,138,,2,0,0,0.49,baseline
+1789686228,e0f632d940b22f8b,make,make test,0,982,23,4,0,0,182,1,1,0,0,0.078,baseline
+1789746732,684205ec612d8248,python3,python3 -m <arg>,0,478,15,5,0,0,60504,1,2,0,0,0.072,baseline
+1789746762,684205ec612d8248,pytest,pytest -q <path>,0,5477,15,5,0,0,30,0,2,0,0,0.184,baseline
+1789746835,684205ec612d8248,make,make <arg>,0,325,15,5,0,0,73,,1,0,0,0.183,baseline
+1789747032,684205ec612d8248,pytest,pytest -q <path>,1,18806,15,5,0,0,197,1,2,0,0,0.255,baseline
+1789747232,684205ec612d8248,make,make test,0,2645,16,5,1,1,200,0,1,0,0,0.195,baseline
+1789747392,684205ec612d8248,python3,python3 <path>,0,405,16,5,0,0,160,0,1,0,0,0.188,baseline
+1789747561,684205ec612d8248,make,make <arg>,0,637,16,5,0,0,169,1,1,0,0,0.131,baseline
+1789747580,684205ec612d8248,make,make <arg>,0,4714,16,5,0,0,19,0,1,0,0,0.298,baseline
+1789815679,67844d2de16dc0eb,systemctl,systemctl status <arg>,0,480,11,6,0,0,68099,1,2,0,0,0.107,baseline
+1789815701,67844d2de16dc0eb,kubectl,kubectl get <arg>,1,886,11,6,0,0,22,1,2,0,0,0.196,baseline
+1789815825,67844d2de16dc0eb,docker,docker ps,0,748,11,6,1,1,124,0,1,0,0,0.146,baseline
+1789815918,67844d2de16dc0eb,systemctl,systemctl status <arg>,0,104,11,6,0,0,93,1,2,0,0,0.184,baseline
+1789815966,67844d2de16dc0eb,ssh,ssh <arg>,255,926,11,6,0,0,48,1,1,0,0,0.028,baseline
+1789816183,67844d2de16dc0eb,docker,docker ps,0,1587,11,6,255,1,217,0,1,0,0,0.164,baseline
+1789821619,819dbc88958c1ad1,git,git commit -m <arg>,0,696,12,6,0,0,5436,,3,0,0,0.087,baseline
+1789821812,819dbc88958c1ad1,grep,grep -r <arg> <path>,0,119,12,6,0,0,193,0,3,0,0,0.068,baseline
+1789821846,819dbc88958c1ad1,git,git push <arg>,0,602,12,6,0,0,34,0,2,0,0,0.065,baseline
+1789822035,819dbc88958c1ad1,grep,grep -r <arg> <path>,0,77,12,6,0,0,189,1,3,0,0,0.156,baseline
+1789822077,819dbc88958c1ad1,git,git push <arg>,0,78,12,6,0,0,42,1,2,0,0,0.036,baseline
+1789822280,819dbc88958c1ad1,grep,grep -r <arg> <path>,0,74,12,6,0,0,203,1,3,0,0,0.02,baseline
+1789848714,4aa9acb1199c7ec1,git,git diff <path>,0,175,20,6,0,0,26434,0,2,0,0,0.136,baseline
+1789848857,4aa9acb1199c7ec1,python3,python3 -m <arg>,0,450,20,6,0,0,143,0,2,0,0,0.155,baseline
+1789848948,4aa9acb1199c7ec1,npm,npm test,0,1120,20,6,0,0,91,1,1,0,0,0.754,baseline
+1789848998,4aa9acb1199c7ec1,git,git commit -m <arg>,0,181,20,6,0,0,50,,3,0,0,0.023,baseline
+1789849118,4aa9acb1199c7ec1,python3,python3 -m <arg>,0,161,20,6,0,0,120,1,2,0,0,0.094,baseline
+1789849357,4aa9acb1199c7ec1,curl,curl -s <url>,0,954,20,6,0,0,239,1,2,0,0,0.103,baseline
+1789849553,4aa9acb1199c7ec1,npm,npm run build,0,2031,20,6,0,0,196,0,2,0,0,0.604,baseline
+1789849565,4aa9acb1199c7ec1,python3,python3 -m <arg>,0,369,20,6,0,0,12,0,2,0,0,0.207,baseline
+1789849641,4aa9acb1199c7ec1,git,git push <arg>,0,162,20,6,0,0,76,0,2,0,0,0.085,baseline
+1789849802,4aa9acb1199c7ec1,python3,python3 -m <arg>,0,1397,20,6,0,0,161,0,2,0,0,0.258,baseline
+1789849946,4aa9acb1199c7ec1,npm,npm install <arg>,1,1158,20,6,0,0,144,,2,0,0,0.686,baseline
+1789850050,4aa9acb1199c7ec1,git,git push <arg>,0,73,20,6,1,1,104,0,2,0,0,0.179,baseline
+1789850184,4aa9acb1199c7ec1,npm,npm test,1,2451,20,6,0,0,134,0,1,1,0,0.466,baseline
+1789850313,4aa9acb1199c7ec1,python3,python3 <path>,0,397,20,6,1,1,129,,1,0,0,0.179,baseline
+1789850531,4aa9acb1199c7ec1,npm,npm run <arg>,0,2075,20,6,0,0,218,0,2,0,0,0.532,baseline
+1789850589,4aa9acb1199c7ec1,curl,curl -X <arg> <url>,0,476,20,6,0,0,58,0,3,0,0,0.085,baseline
+1789850752,4aa9acb1199c7ec1,git,git diff <path>,0,182,20,6,0,0,163,1,2,0,1,0.153,baseline
+1789850915,4aa9acb1199c7ec1,python3,python3 <path>,0,995,20,6,0,0,163,1,1,0,0,0.252,baseline
+1789851077,4aa9acb1199c7ec1,npm,npm run <arg>,0,1920,20,6,0,0,162,1,2,0,0,0.64,baseline
+1789851224,4aa9acb1199c7ec1,python3,python3 -m <arg>,0,1323,20,6,0,0,147,1,2,0,0,0.172,baseline
+1789851378,4aa9acb1199c7ec1,curl,curl -X <arg> <url>,0,628,20,6,0,0,154,0,3,0,0,0.125,baseline
+1789851454,4aa9acb1199c7ec1,python3,python3 -m <arg>,0,517,20,6,0,0,76,0,2,0,0,0.151,baseline
+1789851536,4aa9acb1199c7ec1,npm,npm install <arg>,0,3468,20,6,0,0,82,1,2,0,0,0.801,baseline
+1789851619,4aa9acb1199c7ec1,python3,python3 <path>,0,1407,21,6,0,0,83,0,1,0,0,0.206,baseline
+1789870388,67844d2de16dc0eb,ssh,ssh <arg>,255,798,2,0,0,0,18769,0,1,0,0,0.031,baseline
+1789870526,67844d2de16dc0eb,systemctl,systemctl status <arg>,0,249,2,0,255,1,138,,2,0,0,0.065,baseline
+1789870645,67844d2de16dc0eb,systemctl,systemctl status <arg>,0,98,2,0,0,0,119,0,2,0,0,0.193,baseline
+1789870667,67844d2de16dc0eb,kubectl,kubectl get <arg>,0,169,2,0,0,0,22,0,2,0,0,0.349,baseline
+1789870708,67844d2de16dc0eb,docker,docker build <path>,0,1054,2,0,0,0,41,1,2,0,0,0.2,baseline
+1789870896,67844d2de16dc0eb,systemctl,systemctl status <arg>,0,177,2,0,0,0,188,0,2,0,0,0.102,baseline
+1789871131,67844d2de16dc0eb,ssh,ssh -p <arg> <arg>,0,513,2,0,0,0,235,1,3,0,0,0.029,baseline
+1789871144,67844d2de16dc0eb,ssh,ssh <arg>,0,794,2,0,0,0,13,0,1,0,0,0.059,baseline
+1789871261,67844d2de16dc0eb,docker,docker compose up <arg>,0,439,2,0,0,0,117,,3,0,0,0.209,baseline
+1789871480,67844d2de16dc0eb,docker,docker build <path>,0,355,2,0,0,0,219,0,2,0,0,0.287,baseline
+1789871510,67844d2de16dc0eb,systemctl,systemctl status <arg>,0,236,2,0,0,0,30,1,2,0,0,0.108,baseline
+1789871694,67844d2de16dc0eb,kubectl,kubectl apply -f <path>,0,1012,2,0,0,0,184,0,3,0,0,0.338,baseline
+1789871864,67844d2de16dc0eb,systemctl,systemctl status <arg>,0,270,2,0,0,0,170,0,2,0,0,0.059,baseline
+1789872067,67844d2de16dc0eb,systemctl,systemctl status <arg>,0,208,2,0,0,0,203,0,2,0,1,0.262,baseline
+1789872218,67844d2de16dc0eb,kubectl,kubectl apply -f <path>,0,218,2,0,0,0,151,0,3,0,0,0.259,baseline
+1789872258,67844d2de16dc0eb,kubectl,kubectl get <arg>,1,1823,2,0,0,0,40,1,2,0,0,0.096,baseline
+1789872448,67844d2de16dc0eb,docker,docker build <path>,0,478,2,0,1,1,190,0,2,0,0,0.23,baseline
+1789872628,67844d2de16dc0eb,kubectl,kubectl get <arg>,0,546,2,0,0,0,180,0,2,0,0,0.151,baseline
+1789872825,67844d2de16dc0eb,docker,docker ps,0,614,2,0,0,0,197,0,1,0,0,0.091,baseline
+1789873043,67844d2de16dc0eb,kubectl,kubectl get <arg>,0,1131,2,0,0,0,218,1,2,0,0,0.148,baseline
+1789873247,67844d2de16dc0eb,ssh,ssh -p <arg> <arg>,0,651,3,0,0,0,204,1,3,0,0,0.02,baseline
+1789873253,67844d2de16dc0eb,systemctl,systemctl status <arg>,0,149,3,0,0,0,6,1,2,0,0,0.02,baseline
+1789873296,67844d2de16dc0eb,docker,docker build <path>,0,208,3,0,0,0,43,0,2,0,0,0.24,baseline
+1789873473,67844d2de16dc0eb,docker,docker compose up <arg>,1,786,3,0,0,0,177,1,3,0,0,0.152,baseline
+1789873512,67844d2de16dc0eb,ssh,ssh <arg>,0,2292,3,0,1,1,39,1,1,0,0,0.189,baseline
+1789873686,67844d2de16dc0eb,kubectl,kubectl apply -f <path>,0,579,3,0,0,0,174,1,3,0,1,0.271,baseline
+1789873833,67844d2de16dc0eb,systemctl,systemctl status <arg>,0,78,3,0,0,0,147,1,2,0,0,0.045,baseline
+1789873842,67844d2de16dc0eb,kubectl,kubectl get <arg>,0,2102,3,0,0,0,9,0,2,1,0,0.221,baseline
+1789874030,67844d2de16dc0eb,ssh,ssh <arg>,0,1908,3,0,0,0,188,0,1,0,0,0.088,baseline
+1789874175,67844d2de16dc0eb,ssh,ssh <arg>,0,678,3,0,0,0,145,1,1,0,0,0.03,baseline
+1789898244,4aa9acb1199c7ec1,curl,curl -s <url>,0,604,9,0,0,0,24069,1,2,0,0,0.02,baseline
+1789898362,4aa9acb1199c7ec1,npm,npm install <arg>,1,2550,9,0,0,0,118,,2,0,0,0.652,baseline
+1789898588,4aa9acb1199c7ec1,git,git commit -m <arg>,0,408,10,0,1,1,226,1,3,0,1,0.028,baseline
+1789898685,4aa9acb1199c7ec1,curl,curl -X <arg> <url>,0,977,10,0,0,0,97,1,3,0,0,0.02,baseline
+1789898706,4aa9acb1199c7ec1,python3,python3 <path>,0,459,10,0,0,0,21,0,1,0,0,0.23,baseline
+1789898711,4aa9acb1199c7ec1,npm,npm run build,1,14182,10,0,0,0,5,1,2,0,0,0.622,baseline
+1789898918,4aa9acb1199c7ec1,curl,curl -s <url>,0,315,10,0,1,1,207,1,2,1,0,0.047,baseline
+1789899109,4aa9acb1199c7ec1,python3,python3 <path>,0,947,10,0,0,0,191,0,1,0,0,0.185,baseline
+1789899296,4aa9acb1199c7ec1,git,git commit -m <arg>,0,643,10,0,0,0,187,0,3,0,0,0.064,baseline
+1789899437,4aa9acb1199c7ec1,python3,python3 -m <arg>,0,1098,10,0,0,0,141,1,2,0,1,0.139,baseline
+1789899492,4aa9acb1199c7ec1,git,git push <arg>,0,201,10,0,0,0,55,0,2,0,0,0.02,baseline
+1789899565,4aa9acb1199c7ec1,curl,curl -s <url>,0,818,10,0,0,0,73,0,2,0,0,0.056,baseline
+1789899601,4aa9acb1199c7ec1,python3,python3 <path>,1,751,10,0,0,0,36,0,1,0,0,0.219,baseline
+1789899686,4aa9acb1199c7ec1,git,git commit -m <arg>,0,316,10,0,1,1,85,1,3,0,0,0.02,baseline
+1789899897,4aa9acb1199c7ec1,python3,python3 -m <arg>,0,758,10,0,0,0,211,0,2,0,0,0.198,baseline
+1789900014,4aa9acb1199c7ec1,npm,npm install <arg>,0,1308,10,0,0,0,117,1,2,0,0,0.556,baseline
+1789900057,4aa9acb1199c7ec1,git,git diff <path>,0,632,10,0,0,0,43,1,2,0,0,0.045,baseline
+1789900250,4aa9acb1199c7ec1,python3,python3 -m <arg>,0,561,10,0,0,0,193,1,2,0,0,0.231,baseline
+1789900424,4aa9acb1199c7ec1,git,git diff <path>,1,80,10,0,0,0,174,1,2,0,0,0.068,baseline
+1789900597,4aa9acb1199c7ec1,npm,npm test,1,4606,10,0,1,1,173,,1,0,0,0.633,baseline
+1789900607,4aa9acb1199c7ec1,python3,python3 <path>,0,632,10,0,1,2,10,0,1,0,0,0.378,baseline
+1789900727,4aa9acb1199c7ec1,python3,python3 -m <arg>,0,870,10,0,0,0,120,0,2,0,0,0.15,baseline
+1789900747,4aa9acb1199c7ec1,npm,npm run build,1,2494,10,0,0,0,20,1,2,0,0,0.661,baseline
+1789900855,4aa9acb1199c7ec1,npm,npm install <arg>,0,1847,10,0,1,1,108,0,2,0,0,0.621,baseline
+1789900898,4aa9acb1199c7ec1,curl,curl -X <arg> <url>,0,71,10,0,0,0,43,1,3,0,0,0.089,baseline
+1789900969,4aa9acb1199c7ec1,npm,npm run build,0,1561,10,0,0,0,71,0,2,0,0,0.621,baseline
+1789901146,4aa9acb1199c7ec1,git,git pull,0,186,10,0,0,0,177,0,1,0,0,0.02,baseline
+1789960010,67844d2de16dc0eb,ssh,ssh -p <arg> <arg>,0,864,3,1,0,0,58864,0,3,0,0,0.02,baseline
+1789960053,67844d2de16dc0eb,docker,docker ps,0,479,3,1,0,0,43,1,1,0,0,0.294,baseline
+1789960162,67844d2de16dc0eb,ssh,ssh <arg>,0,485,3,1,0,0,109,1,1,0,0,0.234,baseline
+1789960225,67844d2de16dc0eb,docker,docker ps,0,500,3,1,0,0,63,0,1,0,1,0.29,baseline
+1789960443,67844d2de16dc0eb,docker,docker build <path>,125,1379,3,1,0,0,218,1,2,0,0,0.339,baseline
+1789960611,67844d2de16dc0eb,kubectl,kubectl apply -f <path>,0,219,3,1,125,1,168,0,3,0,0,0.32,baseline
+1789960640,67844d2de16dc0eb,systemctl,systemctl status <arg>,0,102,3,1,0,0,29,1,2,0,0,0.061,baseline
+1789960811,67844d2de16dc0eb,docker,docker build <path>,0,1246,3,1,0,0,171,0,2,0,0,0.053,baseline
+1789960832,67844d2de16dc0eb,kubectl,kubectl get <arg>,0,521,3,1,0,0,21,,2,0,0,0.318,baseline
+1789960955,67844d2de16dc0eb,kubectl,kubectl get <arg>,1,355,3,1,0,0,123,,2,0,0,0.281,baseline
+1789961099,67844d2de16dc0eb,systemctl,systemctl status <arg>,0,189,3,1,1,1,144,0,2,0,0,0.02,baseline
+1789961183,67844d2de16dc0eb,systemctl,systemctl status <arg>,0,821,3,1,0,0,84,1,2,0,0,0.071,baseline
+1789961345,67844d2de16dc0eb,kubectl,kubectl apply -f <path>,0,502,3,1,0,0,162,0,3,0,0,0.296,baseline
+1789961361,67844d2de16dc0eb,ssh,ssh <arg>,0,1137,3,1,0,0,16,0,1,0,0,0.094,baseline
+1789961429,67844d2de16dc0eb,systemctl,systemctl status <arg>,0,182,3,1,0,0,68,1,2,0,0,0.193,baseline
+1789961435,67844d2de16dc0eb,docker,docker build <path>,1,1522,3,1,0,0,6,,2,0,0,0.17,baseline
+1789961671,67844d2de16dc0eb,systemctl,systemctl status <arg>,0,127,3,1,1,1,236,1,2,1,0,0.142,baseline
+1789961755,67844d2de16dc0eb,ssh,ssh -p <arg> <arg>,0,614,3,1,0,0,84,,3,0,0,0.063,baseline
+1789961809,67844d2de16dc0eb,docker,docker ps,0,217,3,1,0,0,54,,1,0,0,0.166,baseline
+1789961861,67844d2de16dc0eb,systemctl,systemctl status <arg>,0,112,3,1,0,0,52,0,2,0,0,0.049,baseline
+1789962085,67844d2de16dc0eb,kubectl,kubectl apply -f <path>,1,748,3,1,0,0,224,0,3,0,0,0.211,baseline
+1789962246,67844d2de16dc0eb,docker,docker build <path>,0,504,3,1,1,1,161,,2,0,0,0.221,baseline
+1789962455,67844d2de16dc0eb,systemctl,systemctl status <arg>,0,157,3,1,0,0,209,0,2,0,0,0.097,baseline
+1789988715,684205ec612d8248,git,git pull,0,423,11,1,0,0,26260,0,1,0,0,0.086,baseline
+1789988762,684205ec612d8248,python3,python3 -m <arg>,0,193,11,1,0,0,47,1,2,0,0,0.048,baseline
+1789988953,684205ec612d8248,make,make <arg>,0,1611,11,1,0,0,191,1,1,0,0,0.248,baseline
+1789989037,684205ec612d8248,pytest,pytest -q <path>,1,5297,11,1,0,0,84,,2,0,0,0.284,baseline
+1789989151,684205ec612d8248,git,git push <arg>,0,139,11,1,1,1,114,0,2,0,0,0.061,baseline
+1789989338,684205ec612d8248,make,make <arg>,0,1815,11,1,0,0,187,0,1,0,0,0.02,baseline
+1790045123,67844d2de16dc0eb,kubectl,kubectl get <arg>,0,687,2,2,0,0,55785,0,2,0,0,0.233,baseline
+1790045146,67844d2de16dc0eb,systemctl,systemctl status <arg>,0,253,2,2,0,0,23,1,2,0,0,0.101,baseline
+1790045209,67844d2de16dc0eb,ssh,ssh <arg>,0,1205,2,2,0,0,63,1,1,0,0,0.055,baseline
+1790045393,67844d2de16dc0eb,docker,docker ps,0,1380,2,2,0,0,184,0,1,0,0,0.214,baseline
+1790045442,67844d2de16dc0eb,ssh,ssh <arg>,0,727,2,2,0,0,49,0,1,0,0,0.141,baseline
+1790045647,67844d2de16dc0eb,docker,docker compose up <arg>,1,416,2,2,0,0,205,,3,0,0,0.04,baseline
+1790045789,67844d2de16dc0eb,systemctl,systemctl status <arg>,0,172,2,2,1,1,142,0,2,0,0,0.209,baseline
+1790045973,67844d2de16dc0eb,kubectl,kubectl get <arg>,0,535,2,2,0,0,184,1,2,0,0,0.171,baseline
+1790046131,67844d2de16dc0eb,systemctl,systemctl status <arg>,0,95,3,2,0,0,158,0,2,0,0,0.15,baseline
+1790046162,67844d2de16dc0eb,kubectl,kubectl get <arg>,0,399,3,2,0,0,31,0,2,0,0,0.162,baseline
+1790046298,67844d2de16dc0eb,docker,docker compose up <arg>,0,981,3,2,0,0,136,1,3,0,0,0.263,baseline
+1790046307,67844d2de16dc0eb,docker,docker compose up <arg>,0,706,3,2,0,0,9,1,3,0,0,0.259,baseline
+1790046464,67844d2de16dc0eb,systemctl,systemctl status <arg>,0,54,3,2,0,0,157,1,2,0,0,0.126,baseline
+1790046698,67844d2de16dc0eb,ssh,ssh <arg>,0,1981,3,2,0,0,234,0,1,0,0,0.144,baseline
+1790046903,67844d2de16dc0eb,kubectl,kubectl get <arg>,1,202,3,2,0,0,205,0,2,0,0,0.295,baseline
+1790046954,67844d2de16dc0eb,docker,docker compose up <arg>,0,829,3,2,1,1,51,0,3,0,0,0.2,baseline
+1790047058,67844d2de16dc0eb,systemctl,systemctl status <arg>,0,122,3,2,0,0,104,,2,0,1,0.072,baseline
+1790047177,67844d2de16dc0eb,ssh,ssh -p <arg> <arg>,0,7016,3,2,0,0,119,0,3,0,1,0.02,baseline
+1790076289,dfc1277f11c97751,pytest,pytest <arg>,1,3000,11,2,0,0,29112,0,1,0,0,0.42,baseline
+1790076436,dfc1277f11c97751,cargo,cargo clippy,0,2388,11,2,1,1,147,1,1,0,0,0.191,baseline
+1790076533,dfc1277f11c97751,docker,docker compose up <arg>,0,2016,11,2,0,0,97,1,3,0,0,0.102,baseline
+1790076717,dfc1277f11c97751,git,git diff <path>,0,704,11,2,0,0,184,0,2,1,0,0.02,baseline
+1790076863,dfc1277f11c97751,cargo,cargo clippy,0,4263,11,2,0,0,146,0,1,0,0,0.234,baseline
+1790076992,dfc1277f11c97751,git,git diff <path>,0,281,11,2,0,0,129,1,2,0,0,0.044,baseline
+1790077100,dfc1277f11c97751,pytest,pytest -q <path>,1,1844,11,2,0,0,108,1,2,0,0,0.403,baseline
+1790077338,dfc1277f11c97751,git,git status,0,32,11,2,1,1,238,0,1,0,0,0.15,baseline
+1790077556,dfc1277f11c97751,cargo,cargo test --workspace,0,3671,11,2,0,0,218,0,2,0,0,0.299,baseline
+1790077573,dfc1277f11c97751,cargo,cargo clippy,0,800,11,2,0,0,17,1,1,0,0,0.301,baseline
+1790077632,dfc1277f11c97751,pytest,pytest <arg>,1,18697,11,2,0,0,59,1,1,0,0,0.493,baseline
+1790077870,dfc1277f11c97751,pytest,pytest <path>,1,7216,11,2,1,1,238,0,1,0,0,0.433,baseline
+1790078078,dfc1277f11c97751,git,git diff <path>,128,97,11,2,1,2,208,1,2,0,0,0.02,baseline
+1790078083,dfc1277f11c97751,pytest,pytest <path>,0,4849,11,2,128,3,5,1,1,0,0,0.419,baseline
+1790078180,dfc1277f11c97751,pytest,pytest <arg>,0,6963,11,2,0,0,97,0,1,0,0,0.464,baseline
+1790078186,dfc1277f11c97751,docker,docker ps,0,330,11,2,0,0,6,0,1,0,0,0.136,baseline
+1790078227,dfc1277f11c97751,docker,docker ps,0,979,11,2,0,0,41,1,1,0,0,0.067,baseline
+1790078446,dfc1277f11c97751,cargo,cargo test --workspace,0,5162,12,2,0,0,219,0,2,0,0,0.278,baseline
+1790078505,dfc1277f11c97751,cargo,cargo run <arg>,101,1721,12,2,0,0,59,0,2,0,0,0.208,baseline
+1790078696,dfc1277f11c97751,git,git commit -m <arg>,0,280,12,2,101,1,191,1,3,0,0,0.114,baseline
+1790078716,dfc1277f11c97751,docker,docker build <path>,0,2493,12,2,0,0,20,,2,0,0,0.079,baseline
+1790078859,dfc1277f11c97751,pytest,pytest <path>,0,7290,12,2,0,0,143,1,1,0,0,0.47,baseline
+1790079081,dfc1277f11c97751,git,git pull,0,153,12,2,0,0,222,1,1,0,0,0.148,baseline
+1790079106,dfc1277f11c97751,git,git status,0,86,12,2,0,0,25,0,1,0,0,0.02,baseline
+1790079138,dfc1277f11c97751,cargo,cargo build --release,0,6093,12,2,0,0,32,1,2,0,0,0.225,baseline
+1790079242,dfc1277f11c97751,cargo,cargo clippy,0,3246,12,2,0,0,104,0,1,0,0,0.179,baseline
+1790079292,dfc1277f11c97751,pytest,pytest <path>,0,2376,12,2,0,0,50,1,1,0,0,0.387,baseline
+1790079297,dfc1277f11c97751,cargo,cargo build --release,0,7056,12,2,0,0,5,1,2,0,0,0.344,baseline
+1790106895,819dbc88958c1ad1,grep,grep -r <arg> <path>,0,144,19,2,0,0,27598,1,3,0,0,0.02,baseline
+1790107113,819dbc88958c1ad1,grep,grep -r <arg> <path>,0,73,19,2,0,0,218,0,3,0,0,0.094,baseline
+1790107269,819dbc88958c1ad1,grep,grep -r <arg> <path>,0,180,20,2,0,0,156,1,3,0,0,0.158,baseline
+1790107274,819dbc88958c1ad1,grep,grep -r <arg> <path>,0,67,20,2,0,0,5,1,3,0,0,0.02,baseline
+1790107511,819dbc88958c1ad1,git,git diff <path>,0,534,20,2,0,0,237,0,2,0,0,0.02,baseline
+1790107691,819dbc88958c1ad1,grep,grep -r <arg> <path>,0,66,20,2,0,0,180,1,3,0,0,0.02,baseline
+1790107699,819dbc88958c1ad1,git,git diff <path>,0,81,20,2,0,0,8,0,2,0,0,0.132,baseline
+1790107765,819dbc88958c1ad1,grep,grep -r <arg> <path>,0,104,20,2,0,0,66,0,3,0,0,0.072,baseline
+1790107865,819dbc88958c1ad1,git,git commit -m <arg>,1,216,20,2,0,0,100,1,3,0,1,0.046,baseline
+1790107996,819dbc88958c1ad1,git,git pull,0,169,20,2,1,1,131,1,1,0,0,0.078,baseline
+1790108048,819dbc88958c1ad1,git,git commit -m <arg>,0,346,20,2,0,0,52,1,3,0,1,0.06,baseline
+1790108254,819dbc88958c1ad1,git,git status,0,1086,20,2,0,0,206,1,1,1,0,0.099,baseline
+1790108397,819dbc88958c1ad1,grep,grep -r <arg> <path>,0,55,20,2,0,0,143,1,3,0,0,0.099,baseline
+1790108474,819dbc88958c1ad1,grep,grep -r <arg> <path>,0,203,20,2,0,0,77,1,3,0,0,0.077,baseline
+1790108522,819dbc88958c1ad1,grep,grep -r <arg> <path>,0,67,20,2,0,0,48,1,3,1,0,0.02,baseline
+1790108644,819dbc88958c1ad1,grep,grep -r <arg> <path>,0,48,20,2,0,0,122,0,3,0,0,0.102,baseline
+1790108678,819dbc88958c1ad1,git,git diff <path>,0,373,20,2,0,0,34,0,2,0,0,0.095,baseline
+1790108852,819dbc88958c1ad1,git,git status,0,614,20,2,0,0,174,,1,0,0,0.052,baseline
+1790109001,819dbc88958c1ad1,git,git commit -m <arg>,0,425,20,2,0,0,149,0,3,0,0,0.02,baseline
+1790109124,819dbc88958c1ad1,grep,grep -r <arg> <path>,0,115,20,2,0,0,123,0,3,0,0,0.026,baseline
+1790109251,819dbc88958c1ad1,git,git diff <path>,0,213,20,2,0,0,127,1,2,0,0,0.021,baseline
+1790109387,819dbc88958c1ad1,git,git status,0,316,20,2,0,0,136,1,1,0,0,0.226,baseline
+1790109424,819dbc88958c1ad1,git,git push <arg>,0,110,20,2,0,0,37,,2,0,0,0.02,baseline
+1790109521,819dbc88958c1ad1,git,git status,0,483,20,2,0,0,97,1,1,0,0,0.02,baseline
+1790109596,819dbc88958c1ad1,git,git pull,0,46,20,2,0,0,75,0,1,0,0,0.02,baseline
+1790109831,819dbc88958c1ad1,git,git pull,0,92,20,2,0,0,235,1,1,0,0,0.175,baseline
+1790110047,819dbc88958c1ad1,git,git pull,0,347,20,2,0,0,216,0,1,0,0,0.02,baseline
+1790116650,684205ec612d8248,python3,python3 <path>,0,2597,22,2,0,0,6603,0,1,0,0,0.198,baseline
+1790116695,684205ec612d8248,pytest,pytest <arg>,1,848,22,2,0,0,45,0,1,0,0,0.326,baseline
+1790116922,684205ec612d8248,pytest,pytest <path>,0,2902,22,2,1,1,227,1,1,0,0,0.386,baseline
+1790117142,684205ec612d8248,make,make test,0,3714,22,2,0,0,220,0,1,0,0,0.129,baseline
+1790117239,684205ec612d8248,python3,python3 -m <arg>,0,203,22,2,0,0,97,1,2,0,0,0.253,baseline
+1790117344,684205ec612d8248,pytest,pytest <path>,0,3736,22,2,0,0,105,1,1,0,0,0.321,baseline
+1790137914,819dbc88958c1ad1,grep,grep -r <arg> <path>,0,59,4,3,0,0,20570,0,3,0,0,0.02,baseline
+1790138086,819dbc88958c1ad1,grep,grep -r <arg> <path>,0,21,4,3,0,0,172,,3,0,0,0.02,baseline
+1790138195,819dbc88958c1ad1,git,git diff <path>,0,461,4,3,0,0,109,0,2,0,0,0.033,baseline
+1790138261,819dbc88958c1ad1,git,git pull,0,476,4,3,0,0,66,1,1,0,0,0.094,baseline
+1790138323,819dbc88958c1ad1,git,git status,0,358,4,3,0,0,62,0,1,0,0,0.043,baseline
+1790138335,819dbc88958c1ad1,grep,grep -r <arg> <path>,0,138,4,3,0,0,12,1,3,0,0,0.02,baseline
+1790138408,819dbc88958c1ad1,grep,grep -r <arg> <path>,0,64,4,3,0,0,73,,3,0,0,0.04,baseline
+1790138599,819dbc88958c1ad1,grep,grep -r <arg> <path>,0,41,4,3,0,0,191,1,3,0,0,0.071,baseline
+1790138606,819dbc88958c1ad1,grep,grep -r <arg> <path>,0,62,4,3,0,0,7,1,3,0,0,0.071,baseline
+1790138812,819dbc88958c1ad1,grep,grep -r <arg> <path>,0,36,4,3,0,0,206,1,3,0,0,0.16,baseline
+1790190638,67844d2de16dc0eb,docker,docker ps,0,113,19,3,0,0,51826,1,1,0,0,0.223,baseline
+1790190782,67844d2de16dc0eb,kubectl,kubectl apply -f <path>,1,281,19,3,0,0,144,0,3,0,0,0.279,baseline
+1790190813,67844d2de16dc0eb,docker,docker ps,125,890,19,3,1,1,31,0,1,0,0,0.264,baseline
+1790190958,67844d2de16dc0eb,systemctl,systemctl status <arg>,1,113,19,3,125,2,145,0,2,0,0,0.137,baseline
+1790191137,67844d2de16dc0eb,systemctl,systemctl status <arg>,1,298,19,3,1,3,179,,2,0,0,0.117,baseline
+1790191255,67844d2de16dc0eb,systemctl,systemctl status <arg>,0,175,19,3,1,4,118,1,2,0,0,0.142,baseline
+1790191471,67844d2de16dc0eb,docker,docker compose up <arg>,0,1145,19,3,0,0,216,,3,0,0,0.145,baseline
+1790191570,67844d2de16dc0eb,ssh,ssh <arg>,0,1464,19,3,0,0,99,0,1,0,0,0.151,baseline
+1790191693,67844d2de16dc0eb,kubectl,kubectl get <arg>,1,470,19,3,0,0,123,0,2,0,0,0.212,baseline
+1790191875,67844d2de16dc0eb,docker,docker ps,0,433,19,3,1,1,182,0,1,0,0,0.116,baseline
+1790191927,67844d2de16dc0eb,systemctl,systemctl status <arg>,0,76,19,3,0,0,52,,2,0,0,0.133,baseline
+1790217675,4aa9acb1199c7ec1,curl,curl -s <url>,0,2591,2,4,0,0,25748,0,2,0,0,0.167,baseline
+1790217880,4aa9acb1199c7ec1,python3,python3 -m <arg>,0,338,2,4,0,0,205,0,2,0,0,0.181,baseline
+1790218002,4aa9acb1199c7ec1,npm,npm run build,1,5281,2,4,0,0,122,0,2,0,1,0.652,baseline
+1790218038,4aa9acb1199c7ec1,git,git diff <path>,0,70,2,4,1,1,36,1,2,0,0,0.02,baseline
+1790218204,4aa9acb1199c7ec1,git,git pull,0,659,2,4,0,0,166,0,1,0,0,0.155,baseline
+1790218322,4aa9acb1199c7ec1,python3,python3 <path>,1,359,2,4,0,0,118,0,1,0,0,0.125,baseline
+1790218415,4aa9acb1199c7ec1,git,git commit -m <arg>,0,412,2,4,1,1,93,1,3,0,0,0.147,baseline
+1790218578,4aa9acb1199c7ec1,python3,python3 <path>,0,3926,2,4,0,0,163,0,1,0,0,0.339,baseline
+1790230916,819dbc88958c1ad1,git,git pull,0,92,6,4,0,0,12338,1,1,0,0,0.029,baseline
+1790231064,819dbc88958c1ad1,grep,grep -r <arg> <path>,0,105,6,4,0,0,148,0,3,0,0,0.17,baseline
