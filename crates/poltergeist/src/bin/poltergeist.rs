@@ -448,11 +448,7 @@ fn predictor_status(cfg: &config::Config, labeled: Option<u64>) -> String {
             if h.degraded {
                 return "baseline (degraded: model not fitted yet)".to_string();
             }
-            if !command_ok(
-                &sidecar_python(),
-                &["-c", "import tabpfn"],
-                Duration::from_secs(3),
-            ) {
+            if !command_ok(&sidecar_python(), TABPFN_PROBE, Duration::from_secs(3)) {
                 return "baseline (degraded: tabpfn not importable)".to_string();
             }
             if let Some(n) = labeled {
@@ -625,7 +621,7 @@ fn doctor_inner() -> Result<()> {
     }
 
     let tabpfn_py = sidecar_python();
-    let tabpfn = command_ok(&tabpfn_py, &["-c", "import tabpfn"], Duration::from_secs(3));
+    let tabpfn = command_ok(&tabpfn_py, TABPFN_PROBE, Duration::from_secs(3));
     let tabpfn_detail = if tabpfn {
         format!("importable ({tabpfn_py})")
     } else {
@@ -727,6 +723,14 @@ fn row(ok: Option<bool>, name: &str, detail: &str, fix: &str) {
 fn sidecar_python() -> String {
     std::env::var("POLTERGEIST_PYTHON").unwrap_or_else(|_| "python3".into())
 }
+
+// Fast "is tabpfn installed?" probe. A full `import tabpfn` loads torch
+// (~8 s cold) and always trips the 3 s budget, so only resolve the module
+// spec here; the sidecar health check covers real importability.
+const TABPFN_PROBE: &[&str] = &[
+    "-c",
+    "import importlib.util,sys; sys.exit(0 if importlib.util.find_spec('tabpfn') else 1)",
+];
 
 fn command_ok(program: &str, args: &[&str], limit: Duration) -> bool {
     let Ok(mut child) = Command::new(program)

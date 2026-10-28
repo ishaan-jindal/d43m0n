@@ -97,7 +97,9 @@ Every command above works with networking disabled. There is no network listener
 
 ## Predictor and narrator setup
 
-TabPFN is not bundled. Local use requires accepting Prior Labs' non-commercial license and obtaining the weights per their instructions, then `pip install tabpfn==9.2.0`. Without it the sidecar reports `degraded` and the daemon reports `baseline`; `stats` never claims TabPFN unless the sidecar is healthy and `python3 -c "import tabpfn"` succeeds.
+TabPFN is not bundled. Local use requires accepting Prior Labs' non-commercial license and obtaining the weights per their instructions, then `pip install tabpfn==9.2.0` — on Arch's externally-managed Python, install into the sidecar venv instead: `~/.local/share/poltergeist/venv/bin/pip install "tabpfn==9.2.0"`. The daemon spawns the sidecar with `$POLTERGEIST_PYTHON` (set in the fish snippet config and the systemd unit). Without it the sidecar reports `degraded` and the daemon reports `baseline`; `stats` never claims TabPFN unless the sidecar is healthy and the probe import succeeds.
+
+First fit downloads weights after a one-time license acceptance. Headless: accept the license at https://ux.priorlabs.ai (Licenses tab), copy the key from https://ux.priorlabs.ai/account, add `Environment=TABPFN_TOKEN=<key>` under `[Service]` via `systemctl --user edit poltergeist`, and restart.
 
 Narration uses Ollama on localhost. The default model is `gemma3:4b`; if your local cache has a different tag, set it in `~/.config/poltergeist/config.toml`:
 
