@@ -690,7 +690,7 @@ fn doctor_inner() -> Result<()> {
             .map(|s| s.contains("poltergeist init"))
             .unwrap_or(false)
     }) || std::fs::read_to_string(config::home().join(".config/fish/config.fish"))
-        .map(|s| s.contains("poltergeist init"))
+        .map(|s| s.contains("poltergeist init") || s.contains("init fish"))
         .unwrap_or(false);
     row(
         Some(installed),
