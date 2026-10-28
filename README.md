@@ -8,7 +8,7 @@ Nothing leaves the machine: prediction runs on TabPFN in a local sidecar (or the
 
 ## Quickstart
 
-Prerequisites: Rust stable, Python 3.11+ (only for the TabPFN sidecar), zsh or bash.
+Prerequisites: Rust stable, Python 3.11+ (only for the TabPFN sidecar), zsh, bash or fish.
 
 ```sh
 cargo build --release
@@ -22,6 +22,12 @@ Bash gets post-whispers only (no `preexec`). `init` prints the snippet without t
 
 ```sh
 eval "$(./target/release/poltergeist init bash)"
+```
+
+Fish gets full pre- and post-whispers via `fish_preexec`/`fish_postexec`:
+
+```sh
+poltergeist init fish | source
 ```
 
 ## Séance

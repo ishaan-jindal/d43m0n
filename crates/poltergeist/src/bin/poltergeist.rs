@@ -12,6 +12,7 @@ use poltergeist::{config, daemon, eval, level, predictor, proto, redact, store};
 const HOOK_BUDGET: Duration = Duration::from_millis(40);
 const ZSH_SNIPPET: &str = include_str!("../../../../shell/zsh.zsh");
 const BASH_SNIPPET: &str = include_str!("../../../../shell/bash.bash");
+const FISH_SNIPPET: &str = include_str!("../../../../shell/fish.fish");
 
 #[derive(Parser)]
 #[command(
@@ -26,7 +27,7 @@ struct Cli {
 
 #[derive(Subcommand)]
 enum Cmd {
-    /// Print the shell snippet (`eval "$(poltergeist init zsh)"`).
+    /// Print the shell snippet (`poltergeist init fish | source` for fish).
     Init { shell: String },
     /// Manage the daemon.
     Daemon {
@@ -535,11 +536,12 @@ fn purge(dirs: bool, all: bool) -> Result<()> {
 fn init(shell: &str) -> Result<()> {
     let _ = spawn_daemon();
     match shell {
-        // Byte-identical to shell/*.zsh|bash so `init` output and the checked-in
+        // Byte-identical to shell/*.zsh|bash|fish so `init` output and the checked-in
         // snippets cannot drift apart.
         "zsh" => print!("{ZSH_SNIPPET}"),
         "bash" => print!("{BASH_SNIPPET}"),
-        other => bail!("unsupported shell '{other}' (use zsh or bash)"),
+        "fish" => print!("{FISH_SNIPPET}"),
+        other => bail!("unsupported shell '{other}' (use zsh, bash or fish)"),
     }
     Ok(())
 }
@@ -687,14 +689,16 @@ fn doctor_inner() -> Result<()> {
         std::fs::read_to_string(config::home().join(rc))
             .map(|s| s.contains("poltergeist init"))
             .unwrap_or(false)
-    });
+    }) || std::fs::read_to_string(config::home().join(".config/fish/config.fish"))
+        .map(|s| s.contains("poltergeist init"))
+        .unwrap_or(false);
     row(
         Some(installed),
         "hook installed",
         if installed {
             "found in shell rc"
         } else {
-            "not found in ~/.zshrc or ~/.bashrc"
+            "not found in ~/.zshrc, ~/.bashrc or fish config"
         },
         "echo 'eval \"$(poltergeist init zsh)\"' >> ~/.zshrc",
     );
