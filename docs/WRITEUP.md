@@ -2,7 +2,7 @@
 
 ## What it is
 
-Poltergeist is a local-only terminal haunting. A zsh/bash hook reports each command to a small Rust daemon, which redacts it immediately, stores an event, and predicts whether the command will fail. Before a risky command it whispers one dry line; after it, another. It also remembers directories you abandoned: `poltergeist seance` lists them, last redacted commands included, and marks missing paths as `departed`.
+Poltergeist is a local-only terminal haunting. A zsh/bash/fish hook reports each command to a small Rust daemon, which redacts it immediately, stores an event, and predicts whether the command will fail. Before a risky command it whispers one dry line; after it, another. It also remembers directories you abandoned: `poltergeist seance` lists them, last redacted commands included, and marks missing paths as `departed`.
 
 Prediction is TabPFN in a Python sidecar, with a Rust Beta(1,1) family-failure baseline as fallback. Narration is a local Gemma model through Ollama, with a canned-line bank as fallback. The hook has a 40 ms hard budget, always exits 0, and prints nothing if the daemon is down.
 
@@ -54,7 +54,7 @@ For context, the SRS budget is 30 ms p95 for the hook. These numbers are a lower
 
 1. **TabPFN weights offline.** The sidecar imports `tabpfn` lazily and survives its absence, but there was no way to install the package or accept the license/weights flow in this sandbox. The honest outcome is the baseline-only table above.
 2. **No Ollama server.** Every narration path fell back to canned lines. The write-up's narrator latency is therefore the fallback path, not Gemma generation.
-3. **No zsh installed.** The zsh hook is checked in and `init zsh` is byte-identical to it, but interactive verification ran under bash only. Bash is post-only by design (no reliable `preexec` without `bash-preexec`).
+3. **No zsh installed.** The zsh hook is checked in and `init zsh` is byte-identical to it, but interactive verification ran under bash (post-only by design, no reliable `preexec` without `bash-preexec`) and fish. Fish gets full pre+post whispers and was verified live over a pty: correct `--cmd/--cwd`, `--exit` (1 for `false`), real durations (`sleep 0.2` → 206 ms), `$status` preserved, silent when the daemon is down.
 4. **No Sentry tracing.** Cut per SRS §14 cut order, so there are no trace screenshots and no Sentry dependency. Timings come from `eval --latency`.
 
 ## Prize tracks targeted
