@@ -448,7 +448,11 @@ fn predictor_status(cfg: &config::Config, labeled: Option<u64>) -> String {
             if h.degraded {
                 return "baseline (degraded: model not fitted yet)".to_string();
             }
-            if !command_ok("python3", &["-c", "import tabpfn"], Duration::from_secs(3)) {
+            if !command_ok(
+                &sidecar_python(),
+                &["-c", "import tabpfn"],
+                Duration::from_secs(3),
+            ) {
                 return "baseline (degraded: tabpfn not importable)".to_string();
             }
             if let Some(n) = labeled {
@@ -620,15 +624,17 @@ fn doctor_inner() -> Result<()> {
         }
     }
 
-    let tabpfn = command_ok("python3", &["-c", "import tabpfn"], Duration::from_secs(3));
+    let tabpfn_py = sidecar_python();
+    let tabpfn = command_ok(&tabpfn_py, &["-c", "import tabpfn"], Duration::from_secs(3));
+    let tabpfn_detail = if tabpfn {
+        format!("importable ({tabpfn_py})")
+    } else {
+        "not importable".to_string()
+    };
     row(
         Some(tabpfn),
         "tabpfn import",
-        if tabpfn {
-            "importable"
-        } else {
-            "not importable"
-        },
+        &tabpfn_detail,
         "pip install tabpfn (see README for weights/license)",
     );
 
@@ -716,6 +722,10 @@ fn row(ok: Option<bool>, name: &str, detail: &str, fix: &str) {
     if ok == Some(false) && !fix.is_empty() {
         println!("     fix: {fix}");
     }
+}
+
+fn sidecar_python() -> String {
+    std::env::var("POLTERGEIST_PYTHON").unwrap_or_else(|_| "python3".into())
 }
 
 fn command_ok(program: &str, args: &[&str], limit: Duration) -> bool {
