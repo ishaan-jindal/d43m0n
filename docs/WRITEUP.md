@@ -32,6 +32,15 @@ Seeded demo store, 1600 labeled events, time-ordered 80/20 split (1280 train / 3
 
 Honest read: TabPFN wins ROC AUC by two points and loses log loss / accuracy by a hair — on this synthetic demo history the two are effectively tied, which is itself the finding: a 15-feature Beta-smoothed baseline is a strong prior for shell-failure prediction, and TabPFN's edge would have to come from real user history, not the seeded set. No synthetic TabPFN number was ever reported; this is the measured one (`tabpfn-v3.5-20260909.safetensors`, 1280-row fit, venv install, license accepted via `TABPFN_TOKEN`, weights via `HF_TOKEN`).
 
+Real history, 222 labeled events, time-ordered 80/20 split (177 train / 45 holdout):
+
+| Predictor | ROC AUC | Log loss | Accuracy @0.5 | n |
+|---|---|---|---|---|
+| Rust baseline | 0.978 | 0.259 | 0.978 | 45 |
+| TabPFN (3.5, CPU) | **1.000** | **0.001** | **1.000** | 45 |
+
+Small holdout (n=45), so read it as a perfect score on a small test, not proof of generality — but the direction flipped exactly as predicted: on real habits TabPFN separates cleanly where the demo set was a tie. The live daemon crossed the 200-row threshold the same night and now predicts with TabPFN.
+
 Hook and narration latency, `poltergeist eval --demo --latency`, N=200, in-process pipeline (no shell, no daemon socket), debug build:
 
 | Stage | p50 | p95 |
