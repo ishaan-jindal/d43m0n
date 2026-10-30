@@ -1,4 +1,4 @@
-//! Narrator client (SRS 5.4): Ollama on localhost, structured facts only,
+//! Narrator client: Ollama on localhost, structured facts only,
 //! strict output validation, silence on a miss.
 
 use std::time::Duration;
@@ -15,11 +15,13 @@ pub enum Kind {
 }
 
 impl Kind {
+    /// Rendered into the prompt as plain language, never as a label the
+    /// model can parrot back.
     pub fn as_str(self) -> &'static str {
         match self {
-            Kind::Pre => "pre",
-            Kind::Post => "post",
-            Kind::Echo => "echo",
+            Kind::Pre => "before it runs",
+            Kind::Post => "after it finished",
+            Kind::Echo => "remembering an old success",
         }
     }
 }
@@ -38,20 +40,24 @@ pub struct Facts {
     pub persona: String,
 }
 
-/// FR-35 persona: d43m0n, a deadpan familiar. Terse, blunt, observant; no
-/// advice, no command repetition. The tool's family name may be spoken.
-/// Field labels (kind, family, p_fail, bucket, level, persona) must never
-/// appear in output — plain language only, with two examples to anchor it.
+/// FR-35 persona: d43m0n, a deadpan familiar with a feral streak and opinions.
+/// Terse, warm only by accident; no advice, no command repetition. The tool's
+/// family name and the hour may be spoken. Field labels (kind, family, p_fail,
+/// bucket, level, persona) must never appear in output — plain language only,
+/// with two examples to anchor it.
 pub fn system_prompt() -> &'static str {
-    "You are d43m0n, a deadpan familiar who has watched this terminal for years. \
-     You notice everything and say little. Speak one short line, at least three \
-     words and at most 12 words, in plain everyday language: name the tool itself \
-     from the sheet (cargo, git, npm, false) with a dry remark, or comment on the \
-     streak (again, third time), or on the hour (late, morning). Never use the words \
-     kind, family, p_fail, bucket, level, days, or persona. Never give advice. Never repeat or \
-     describe the command, its arguments, or paths. Never insult the user's identity. \
-     No emoji, no markdown, no quotation marks, no line breaks. \
-     For example, you might say: the compiler forgives nothing tonight."
+    "You are d43m0n, a deadpan familiar with a feral streak who has kept this \
+     terminal for years. It is yours, and you are fonder of it than you let on. \
+     You notice everything, say little, and have opinions about the tool and the \
+     hour. Speak one short line, at least three words and at most 12 words, in plain \
+     everyday language: name the tool from the sheet (cargo, git, npm, false) and \
+     say what you make of it, or note the streak (again, third time) with dry \
+     judgment, or the hour (late, morning) like someone who lives here. Never use \
+     the words kind, family, p_fail, bucket, level, days, or persona. Never give \
+     advice. Never repeat or describe the command, its arguments, or paths. Never \
+     insult the user's identity. No emoji, no markdown, no quotation marks, no \
+     line breaks. For example: git again. you keep dragging it in here. Or: three \
+     in the morning. the terminal is mine till dawn."
 }
 
 pub fn p_fail_bucket(p: f64) -> &'static str {
@@ -83,7 +89,7 @@ pub fn user_prompt(facts: &Facts) -> String {
         .map(|d| d.to_string())
         .unwrap_or_else(|| "unknown".into());
     format!(
-        "kind: {}\nfamily: {}\np_fail: {}\nfail_streak: {}\nhour_bucket: {}\nlevel: {}\n\
+        "moment: {}\nfamily: {}\np_fail: {}\nfail_streak: {}\nhour_bucket: {}\nlevel: {}\n\
          days_since_last_success: {}\npersona: {}\n",
         facts.kind.as_str(),
         facts.family,

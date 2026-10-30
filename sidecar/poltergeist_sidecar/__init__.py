@@ -1,3 +1,3 @@
-"""Local TabPFN predictor sidecar for Poltergeist (SRS 5.3, 6.3)."""
+"""Local TabPFN predictor sidecar for d43m0n."""
 
 __version__ = "0.1.0"

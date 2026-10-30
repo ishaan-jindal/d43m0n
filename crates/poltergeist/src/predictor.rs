@@ -1,4 +1,4 @@
-//! Predictor client (SRS 5.3, 6.3): baseline fallback, Unix-socket sidecar,
+//! Predictor client: baseline fallback, Unix-socket sidecar,
 //! prediction cache, degraded flag and sidecar supervision.
 
 use std::collections::HashMap;
@@ -328,7 +328,7 @@ pub fn ensure_sidecar() -> Option<PathBuf> {
     }
 }
 
-/// Refit the sidecar on `train` and score `test` (used by `poltergeist eval`).
+/// Refit the sidecar on `train` and score `test` (used by `d43m0n eval`).
 /// Starts the sidecar if needed and waits briefly for it to accept connections.
 pub fn eval_tabpfn(
     train: &[[f64; features::N_FEATURES]],

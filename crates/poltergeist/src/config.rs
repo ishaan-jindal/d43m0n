@@ -327,7 +327,7 @@ mod tests {
     use super::*;
 
     #[test]
-    fn defaults_match_srs() {
+    fn defaults_are_sane() {
         let cfg = Config::default();
         assert_eq!(cfg.general.glyph, "👻");
         assert_eq!(cfg.levels.l1, 0.30);
@@ -339,7 +339,7 @@ mod tests {
 
     #[test]
     fn partial_toml_keeps_defaults() {
-        let dir = std::env::temp_dir().join(format!("poltergeist-cfg-{}", std::process::id()));
+        let dir = std::env::temp_dir().join(format!("d43m0n-cfg-{}", std::process::id()));
         std::fs::create_dir_all(&dir).unwrap();
         let path = dir.join("config.toml");
         std::fs::write(&path, "[general]\nglyph = \"*\"\n\n[levels]\nl1 = 0.4\n").unwrap();

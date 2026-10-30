@@ -1,4 +1,4 @@
-//! Poltergeist core: privacy, storage, haunting levels, prediction, IPC, daemon.
+//! d43m0n core: privacy, storage, haunting levels, prediction, IPC, daemon.
 
 pub mod config;
 pub mod daemon;

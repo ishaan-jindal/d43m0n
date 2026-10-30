@@ -1,4 +1,4 @@
-//! Redaction (SRS 9.2), secret guard (9.3) and narrator output validation.
+//! Redaction, secret guard and narrator output validation.
 
 use std::sync::OnceLock;
 

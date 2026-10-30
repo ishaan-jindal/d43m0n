@@ -3,9 +3,9 @@ requires = ["setuptools>=68"]
 build-backend = "setuptools.build_meta"
 
 [project]
-name = "poltergeist-sidecar"
+name = "d43m0n-sidecar"
 version = "0.1.0"
-description = "Local TabPFN predictor sidecar for Poltergeist"
+description = "Local TabPFN predictor sidecar for d43m0n"
 requires-python = ">=3.11"
 dependencies = [
   "tabpfn==9.2.0",

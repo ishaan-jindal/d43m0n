@@ -1,9 +1,8 @@
 #!/usr/bin/env python3
-"""Generate the bundled synthetic demo history (SRS FR-70).
+"""Generate the bundled synthetic demo history.
 
-Output is a CSV mirroring the `events` table in SRS section 7, minus the
-autoincrement `id` column. Everything is stdlib and deterministic for a given
---seed.
+Output is a CSV mirroring the `events` table, minus the autoincrement `id`
+column. Everything is stdlib and deterministic for a given --seed.
 
 Patterns baked into the data:
   * cargo fails more often at night (22:00-04:59 UTC)
@@ -181,7 +180,7 @@ def build_rows(seed: int, count: int, start: str) -> list[list[object]]:
         family = rng.choice(DIRS[cwd][0])
         hour = datetime.fromtimestamp(ts, timezone.utc).hour
         dow = datetime.fromtimestamp(ts, timezone.utc).weekday()  # Mon=0
-        dow = (dow + 1) % 7  # SQLite/SRS convention: 0 = Sunday
+        dow = (dow + 1) % 7  # SQLite convention: 0 = Sunday
 
         p = fail_probability(family, cwd, hour, streak)
         failed = rng.random() < p
@@ -228,7 +227,7 @@ def build_rows(seed: int, count: int, start: str) -> list[list[object]]:
 
 def main(argv: list[str] | None = None) -> int:
     parser = argparse.ArgumentParser(
-        description="Generate the deterministic synthetic demo history (CSV, SRS section 7 columns).",
+        description="Generate the deterministic synthetic demo history (CSV, events-table columns).",
         epilog="Output never contains real commands: cmd_redacted is built from synthetic templates.",
     )
     parser.add_argument("--seed", type=int, default=42, help="RNG seed (default: 42)")
@@ -236,7 +235,7 @@ def main(argv: list[str] | None = None) -> int:
         "--rows",
         type=int,
         default=1600,
-        help="number of events to generate; default 1600, SRS minimum 1500",
+        help="number of events to generate; default 1600, minimum 1500",
     )
     parser.add_argument(
         "--start",

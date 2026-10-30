@@ -1,9 +1,9 @@
-# Poltergeist zsh integration (SRS FR-1..FR-8).
-# Install: eval "$(poltergeist init zsh)"
+# d43m0n zsh integration.
+# Install: eval "$(d43m0n init zsh)"
 #
-# Contract with `poltergeist hook`:
-#   poltergeist hook pre  --cmd <text> --cwd <path>
-#   poltergeist hook post --exit <code> --duration-ms <ms>
+# Contract with `d43m0n hook`:
+#   d43m0n hook pre  --cmd <text> --cwd <path>
+#   d43m0n hook post --exit <code> --duration-ms <ms>
 #   * prints at most one whisper line on stdout, or nothing;
 #   * always exits 0 and returns instantly when the daemon is down.
 # Leading-space commands and the ignore list are sent as-is; the daemon filters.
@@ -14,11 +14,11 @@ autoload -Uz add-zsh-hook 2>/dev/null
 
 : "${POLTERGEIST_GLYPH:=👻}"
 : "${POLTERGEIST_HOOK_TIMEOUT:=0.04}"
-__poltergeist_bin=${POLTERGEIST_BIN:-poltergeist}
-__poltergeist_start=
-__poltergeist_ran=
+__d43m0n_bin=${POLTERGEIST_BIN:-d43m0n}
+__d43m0n_start=
+__d43m0n_ran=
 
-__poltergeist_emit() {
+__d43m0n_emit() {
   [[ -n $1 ]] || return 0
   if [[ -z ${NO_COLOR+x} && -t 2 ]]; then
     print -u2 -r -- $'\e[2;3m'"${POLTERGEIST_GLYPH} $1"$'\e[0m'
@@ -30,38 +30,38 @@ __poltergeist_emit() {
 
 # Run the hook client under the hard timeout, print its whisper if any.
 # Never propagates failure: a dead daemon or missing binary is silent.
-__poltergeist_call() {
+__d43m0n_call() {
   local whisper
   if (( $+commands[timeout] )); then
     whisper=$(timeout "$POLTERGEIST_HOOK_TIMEOUT" "$@" 2>/dev/null) || return 0
   else
     whisper=$("$@" 2>/dev/null) || return 0
   fi
-  __poltergeist_emit "$whisper"
+  __d43m0n_emit "$whisper"
 }
 
-__poltergeist_preexec() {
+__d43m0n_preexec() {
   local ret=$? cmd=$1
-  __poltergeist_ran=1
-  __poltergeist_call "$__poltergeist_bin" hook pre --cmd "$cmd" --cwd "$PWD"
-  __poltergeist_start=$EPOCHREALTIME
+  __d43m0n_ran=1
+  __d43m0n_call "$__d43m0n_bin" hook pre --cmd "$cmd" --cwd "$PWD"
+  __d43m0n_start=$EPOCHREALTIME
   return $ret
 }
 
-__poltergeist_precmd() {
-  local ret=$? start=$__poltergeist_start
+__d43m0n_precmd() {
+  local ret=$? start=$__d43m0n_start
   local -i elapsed_ms=0
   # precmd also runs for the first prompt, before any command ran: send nothing.
-  [[ -n $__poltergeist_ran ]] || return $ret
-  __poltergeist_ran=
-  __poltergeist_start=
+  [[ -n $__d43m0n_ran ]] || return $ret
+  __d43m0n_ran=
+  __d43m0n_start=
   if [[ -n $start && -n $EPOCHREALTIME ]]; then
     (( elapsed_ms = (EPOCHREALTIME - start) * 1000 ))
     (( elapsed_ms < 0 )) && elapsed_ms=0
   fi
-  __poltergeist_call "$__poltergeist_bin" hook post --exit "$ret" --duration-ms "$elapsed_ms"
+  __d43m0n_call "$__d43m0n_bin" hook post --exit "$ret" --duration-ms "$elapsed_ms"
   return $ret
 }
 
-add-zsh-hook preexec __poltergeist_preexec 2>/dev/null
-add-zsh-hook precmd __poltergeist_precmd 2>/dev/null
+add-zsh-hook preexec __d43m0n_preexec 2>/dev/null
+add-zsh-hook precmd __d43m0n_precmd 2>/dev/null

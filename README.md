@@ -1,6 +1,6 @@
-# Poltergeist 👻
+# d43m0n 👻
 
-A local-only terminal haunting. Poltergeist watches your shell, learns your habits, predicts which commands are likely to fail before they run, and comments in the voice of a ghost. It also surfaces work you forgot was still waiting in old directories.
+A local-only terminal haunting. d43m0n watches your shell, learns your habits, predicts which commands are likely to fail before they run, and comments in the voice of a ghost. It also surfaces work you forgot was still waiting in old directories.
 
 Nothing leaves the machine: prediction runs on TabPFN in a local sidecar (or the built-in Rust baseline), narration on a local Gemma model via Ollama (silence when it misses), and the event store is SQLite under `~/.local/share/poltergeist/`. The shell hook has a 40 ms budget and degrades silently when the daemon is down.
 
@@ -8,7 +8,7 @@ Nothing leaves the machine: prediction runs on TabPFN in a local sidecar (or the
 
 ## Meet d43m0n
 
-The default persona is `d43m0n`, a blunt little familiar who notices everything and says little; lines name the tool, the streak, or the hour, never advice, arguments, or paths. Rename it in `~/.config/poltergeist/config.toml`:
+The default persona is `d43m0n`, a deadpan familiar with opinions — fonder of the terminal than it lets on, blunt about the tool and the hour, never giving advice or naming a path. Rename it in `~/.config/poltergeist/config.toml`:
 
 ```toml
 [general]
@@ -23,22 +23,22 @@ Prerequisites: Rust stable, Python 3.11+ (only for the TabPFN sidecar), zsh, bas
 
 ```sh
 cargo build --release
-./target/release/poltergeist daemon start
-eval "$(./target/release/poltergeist init zsh)"   # or: init bash
-./target/release/poltergeist demo --seed           # 1600 events in demo.db
-./target/release/poltergeist demo --run            # live replay
+./target/release/d43m0n daemon start
+eval "$(./target/release/d43m0n init zsh)"   # or: init bash
+./target/release/d43m0n demo --seed          # 1600 events in demo.db
+./target/release/d43m0n demo --run           # live replay
 ```
 
 Bash gets post-whispers only (no `preexec`). `init` prints the snippet without touching your rc file; add the `eval` line yourself.
 
 ```sh
-eval "$(./target/release/poltergeist init bash)"
+eval "$(./target/release/d43m0n init bash)"
 ```
 
 Fish gets full pre- and post-whispers via `fish_preexec`/`fish_postexec`:
 
 ```sh
-poltergeist init fish | source
+d43m0n init fish | source
 ```
 
 ## Séance
@@ -48,7 +48,7 @@ poltergeist init fish | source
 Real output from the bundled demo store:
 
 ```text
-$ poltergeist seance --demo --days 30
+$ d43m0n seance --demo --days 30
 séance: 7 directories dormant for 30+ days (oldest first)
 
 /home/dev/scratch  (departed)
@@ -67,7 +67,7 @@ séance: 7 directories dormant for 30+ days (oldest first)
 `demo --run` replays 18 scripted commands through the level engine with cached predictions from `demo.db`; whisper text is generated live. It never opens your real database and starts no daemon.
 
 ```text
-$ poltergeist demo --run
+$ d43m0n demo --run
 demo replay: 18 commands · live narrator · /home/sacred/.local/share/poltergeist/demo.db
 (read-only over the demo store; your real database is untouched)
 
@@ -88,7 +88,7 @@ levels reached: {0, 1, 2, 3} · whispers: 7
 Time-ordered 80/20 holdout, no shuffling. Baseline is the Rust Beta(1,1) family failure rate; TabPFN is fitted in the sidecar when its weights are importable.
 
 ```text
-$ poltergeist eval --demo --latency
+$ d43m0n eval --demo --latency
 eval: 1600 labeled events, time-ordered 80/20 (1280 train / 320 holdout)
 events: 1600  train: 1280  holdout: 320  split: time-ordered 80/20
 baseline  auc 0.705  logloss 0.3902  acc 0.831  n 320
@@ -104,7 +104,7 @@ latency: N=200 in-process (no shell, no daemon socket)
 
 ## Offline
 
-Every command above works with networking disabled. There is no network listener and no cloud backend; the only traffic Poltergeist ever attempts is loopback to Ollama. With Ollama off, narration is silent. With TabPFN absent, prediction falls back to the Rust baseline. `poltergeist doctor` names whichever component is missing and the fix.
+Every command above works with networking disabled. There is no network listener and no cloud backend; the only traffic d43m0n ever attempts is loopback to Ollama. With Ollama off, narration is silent. With TabPFN absent, prediction falls back to the Rust baseline. `d43m0n doctor` names whichever component is missing and the fix.
 
 ## Predictor and narrator setup
 
@@ -121,15 +121,14 @@ model = "gemma4:e2b"   # local override; any installed Gemma tag works
 
 Narration output is validated: one line, ≤12 words, no newlines, no markdown, no emoji. Two failed attempts produce silence.
 
-Sentry tracing was cut per the SRS §14 cut order; there is no Sentry dependency and no telemetry of any kind.
+Sentry tracing was cut early; there is no Sentry dependency and no telemetry of any kind.
 
 ## Privacy
 
-Raw command text never touches disk. Events store only the family, a redacted form (`<path>`, `<url>`, `<arg>`, flags kept), exit code and timing. Commands matching secret patterns are dropped entirely. The event store is SQLite under `~/.local/share/poltergeist/`; `poltergeist purge --all` deletes it. See [docs/PRIVACY.md](docs/PRIVACY.md).
+Raw command text never touches disk. Events store only the family, a redacted form (`<path>`, `<url>`, `<arg>`, flags kept), exit code and timing. Commands matching secret patterns are dropped entirely. The event store is SQLite under `~/.local/share/poltergeist/`; `d43m0n purge --all` deletes it. See [docs/PRIVACY.md](docs/PRIVACY.md).
 
 ## Docs
 
-- [SRS](SRS.md)
 - [Decisions and VERIFY outcomes](docs/DECISIONS.md)
 - [Privacy](docs/PRIVACY.md)
 - [Write-up draft](docs/WRITEUP.md)

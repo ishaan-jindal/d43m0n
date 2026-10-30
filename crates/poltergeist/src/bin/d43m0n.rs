@@ -1,4 +1,4 @@
-//! `poltergeist` CLI and the tiny hook client.
+//! `d43m0n` CLI and the tiny hook client.
 
 use std::io::{BufRead, BufReader, Write};
 use std::os::unix::net::UnixStream;
@@ -7,7 +7,7 @@ use std::time::{Duration, Instant};
 
 use anyhow::{bail, Context, Result};
 use clap::{Parser, Subcommand};
-use poltergeist::{config, daemon, eval, level, predictor, proto, redact, store};
+use d43m0n::{config, daemon, eval, level, predictor, proto, redact, store};
 
 const HOOK_BUDGET: Duration = Duration::from_millis(40);
 const ZSH_SNIPPET: &str = include_str!("../../../../shell/zsh.zsh");
@@ -15,11 +15,7 @@ const BASH_SNIPPET: &str = include_str!("../../../../shell/bash.bash");
 const FISH_SNIPPET: &str = include_str!("../../../../shell/fish.fish");
 
 #[derive(Parser)]
-#[command(
-    name = "poltergeist",
-    version,
-    about = "A local-only terminal haunting"
-)]
+#[command(name = "d43m0n", version, about = "A local-only terminal haunting")]
 struct Cli {
     #[command(subcommand)]
     cmd: Cmd,
@@ -27,7 +23,7 @@ struct Cli {
 
 #[derive(Subcommand)]
 enum Cmd {
-    /// Print the shell snippet (`poltergeist init fish | source` for fish).
+    /// Print the shell snippet (`d43m0n init fish | source` for fish).
     Init { shell: String },
     /// Manage the daemon.
     Daemon {
@@ -135,7 +131,7 @@ fn main() {
             Ok(()) => 0,
             Err(e) => {
                 if !is_hook {
-                    eprintln!("poltergeist: {e:#}");
+                    eprintln!("d43m0n: {e:#}");
                 }
                 1
             }
@@ -186,7 +182,7 @@ fn run(cli: Cli) -> Result<()> {
             } else {
                 config::db_path()
             };
-            poltergeist::seance::run(&db, days, narrate)
+            d43m0n::seance::run(&db, days, narrate)
         }
         Cmd::Eval {
             json,
@@ -331,7 +327,7 @@ fn spawn_daemon() -> Result<bool> {
     }
     let daemon_bin = std::env::current_exe()
         .context("locating current executable")?
-        .with_file_name("poltergeistd");
+        .with_file_name("d43m0nd");
     if !daemon_bin.exists() {
         bail!("{} not found next to the CLI", daemon_bin.display());
     }
@@ -405,7 +401,7 @@ fn stats(demo: bool) -> Result<()> {
     let (total, failures, families, labeled) = if path.exists() {
         let conn = store::open(&path)?;
         let stats = store::stats(&conn)?;
-        let labeled = Some(poltergeist::features::count_labeled(
+        let labeled = Some(d43m0n::features::count_labeled(
             &conn,
             &cfg.predictor.fail_exclude_codes,
         )?);
@@ -501,7 +497,7 @@ fn demo(seed: bool, run: bool, count: usize) -> Result<()> {
         return Ok(());
     }
     if run {
-        return poltergeist::demo::run(&config::demo_db_path());
+        return d43m0n::demo::run(&config::demo_db_path());
     }
     bail!("choose --seed or --run")
 }
@@ -572,7 +568,7 @@ fn doctor_inner() -> Result<()> {
         Some(running),
         "daemon",
         &daemon_detail,
-        "poltergeist daemon start",
+        "d43m0n daemon start",
     );
 
     let sidecar = config::sidecar_socket_path();
@@ -581,7 +577,7 @@ fn doctor_inner() -> Result<()> {
             Some(false),
             "sidecar",
             "not running",
-            "poltergeist daemon start (spawns the sidecar)",
+            "d43m0n daemon start (spawns the sidecar)",
         );
     } else {
         match predictor::health() {
@@ -615,7 +611,7 @@ fn doctor_inner() -> Result<()> {
                 Some(false),
                 "sidecar",
                 "socket present but health probe failed",
-                "poltergeist daemon stop && poltergeist daemon start",
+                "d43m0n daemon stop && d43m0n daemon start",
             ),
         }
     }
@@ -689,10 +685,10 @@ fn doctor_inner() -> Result<()> {
 
     let installed = [".zshrc", ".bashrc"].iter().any(|rc| {
         std::fs::read_to_string(config::home().join(rc))
-            .map(|s| s.contains("poltergeist init"))
+            .map(|s| s.contains("d43m0n init"))
             .unwrap_or(false)
     }) || std::fs::read_to_string(config::home().join(".config/fish/config.fish"))
-        .map(|s| s.contains("poltergeist init") || s.contains("init fish"))
+        .map(|s| s.contains("d43m0n init") || s.contains("init fish"))
         .unwrap_or(false);
     row(
         Some(installed),
@@ -702,7 +698,7 @@ fn doctor_inner() -> Result<()> {
         } else {
             "not found in ~/.zshrc, ~/.bashrc or fish config"
         },
-        "echo 'eval \"$(poltergeist init zsh)\"' >> ~/.zshrc",
+        "echo 'eval \"$(d43m0n init zsh)\"' >> ~/.zshrc",
     );
 
     Ok(())

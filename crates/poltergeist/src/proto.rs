@@ -1,4 +1,4 @@
-//! Hook <-> daemon protocol, version 1 (SRS 6.2). Newline-delimited JSON.
+//! Hook <-> daemon protocol, version 1. Newline-delimited JSON.
 
 use serde::{Deserialize, Serialize};
 

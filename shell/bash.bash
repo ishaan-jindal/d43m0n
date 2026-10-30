@@ -1,9 +1,9 @@
-# Poltergeist bash integration (SRS FR-4): PROMPT_COMMAND post-whispers only.
+# d43m0n bash integration: PROMPT_COMMAND post-whispers only.
 # Pre-whispers in bash are out of scope for v1 (bash-preexec is needed for them).
-# Install: eval "$(poltergeist init bash)"
+# Install: eval "$(d43m0n init bash)"
 #
-# Contract with `poltergeist hook`:
-#   poltergeist hook post --exit <code> --duration-ms <ms>
+# Contract with `d43m0n hook`:
+#   d43m0n hook post --exit <code> --duration-ms <ms>
 #   * prints at most one whisper line on stdout, or nothing;
 #   * always exits 0 and returns instantly when the daemon is down.
 # Leading-space commands and the ignore list are sent as-is; the daemon filters.
@@ -12,18 +12,18 @@
 
 : ${POLTERGEIST_GLYPH:=👻}
 : ${POLTERGEIST_HOOK_TIMEOUT:=0.04}
-__poltergeist_bin=${POLTERGEIST_BIN:-poltergeist}
-__poltergeist_start=
+__d43m0n_bin=${POLTERGEIST_BIN:-d43m0n}
+__d43m0n_start=
 
 # One fork at init: does this date support %3N (GNU)? Otherwise durations are 0.
-if __poltergeist_probe=$(date +%s%3N 2>/dev/null) && [[ $__poltergeist_probe =~ ^[0-9]+$ ]]; then
-  __poltergeist_date_ms=1
+if __d43m0n_probe=$(date +%s%3N 2>/dev/null) && [[ $__d43m0n_probe =~ ^[0-9]+$ ]]; then
+  __d43m0n_date_ms=1
 else
-  __poltergeist_date_ms=0
+  __d43m0n_date_ms=0
 fi
-unset __poltergeist_probe
+unset __d43m0n_probe
 
-__poltergeist_emit() {
+__d43m0n_emit() {
   [[ -n $1 ]] || return 0
   if [[ -z ${NO_COLOR+x} && -t 2 ]]; then
     printf '\033[2;3m%s %s\033[0m\n' "$POLTERGEIST_GLYPH" "$1" >&2
@@ -35,70 +35,70 @@ __poltergeist_emit() {
 
 # Run the hook client under the hard timeout, print its whisper if any.
 # Never propagates failure: a dead daemon or missing binary is silent.
-__poltergeist_call() {
+__d43m0n_call() {
   local whisper
   if command -v timeout >/dev/null 2>&1; then
     whisper=$(timeout "$POLTERGEIST_HOOK_TIMEOUT" "$@" 2>/dev/null) || return 0
   else
     whisper=$("$@" 2>/dev/null) || return 0
   fi
-  __poltergeist_emit "$whisper"
+  __d43m0n_emit "$whisper"
 }
 
-# Set __poltergeist_now_ms. No subshell on bash >= 5 (EPOCHREALTIME).
-__poltergeist_now() {
+# Set __d43m0n_now_ms. No subshell on bash >= 5 (EPOCHREALTIME).
+__d43m0n_now() {
   if [[ -n ${EPOCHREALTIME:-} ]]; then
     local t=${EPOCHREALTIME//[.,]/}
-    __poltergeist_now_ms=$(( 10#$t / 1000 ))
-  elif (( __poltergeist_date_ms )); then
-    __poltergeist_now_ms=$(date +%s%3N)
+    __d43m0n_now_ms=$(( 10#$t / 1000 ))
+  elif (( __d43m0n_date_ms )); then
+    __d43m0n_now_ms=$(date +%s%3N)
   else
-    __poltergeist_now_ms=0
+    __d43m0n_now_ms=0
   fi
   return 0
 }
 
 # Timestamp the first simple command after a prompt. Skips the prompt hook itself.
-__poltergeist_debug() {
-  [[ $BASH_COMMAND == __poltergeist_prompt ]] && return 0
-  [[ -n $__poltergeist_start ]] && return 0
-  __poltergeist_now
-  __poltergeist_start=$__poltergeist_now_ms
+__d43m0n_debug() {
+  [[ $BASH_COMMAND == __d43m0n_prompt ]] && return 0
+  [[ -n $__d43m0n_start ]] && return 0
+  __d43m0n_now
+  __d43m0n_start=$__d43m0n_now_ms
   return 0
 }
 
-__poltergeist_run_original() {
+__d43m0n_run_original() {
   local cmd
-  for cmd in "${__poltergeist_orig_prompt[@]}"; do
+  for cmd in "${__d43m0n_orig_prompt[@]}"; do
     eval "$cmd"
   done
   return 0
 }
 
-__poltergeist_prompt() {
+__d43m0n_prompt() {
   local ret=$? start now duration_ms
-  start=$__poltergeist_start
-  __poltergeist_start=
-  __poltergeist_run_original
+  start=$__d43m0n_start
+  __d43m0n_start=
+  __d43m0n_run_original
   if [[ -n $start ]]; then
-    __poltergeist_now
-    now=$__poltergeist_now_ms
+    __d43m0n_now
+    now=$__d43m0n_now_ms
     duration_ms=$(( now - start ))
     (( duration_ms < 0 )) && duration_ms=0
-    __poltergeist_call "$__poltergeist_bin" hook post --exit "$ret" --duration-ms "$duration_ms"
+    __d43m0n_call "$__d43m0n_bin" hook post --exit "$ret" --duration-ms "$duration_ms"
   fi
   return "$ret"
 }
 
 # Wrap the existing PROMPT_COMMAND (string or array) instead of clobbering it.
-if [[ ${PROMPT_COMMAND:-} != __poltergeist_prompt ]]; then
-  __poltergeist_orig_prompt=()
+if [[ ${PROMPT_COMMAND:-} != __d43m0n_prompt ]]; then
+  __d43m0n_orig_prompt=()
   if [[ $(declare -p PROMPT_COMMAND 2>/dev/null) == "declare -a"* ]]; then
-    __poltergeist_orig_prompt=("${PROMPT_COMMAND[@]}")
+    __d43m0n_orig_prompt=("${PROMPT_COMMAND[@]}")
   elif [[ -n ${PROMPT_COMMAND:-} ]]; then
-    __poltergeist_orig_prompt=("$PROMPT_COMMAND")
+    __d43m0n_orig_prompt=("$PROMPT_COMMAND")
   fi
-  PROMPT_COMMAND=__poltergeist_prompt
+  PROMPT_COMMAND=__d43m0n_prompt
 fi
 
-trap '__poltergeist_debug' DEBUG
+trap '__d43m0n_debug' DEBUG

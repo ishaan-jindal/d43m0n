@@ -1,21 +1,21 @@
 [package]
-name = "poltergeist"
+name = "d43m0n"
 version = "0.1.0"
 edition = "2021"
 description = "Local-only terminal haunting"
 license = "MIT"
 
 [lib]
-name = "poltergeist"
+name = "d43m0n"
 path = "src/lib.rs"
 
 [[bin]]
-name = "poltergeist"
-path = "src/bin/poltergeist.rs"
+name = "d43m0n"
+path = "src/bin/d43m0n.rs"
 
 [[bin]]
-name = "poltergeistd"
-path = "src/bin/poltergeistd.rs"
+name = "d43m0nd"
+path = "src/bin/d43m0nd.rs"
 
 [dependencies]
 anyhow = "1"

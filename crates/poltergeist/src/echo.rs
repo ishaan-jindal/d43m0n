@@ -1,4 +1,4 @@
-//! Echoes (SRS 5.6): "this worked here before" for a `(family, cwd)` whose
+//! Echoes: "this worked here before" for a `(family, cwd)` whose
 //! most recent event failed after at least one earlier success.
 
 use anyhow::Result;
@@ -47,7 +47,7 @@ mod tests {
             .unwrap()
             .as_nanos();
         std::env::temp_dir().join(format!(
-            "poltergeist-echo-{tag}-{}-{nanos}.db",
+            "d43m0n-echo-{tag}-{}-{nanos}.db",
             std::process::id()
         ))
     }

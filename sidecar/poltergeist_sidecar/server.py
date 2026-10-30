@@ -1,4 +1,4 @@
-"""TabPFN sidecar: newline-delimited JSON over a unix socket (SRS 6.3).
+"""TabPFN sidecar: newline-delimited JSON over a unix socket.
 
 Messages:
   {"type":"refit","rows":[[...]],"labels":[0,1]} -> {"type":"ok","rows":N,"degraded":bool}
@@ -8,7 +8,7 @@ Messages:
 
 ``tabpfn`` is imported lazily: a missing or broken install makes the sidecar
 report ``degraded: true`` instead of crashing. The Rust daemon then uses its
-baseline predictor (FR-23/FR-24).
+baseline predictor.
 """
 
 from __future__ import annotations

@@ -376,7 +376,7 @@ pub fn run() -> Result<()> {
         let _guard = SocketGuard(socket.clone());
         let mut state = State::new(cfg)?;
         state.startup();
-        tracing::info!(socket = %socket.display(), "poltergeistd listening");
+        tracing::info!(socket = %socket.display(), "d43m0nd listening");
 
         loop {
             let (stream, _) = listener.accept().await?;

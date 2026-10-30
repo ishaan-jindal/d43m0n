@@ -1,6 +1,6 @@
-//! Feature builder (SRS 8.1) with leakage-safe prior rates (8.2).
+//! Feature builder with leakage-safe prior rates.
 //!
-//! SRS 8.1 lists 13 feature rows; `hour` expands to three numeric columns
+//! There are 13 feature rows; `hour` expands to three numeric columns
 //! (`hour`, `hour_sin`, `hour_cos`), so one event becomes 15 numbers. The
 //! categorical maps are assigned in first-seen order from the event history
 //! (stable for appends; unseen keys map to -1).
@@ -382,7 +382,7 @@ mod tests {
             .unwrap()
             .as_nanos();
         std::env::temp_dir().join(format!(
-            "poltergeist-feat-{tag}-{}-{nanos}.db",
+            "d43m0n-feat-{tag}-{}-{nanos}.db",
             std::process::id()
         ))
     }

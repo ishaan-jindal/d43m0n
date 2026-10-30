@@ -1,4 +1,4 @@
-//! `poltergeist demo --run` (FR-71): scripted replay of a fixed session
+//! `d43m0n demo --run` (FR-71): scripted replay of a fixed session
 //! over the demo store. No daemon is started and the real event database
 //! is never opened. Levels and order are deterministic; whisper text comes
 //! from the live narrator (silence on a miss).
@@ -269,7 +269,7 @@ pub fn replay(conn: &Connection, cfg: &Config) -> Result<Vec<Line>> {
 pub fn run(db: &Path) -> Result<()> {
     if !db.exists() {
         bail!(
-            "no demo database at {}; run `poltergeist demo --seed` first",
+            "no demo database at {}; run `d43m0n demo --seed` first",
             db.display()
         );
     }
@@ -316,7 +316,7 @@ mod tests {
             .unwrap()
             .as_nanos();
         std::env::temp_dir().join(format!(
-            "poltergeist-demo-{tag}-{}-{nanos}.db",
+            "d43m0n-demo-{tag}-{}-{nanos}.db",
             std::process::id()
         ))
     }

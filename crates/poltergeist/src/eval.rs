@@ -1,5 +1,5 @@
-//! `poltergeist eval` (SRS 5.9): time-ordered holdout, TabPFN vs baseline,
-//! ROC AUC / log loss / accuracy at 0.5, plus the latency benchmark (FR-82).
+//! `d43m0n eval`: time-ordered holdout, TabPFN vs baseline,
+//! ROC AUC / log loss / accuracy at 0.5, plus the latency benchmark.
 
 use std::cmp::Ordering;
 use std::path::Path;
@@ -107,7 +107,7 @@ struct Report {
 fn report(db: &Path) -> Result<Report> {
     if !db.exists() {
         bail!(
-            "no event database at {} (start the daemon or run `poltergeist demo --seed`)",
+            "no event database at {} (start the daemon or run `d43m0n demo --seed`)",
             db.display()
         );
     }
@@ -116,7 +116,7 @@ fn report(db: &Path) -> Result<Report> {
     let samples = features::training_samples(&conn, usize::MAX, &cfg.predictor.fail_exclude_codes)?;
     if samples.len() < 10 {
         bail!(
-            "need at least 10 labeled events (have {}); run `poltergeist demo --seed` for a demo set",
+            "need at least 10 labeled events (have {}); run `d43m0n demo --seed` for a demo set",
             samples.len()
         );
     }
@@ -262,7 +262,7 @@ impl Latency {
         let ids = features::IdMaps::from_conn(&conn)?;
         let mut priors =
             features::PriorTracker::from_conn(&conn, &cfg.predictor.fail_exclude_codes)?;
-        let cwd = "/tmp/poltergeist/latency-bench";
+        let cwd = "/tmp/d43m0n/latency-bench";
         let cwd_id = store::cwd_id(cwd);
         let start_ts = level::now_ts() - N as i64 * 60;
         let mut streak = 0u32;

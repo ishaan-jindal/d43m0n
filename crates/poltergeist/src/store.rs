@@ -1,4 +1,4 @@
-//! SQLite store: schema (SRS 7), inserts, stats, demo seeding.
+//! SQLite store: schema, inserts, stats, demo seeding.
 
 use std::path::Path;
 
@@ -181,7 +181,7 @@ pub fn purge(conn: &Connection) -> Result<()> {
     Ok(())
 }
 
-/// Insert `count` synthetic events for `poltergeist demo --seed` (FR-70).
+/// Insert `count` synthetic events for `d43m0n demo --seed` (FR-70).
 pub fn seed_demo(conn: &Connection, count: usize) -> Result<usize> {
     // ponytail: toy LCG instead of a rand dependency; determinism is all M1 needs.
     let mut rng: u64 = 0x5EED_1234_ABCD_0001;
@@ -358,7 +358,7 @@ mod tests {
             .unwrap()
             .as_nanos();
         std::env::temp_dir().join(format!(
-            "poltergeist-test-{}-{}-{}.db",
+            "d43m0n-test-{}-{}-{}.db",
             tag,
             std::process::id(),
             nanos

@@ -1,4 +1,4 @@
-//! Séance (SRS 5.7, FR-60..62): dormant directories, redacted last commands,
+//! Séance: dormant directories, redacted last commands,
 //! optional narration from counts and dates only.
 
 use std::path::Path;
@@ -131,7 +131,7 @@ mod tests {
             .unwrap()
             .as_nanos();
         std::env::temp_dir().join(format!(
-            "poltergeist-seance-{tag}-{}-{nanos}.db",
+            "d43m0n-seance-{tag}-{}-{nanos}.db",
             std::process::id()
         ))
     }
@@ -173,9 +173,9 @@ mod tests {
         let path = temp_db("dormant");
         let conn = store::open(&path).unwrap();
         let now = 2_000_000_000;
-        let old = "/tmp/poltergeist-test/old-project";
-        let older = "/tmp/poltergeist-test/older-project";
-        let fresh = "/tmp/poltergeist-test/fresh-project";
+        let old = "/tmp/d43m0n-test/old-project";
+        let older = "/tmp/d43m0n-test/older-project";
+        let fresh = "/tmp/d43m0n-test/fresh-project";
 
         for i in 0..7 {
             insert(

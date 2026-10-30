@@ -1,14 +1,14 @@
-# Poltergeist — Ghost in the Machine (write-up draft)
+# d43m0n — Ghost in the Machine (write-up draft)
 
 ## What it is
 
-Poltergeist is a local-only terminal haunting. A zsh/bash/fish hook reports each command to a small Rust daemon, which redacts it immediately, stores an event, and predicts whether the command will fail. Before a risky command it whispers one dry line; after it, another. It also remembers directories you abandoned: `poltergeist seance` lists them, last redacted commands included, and marks missing paths as `departed`.
+d43m0n is a local-only terminal haunting. A zsh/bash/fish hook reports each command to a small Rust daemon, which redacts it immediately, stores an event, and predicts whether the command will fail. Before a risky command it whispers one dry line; after it, another. It also remembers directories you abandoned: `d43m0n seance` lists them, last redacted commands included, and marks missing paths as `departed`.
 
 Prediction is TabPFN in a Python sidecar, with a Rust Beta(1,1) family-failure baseline as fallback. Narration is a local Gemma model through Ollama; a miss is silence. The hook has a 40 ms hard budget, always exits 0, and prints nothing if the daemon is down.
 
 ## Theme fit
 
-The ghost lives in the machine's shell history. It predicts failures, speaks at night (L3 escalation between 00:00 and 05:00), and holds a séance for forgotten project directories. Its name is `d43m0n`: a deadpan familiar, a blunt little watcher that notices everything and says little — terse, dry, never giving advice, naming the tool or the streak rather than the command. Nothing is sent anywhere, which is the point of the theme: the ghost haunts one machine only.
+The ghost lives in the machine's shell history. It predicts failures, speaks at night (L3 escalation between 00:00 and 05:00), and holds a séance for forgotten project directories. Its name is `d43m0n`: a deadpan familiar with opinions, fonder of the terminal than it lets on — terse, dry, never giving advice, naming the tool, the streak, or the hour rather than the command. Nothing is sent anywhere, which is the point of the theme: the ghost haunts one machine only.
 
 ## Why open / local models matter
 
@@ -41,7 +41,7 @@ Real history, 222 labeled events, time-ordered 80/20 split (177 train / 45 holdo
 
 Small holdout (n=45), so read it as a perfect score on a small test, not proof of generality — but the direction flipped exactly as predicted: on real habits TabPFN separates cleanly where the demo set was a tie. The live daemon crossed the 200-row threshold the same night and now predicts with TabPFN.
 
-Hook and narration latency, `poltergeist eval --demo --latency`, N=200, in-process pipeline (no shell, no daemon socket), debug build:
+Hook and narration latency, `d43m0n eval --demo --latency`, N=200, in-process pipeline (no shell, no daemon socket), debug build:
 
 | Stage | p50 | p95 |
 |---|---|---|
@@ -50,7 +50,7 @@ Hook and narration latency, `poltergeist eval --demo --latency`, N=200, in-proce
 | prediction (Rust baseline) | 0.004 ms | 0.008 ms |
 | narration | 1.683 ms | 2.116 ms (silent: no Ollama server) |
 
-For context, the SRS budget is 30 ms p95 for the hook. These numbers are a lower bound: the real hook also pays one unix-socket round trip. `eval --json` emits the same block as `pre_p50`, `pre_p95`, `post_p50`, `post_p95`, `predict_p50`, `predict_p95`, `narrate_p50`, `narrate_p95`, `N`.
+For context, the original budget is 30 ms p95 for the hook. These numbers are a lower bound: the real hook also pays one unix-socket round trip. `eval --json` emits the same block as `pre_p50`, `pre_p95`, `post_p50`, `post_p95`, `predict_p50`, `predict_p95`, `narrate_p50`, `narrate_p95`, `N`.
 
 ## Degradation, demonstrated
 
@@ -64,24 +64,24 @@ For context, the SRS budget is 30 ms p95 for the hook. These numbers are a lower
 1. **TabPFN weights offline.** The sidecar imports `tabpfn` lazily and survives its absence, but there was no way to install the package or accept the license/weights flow in this sandbox. The honest outcome is the baseline-only table above.
 2. **No Ollama server.** Every narration path was silent. The write-up's narrator latency is therefore the miss path (request, validation, timeout), not Gemma generation.
 3. **No zsh installed.** The zsh hook is checked in and `init zsh` is byte-identical to it, but interactive verification ran under bash (post-only by design, no reliable `preexec` without `bash-preexec`) and fish. Fish gets full pre+post whispers and was verified live over a pty: correct `--cmd/--cwd`, `--exit` (1 for `false`), real durations (`sleep 0.2` → 206 ms), `$status` preserved, silent when the daemon is down.
-4. **No Sentry tracing.** Cut per SRS §14 cut order, so there are no trace screenshots and no Sentry dependency. Timings come from `eval --latency`.
+4. **No Sentry tracing.** Cut from the original scope, so there are no trace screenshots and no Sentry dependency. Timings come from `eval --latency`.
 
 ## Prize tracks targeted
 
 - **TabPFN:** sidecar protocol, venv isolation, lazy import, degraded health reporting, baseline comparison, time-ordered evaluation. Reported as measured: AUC 0.725 vs baseline 0.705 on the demo holdout — a tie with an honest story, not a victory lap.
 - **Gemma:** Ollama narrator behind the `d43m0n` persona, with strict output validation, one retry, silence on a miss, and a documented local tag override (`gemma4:e2b` where `gemma3:4b` is not cached).
-- **Sentry tracing:** deliberately cut per SRS §14; the JSON latency block substitutes for trace screenshots.
+- **Sentry tracing:** deliberately cut; the JSON latency block substitutes for trace screenshots.
 
 ## Reproduce
 
 ```sh
 cargo test
 cargo build --release
-./target/release/poltergeist demo --seed
-./target/release/poltergeist seance --demo --days 30
-./target/release/poltergeist demo --run
-./target/release/poltergeist eval --demo --latency --json
-./target/release/poltergeist doctor
+./target/release/d43m0n demo --seed
+./target/release/d43m0n seance --demo --days 30
+./target/release/d43m0n demo --run
+./target/release/d43m0n eval --demo --latency --json
+./target/release/d43m0n doctor
 ```
 
 All of it works with networking disabled. Recording link: TODO before submission.
