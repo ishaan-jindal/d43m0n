@@ -237,7 +237,10 @@ fn call(
         let stream = UnixStream::connect(socket)
             .with_context(|| format!("connecting {}", socket.display()))?;
         stream.set_read_timeout(Some(timeout))?;
-        stream.set_write_timeout(Some(Duration::from_millis(500)))?;
+        // Refit payloads are hundreds of KB and the sidecar may be busy
+        // loading weights, so it can take seconds to start draining the
+        // socket. Small predict messages are unaffected by a generous budget.
+        stream.set_write_timeout(Some(Duration::from_secs(30)))?;
         *conn = Some(BufReader::new(stream));
     }
     let reader = conn.as_mut().expect("connected above");
