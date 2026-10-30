@@ -103,7 +103,7 @@ pub fn set_marker(name: &str, on: bool) -> Result<()> {
     Ok(())
 }
 
-#[derive(Debug, Clone, Deserialize)]
+#[derive(Debug, Clone, Default, Deserialize)]
 pub struct Config {
     #[serde(default = "General::default")]
     pub general: General,
@@ -115,18 +115,6 @@ pub struct Config {
     pub narrator: Narrator,
     #[serde(default = "Observability::default")]
     pub observability: Observability,
-}
-
-impl Default for Config {
-    fn default() -> Self {
-        Self {
-            general: General::default(),
-            levels: Levels::default(),
-            predictor: Predictor::default(),
-            narrator: Narrator::default(),
-            observability: Observability::default(),
-        }
-    }
 }
 
 impl Config {
