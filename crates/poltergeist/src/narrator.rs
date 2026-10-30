@@ -155,22 +155,34 @@ fn ask(prompt: &str, cfg: &NarratorCfg) -> Option<String> {
         "system": system_prompt(),
         "prompt": prompt,
         "stream": false,
+        // Thinking models (e.g. gemma4) burn the token budget on
+        // chain-of-thought and return an empty `response` otherwise.
+        "think": false,
         "keep_alive": "30m",
         "options": {"temperature": 0.9, "num_predict": 32},
     });
 
-    for _ in 0..2 {
+    for attempt in 0..2 {
         let reply = client.post(&url).json(&body).send();
-        let Ok(reply) = reply else { continue };
+        let reply = match reply {
+            Ok(reply) => reply,
+            Err(e) => {
+                tracing::warn!(error = %e, attempt, "narrator: request failed");
+                continue;
+            }
+        };
         let Ok(value) = reply.json::<Value>() else {
+            tracing::warn!("narrator: bad JSON (attempt {attempt})");
             continue;
         };
         let Some(text) = value.get("response").and_then(Value::as_str) else {
+            tracing::warn!("narrator: no response field (attempt {attempt})");
             continue;
         };
         if let Some(line) = validate(text, cfg.max_words) {
             return Some(line);
         }
+        tracing::warn!("narrator: rejected {:?}", text);
     }
     None
 }

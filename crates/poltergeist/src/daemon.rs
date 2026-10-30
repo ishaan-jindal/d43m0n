@@ -36,6 +36,12 @@ struct State {
     cfg: Config,
     pending: Option<Pending>,
     limiter: RateLimiter,
+    /// Post whispers get their own budget. Pre and post share a limiter and
+    /// the pre-whisper (shown first) always consumes the allowance, so the
+    /// post whisper — the only channel that can carry a narrator line —
+    /// never passes. Separate budgets per whisper kind (FR-42 applies to
+    /// each channel's schedule; the 5 s absolute cooldown still caps spam).
+    post_limiter: RateLimiter,
     bank: canned::Bank,
     predictor: predictor::Client,
     ids: features::IdMaps,
@@ -61,6 +67,7 @@ impl State {
             cfg,
             pending: None,
             limiter: RateLimiter::default(),
+            post_limiter: RateLimiter::default(),
             bank: canned::Bank::load(),
             predictor,
             ids,
@@ -219,8 +226,7 @@ impl State {
         Reply::pre(whisper, lvl, p_fail)
     }
 
-    fn post(&mut self, req: &Request) -> Reply {
-        let Some(pending) = self.pending.take() else {
+    fn post(&mut self, req: &Request) -> Reply {        let Some(pending) = self.pending.take() else {
             return Reply::post(None, 0);
         };
         if config::is_off() {
@@ -279,7 +285,7 @@ impl State {
 
         let lvl = pending.level;
         let mut whisper = None;
-        if !config::is_muted() && lvl > 0 && self.limiter.allow(lvl) {
+        if !config::is_muted() && lvl > 0 && self.post_limiter.allow(lvl) {
             whisper = self
                 .post_buffer
                 .lock()
@@ -288,6 +294,7 @@ impl State {
             if whisper.is_none() {
                 whisper = self.bank.line(lvl, canned::Kind::Post);
             }
+            tracing::debug!(lvl, buffered = whisper.is_some(), "post whisper chosen");
         } else if lvl == 0 {
             // Drop any line generated for a calmer moment; it would be stale.
             let _ = self.post_buffer.lock().map(|mut slot| slot.take());
