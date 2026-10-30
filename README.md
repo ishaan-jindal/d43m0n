@@ -2,9 +2,20 @@
 
 A local-only terminal haunting. Poltergeist watches your shell, learns your habits, predicts which commands are likely to fail before they run, and comments in the voice of a ghost. It also surfaces work you forgot was still waiting in old directories.
 
-Nothing leaves the machine: prediction runs on TabPFN in a local sidecar (or the built-in Rust baseline), narration on a local Gemma model via Ollama (or canned lines), and the event store is SQLite under `~/.local/share/poltergeist/`. The shell hook has a 40 ms budget and degrades silently when the daemon is down.
+Nothing leaves the machine: prediction runs on TabPFN in a local sidecar (or the built-in Rust baseline), narration on a local Gemma model via Ollama (silence when it misses), and the event store is SQLite under `~/.local/share/poltergeist/`. The shell hook has a 40 ms budget and degrades silently when the daemon is down.
 
-**Status: M3** — zsh and bash hooks, redacted event logging, secret guard, baseline + TabPFN prediction, Gemma narration with fallback, Echoes, Séance, deterministic demo replay, eval + latency benchmark, `doctor`, `stats`, `purge`.
+**Status: M3** — zsh and bash hooks, redacted event logging, secret guard, baseline + TabPFN prediction, Gemma narration, Echoes, Séance, demo replay, eval + latency benchmark, `doctor`, `stats`, `purge`.
+
+## Meet d43m0n
+
+The default persona is `d43m0n`, a blunt little familiar who notices everything and says little; lines name the tool, the streak, or the hour, never advice, arguments, or paths. Rename it in `~/.config/poltergeist/config.toml`:
+
+```toml
+[general]
+persona = "someone else"
+```
+
+Narration is pure Gemma; on a miss d43m0n says nothing.
 
 ## Quickstart
 
@@ -15,7 +26,7 @@ cargo build --release
 ./target/release/poltergeist daemon start
 eval "$(./target/release/poltergeist init zsh)"   # or: init bash
 ./target/release/poltergeist demo --seed           # 1600 events in demo.db
-./target/release/poltergeist demo --run            # deterministic replay
+./target/release/poltergeist demo --run            # live replay
 ```
 
 Bash gets post-whispers only (no `preexec`). `init` prints the snippet without touching your rc file; add the `eval` line yourself.
@@ -53,11 +64,11 @@ séance: 7 directories dormant for 30+ days (oldest first)
 
 ## Demo replay
 
-`demo --run` replays 18 scripted commands through the level engine with cached predictions from `demo.db`, fixed seed 42. It never opens your real database and starts no daemon.
+`demo --run` replays 18 scripted commands through the level engine with cached predictions from `demo.db`; whisper text is generated live. It never opens your real database and starts no daemon.
 
 ```text
 $ poltergeist demo --run
-demo replay: 18 commands · fixed seed 42 · /home/sacred/.local/share/poltergeist/demo.db
+demo replay: 18 commands · live narrator · /home/sacred/.local/share/poltergeist/demo.db
 (read-only over the demo store; your real database is untouched)
 
   [13:00] git status             p=0.12  · L0 (silent)
@@ -86,14 +97,14 @@ latency: N=200 in-process (no shell, no daemon socket)
   pre      p50 0.181 ms  p95 0.236 ms
   post     p50 0.157 ms  p95 0.225 ms
   predict  p50 0.004 ms  p95 0.008 ms  (Rust baseline)
-  narrate  p50 1.683 ms  p95 2.116 ms  (canned fallback)
+  narrate  p50 1.683 ms  p95 2.116 ms  (silent: no Ollama server)
 ```
 
-`eval --json` emits the same numbers as a machine-readable object, including `latency` keys `pre_p50`, `pre_p95`, `post_p50`, `post_p95`, `predict_p50`, `predict_p95`, `narrate_p50`, `narrate_p95`, `N`. The latency block is an in-process pipeline measurement (debug build on the author's laptop); narration was the canned fallback because no Ollama server was running.
+`eval --json` emits the same numbers as a machine-readable object, including `latency` keys `pre_p50`, `pre_p95`, `post_p50`, `post_p95`, `predict_p50`, `predict_p95`, `narrate_p50`, `narrate_p95`, `N`. The latency block is an in-process pipeline measurement (debug build on the author's laptop); narration was silent because no Ollama server was running.
 
 ## Offline
 
-Every command above works with networking disabled. There is no network listener and no cloud backend; the only traffic Poltergeist ever attempts is loopback to Ollama. With Ollama off, narration falls back to canned lines. With TabPFN absent, prediction falls back to the Rust baseline. `poltergeist doctor` names whichever component is missing and the fix.
+Every command above works with networking disabled. There is no network listener and no cloud backend; the only traffic Poltergeist ever attempts is loopback to Ollama. With Ollama off, narration is silent. With TabPFN absent, prediction falls back to the Rust baseline. `poltergeist doctor` names whichever component is missing and the fix.
 
 ## Predictor and narrator setup
 
@@ -108,7 +119,7 @@ Narration uses Ollama on localhost. The default model is `gemma3:4b`; if your lo
 model = "gemma4:e2b"   # local override; any installed Gemma tag works
 ```
 
-Narration output is validated: one line, ≤12 words, no newlines, no markdown, no emoji. Two failed attempts fall back to canned lines.
+Narration output is validated: one line, ≤12 words, no newlines, no markdown, no emoji. Two failed attempts produce silence.
 
 Sentry tracing was cut per the SRS §14 cut order; there is no Sentry dependency and no telemetry of any kind.
 

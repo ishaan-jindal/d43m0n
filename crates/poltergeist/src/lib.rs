@@ -1,6 +1,5 @@
 //! Poltergeist core: privacy, storage, haunting levels, prediction, IPC, daemon.
 
-pub mod canned;
 pub mod config;
 pub mod daemon;
 pub mod demo;

@@ -101,7 +101,7 @@ pub fn secret_guard_with(cmd: &str, extra: &[String]) -> bool {
 }
 
 /// Strip ANSI, then enforce FR-32: one line, no control chars, no markdown,
-/// at most `max_words` words. `None` means use the canned fallback.
+/// at most `max_words` words. `None` means stay silent.
 pub fn validate_whisper(raw: &str, max_words: usize) -> Option<String> {
     let clean = ansi_re().replace_all(raw, "");
     let line = clean.trim();

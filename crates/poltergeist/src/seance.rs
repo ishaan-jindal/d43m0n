@@ -78,13 +78,6 @@ pub fn date(ts: i64) -> String {
     }
 }
 
-const FALLBACK: [&str; 4] = [
-    "Dust has settled on the keys.",
-    "The room still remembers footsteps.",
-    "No one has knocked in a while.",
-    "The lights were on once.",
-];
-
 pub fn run(db: &Path, days: u32, narrate: bool) -> Result<()> {
     if !db.exists() {
         println!("séance: no events recorded yet (start the daemon first)");
@@ -112,14 +105,15 @@ pub fn run(db: &Path, days: u32, narrate: bool) -> Result<()> {
         }
         if narrate && index < 3 {
             let days_dormant = (now - d.last_ts).max(0) / 86_400;
-            let line = narrator::generate_seance(
+            // Pure Gemma: no fallback lines. Silence when the model misses.
+            if let Some(line) = narrator::generate_seance(
                 days_dormant,
                 d.events,
                 &cfg.general.persona,
                 &cfg.narrator,
-            )
-            .unwrap_or_else(|| FALLBACK[index % FALLBACK.len()].to_string());
-            println!("  {} {line}", cfg.general.glyph);
+            ) {
+                println!("  {} {line}", cfg.general.glyph);
+            }
         }
         println!();
     }

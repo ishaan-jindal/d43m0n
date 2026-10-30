@@ -11,8 +11,7 @@ use serde_json::json;
 
 use crate::config::Config;
 use crate::features::{self, Sample, FAMILY_PRIOR, N_FEATURES};
-use crate::rate::RateLimiter;
-use crate::{canned, family, level, narrator, predictor, proto, redact, store};
+use crate::{family, level, narrator, predictor, proto, redact, store};
 
 #[derive(Clone, Debug)]
 pub struct Metrics {
@@ -263,12 +262,9 @@ impl Latency {
         let ids = features::IdMaps::from_conn(&conn)?;
         let mut priors =
             features::PriorTracker::from_conn(&conn, &cfg.predictor.fail_exclude_codes)?;
-        let mut bank = canned::Bank::load();
-        let mut limiter = RateLimiter::new(std::time::Duration::ZERO);
         let cwd = "/tmp/poltergeist/latency-bench";
         let cwd_id = store::cwd_id(cwd);
         let start_ts = level::now_ts() - N as i64 * 60;
-        let mut clock = Instant::now();
         let mut streak = 0u32;
 
         let mut out = Self {
@@ -286,9 +282,6 @@ impl Latency {
             let request = format!(
                 r#"{{"v":1,"type":"pre","cmd":"cargo test --release","cwd":"{cwd}","ts":{ts},"git_dirty":true}}"#
             );
-            // Synthetic spacing keeps the cooldown off the measurement.
-            clock += std::time::Duration::from_secs(6);
-
             let start = Instant::now();
             let req: proto::Request = serde_json::from_str(&request).expect("bench request");
             let cmd = req.cmd.as_deref().expect("bench cmd");
@@ -315,11 +308,8 @@ impl Latency {
             let vector = features::vector(&input, &ids, &priors.counts(&fam, &cwd_id));
             let p_fail = vector[FAMILY_PRIOR];
             let lvl = level::level(p_fail, streak, hour, &cfg.levels);
-            let whisper = if lvl > 0 && limiter.allow_at(lvl, clock) {
-                bank.line(lvl, canned::Kind::Pre)
-            } else {
-                None
-            };
+            // Pure Gemma: the pre path never has a line to show.
+            let whisper: Option<String> = None;
             let _ = proto::encode(&proto::Reply::pre(whisper, lvl, p_fail));
             out.pre.push(elapsed_ms(start));
 
@@ -356,7 +346,6 @@ impl Latency {
                 predictor: Some("baseline".into()),
             };
             store::insert_event(&conn, &row)?;
-            let _ = bank.line(lvl, canned::Kind::Post);
             out.post.push(elapsed_ms(start));
             streak = if exit == 0 { 0 } else { streak + 1 };
         }
@@ -373,11 +362,9 @@ impl Latency {
         };
         for _ in 0..N {
             let start = Instant::now();
-            match narrator::generate(&facts, &cfg.narrator) {
-                Some(_) => out.narrate_live += 1,
-                None => {
-                    let _ = bank.line(3, canned::Kind::Post);
-                }
+            // Pure Gemma: a miss is silence, not a fallback line.
+            if narrator::generate(&facts, &cfg.narrator).is_some() {
+                out.narrate_live += 1;
             }
             out.narrate.push(elapsed_ms(start));
         }
@@ -418,9 +405,9 @@ impl Latency {
             "predict"
         );
         let mode = if self.narrate_live == 0 {
-            "canned fallback"
+            "silent"
         } else {
-            "live + fallback"
+            "live"
         };
         println!(
             "  {:<8} p50 {narrate_p50:.3} ms  p95 {narrate_p95:.3} ms  ({mode})",

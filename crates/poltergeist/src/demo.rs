@@ -1,6 +1,7 @@
-//! `poltergeist demo --run` (FR-71): deterministic replay of a scripted
-//! session over the demo store. No daemon is started and the real event
-//! database is never opened.
+//! `poltergeist demo --run` (FR-71): scripted replay of a fixed session
+//! over the demo store. No daemon is started and the real event database
+//! is never opened. Levels and order are deterministic; whisper text comes
+//! from the live narrator (silence on a miss).
 
 use std::collections::{BTreeSet, HashMap};
 use std::path::Path;
@@ -11,10 +12,7 @@ use rusqlite::Connection;
 
 use crate::config::Config;
 use crate::rate::RateLimiter;
-use crate::{canned, level, store};
-
-/// Fixed seed for FR-71: replay order, clock and canned selection.
-pub const SEED: u64 = 42;
+use crate::{level, narrator, store};
 
 #[derive(Clone, Copy)]
 struct Step {
@@ -225,9 +223,8 @@ fn smoothed(n: i64, fails: i64) -> f64 {
     (fails.max(0) as f64 + 1.0) / (n.max(0) as f64 + 2.0)
 }
 
-pub fn replay(conn: &Connection, cfg: &Config, seed: u64) -> Result<Vec<Line>> {
+pub fn replay(conn: &Connection, cfg: &Config) -> Result<Vec<Line>> {
     let cache = Cache::build(conn)?;
-    let mut bank = canned::Bank::load_seeded(seed);
     let mut limiter = RateLimiter::new(Duration::ZERO);
     let mut clock = Instant::now();
     let mut streak = 0u32;
@@ -238,8 +235,22 @@ pub fn replay(conn: &Connection, cfg: &Config, seed: u64) -> Result<Vec<Line>> {
         let lvl = level::level(p_fail, streak, step.hour, &cfg.levels);
         // Synthetic spacing so the 5 s cooldown never depends on wall time.
         clock += Duration::from_secs(6);
+        // Pure Gemma: live narration per qualifying line, silence on a miss.
+        // (Slow by design — one model round trip per whisper.)
         let whisper = if lvl > 0 && limiter.allow_at(lvl, clock) {
-            bank.line(lvl, canned::Kind::Pre)
+            narrator::generate(
+                &narrator::Facts {
+                    family: step.family.to_string(),
+                    p_fail,
+                    fail_streak: streak as i64,
+                    hour: step.hour,
+                    level: lvl,
+                    days_since_success: None,
+                    kind: narrator::Kind::Post,
+                    persona: cfg.general.persona.clone(),
+                },
+                &cfg.narrator,
+            )
         } else {
             None
         };
@@ -264,10 +275,10 @@ pub fn run(db: &Path) -> Result<()> {
     }
     let conn = store::open(db)?;
     let cfg = Config::load_or_default();
-    let lines = replay(&conn, &cfg, SEED)?;
+    let lines = replay(&conn, &cfg)?;
 
     println!(
-        "demo replay: {} commands · fixed seed {SEED} · {}",
+        "demo replay: {} commands · live narrator · {}",
         lines.len(),
         db.display()
     );
@@ -319,7 +330,7 @@ mod tests {
     }
 
     #[test]
-    fn replay_is_deterministic_and_reaches_every_level() {
+    fn replay_reaches_every_level() {
         let path = temp_db("run");
         let conn = store::open(&path).unwrap();
         let csv = std::fs::read_to_string(
@@ -329,19 +340,14 @@ mod tests {
         assert_eq!(store::seed_demo_csv(&conn, &csv).unwrap(), 1600);
 
         let cfg = Config::default();
-        let first = replay(&conn, &cfg, SEED).unwrap();
-        let second = replay(&conn, &cfg, SEED).unwrap();
-        assert_eq!(first, second);
+        // Levels are deterministic (cached rates + fixed script); whisper
+        // text comes from the live narrator and varies, so only the shape
+        // is asserted here.
+        let lines = replay(&conn, &cfg).unwrap();
 
-        let levels: BTreeSet<u8> = first.iter().map(|l| l.level).collect();
+        let levels: BTreeSet<u8> = lines.iter().map(|l| l.level).collect();
         assert_eq!(levels, BTreeSet::from([0, 1, 2, 3]));
-        for lvl in 1..=3 {
-            assert!(
-                first.iter().any(|l| l.level == lvl && l.whisper.is_some()),
-                "no whisper at L{lvl}"
-            );
-        }
-        assert!(first.iter().any(|l| l.level == 0 && l.whisper.is_none()));
+        assert!(lines.iter().any(|l| l.level == 0 && l.whisper.is_none()));
 
         drop(conn);
         cleanup(&path);

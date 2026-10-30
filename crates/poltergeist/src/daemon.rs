@@ -16,7 +16,7 @@ use tokio::time::timeout;
 use crate::config::{self, Config};
 use crate::proto::{self, Reply, Request};
 use crate::rate::RateLimiter;
-use crate::{canned, echo, family, features, level, narrator, predictor, redact, store};
+use crate::{echo, family, features, level, narrator, predictor, redact, store};
 
 struct Pending {
     family: String,
@@ -35,14 +35,7 @@ struct State {
     conn: Connection,
     cfg: Config,
     pending: Option<Pending>,
-    limiter: RateLimiter,
-    /// Post whispers get their own budget. Pre and post share a limiter and
-    /// the pre-whisper (shown first) always consumes the allowance, so the
-    /// post whisper — the only channel that can carry a narrator line —
-    /// never passes. Separate budgets per whisper kind (FR-42 applies to
-    /// each channel's schedule; the 5 s absolute cooldown still caps spam).
     post_limiter: RateLimiter,
-    bank: canned::Bank,
     predictor: predictor::Client,
     ids: features::IdMaps,
     priors: features::PriorTracker,
@@ -66,9 +59,7 @@ impl State {
             conn,
             cfg,
             pending: None,
-            limiter: RateLimiter::default(),
             post_limiter: RateLimiter::default(),
-            bank: canned::Bank::load(),
             predictor,
             ids,
             priors,
@@ -181,11 +172,12 @@ impl State {
         };
 
         let lvl = level::level(p_fail, streak.max(0) as u32, hour, &self.cfg.levels);
-        let speaking = !config::is_muted() && lvl > 0;
+        // Pure Gemma: pre-whispers are silent (a model round trip cannot fit
+        // the 40 ms hook budget). Only echoes — lines generated live after a
+        // previous command — may whisper here.
         let mut whisper: Option<String> = None;
-        if speaking && self.limiter.allow(lvl) {
+        if !config::is_muted() && lvl > 0 {
             if let Ok(Some(days)) = echo::should_echo(&self.conn, &family, &cwd_id) {
-                // FR-50/51: an echo replaces the generic pre-whisper.
                 let key = (family.clone(), cwd_id.clone());
                 whisper = self
                     .echo_buffer
@@ -193,7 +185,6 @@ impl State {
                     .ok()
                     .and_then(|mut map| map.remove(&key));
                 if whisper.is_none() {
-                    whisper = self.bank.line(0, canned::Kind::Echo);
                     let facts = narrator::Facts {
                         family: family.clone(),
                         p_fail,
@@ -206,8 +197,6 @@ impl State {
                     };
                     self.spawn_echo_narration(key, facts);
                 }
-            } else {
-                whisper = self.bank.line(lvl, canned::Kind::Pre);
             }
         }
 
@@ -226,7 +215,8 @@ impl State {
         Reply::pre(whisper, lvl, p_fail)
     }
 
-    fn post(&mut self, req: &Request) -> Reply {        let Some(pending) = self.pending.take() else {
+    fn post(&mut self, req: &Request) -> Reply {
+        let Some(pending) = self.pending.take() else {
             return Reply::post(None, 0);
         };
         if config::is_off() {
@@ -291,9 +281,7 @@ impl State {
                 .lock()
                 .ok()
                 .and_then(|mut slot| slot.take());
-            if whisper.is_none() {
-                whisper = self.bank.line(lvl, canned::Kind::Post);
-            }
+            // Pure Gemma: no fallback. Silence when the model misses.
             tracing::debug!(lvl, buffered = whisper.is_some(), "post whisper chosen");
         } else if lvl == 0 {
             // Drop any line generated for a calmer moment; it would be stale.

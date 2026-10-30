@@ -169,7 +169,7 @@ fn d_glyph() -> String {
     "👻".into()
 }
 fn d_persona() -> String {
-    "poltergeist".into()
+    "d43m0n".into()
 }
 fn d_retention() -> u32 {
     365
@@ -357,7 +357,7 @@ mod tests {
         std::fs::write(&path, "[general]\nglyph = \"*\"\n\n[levels]\nl1 = 0.4\n").unwrap();
         let cfg = Config::load_from(&path).unwrap();
         assert_eq!(cfg.general.glyph, "*");
-        assert_eq!(cfg.general.persona, "poltergeist");
+        assert_eq!(cfg.general.persona, "d43m0n");
         assert_eq!(cfg.levels.l1, 0.4);
         assert_eq!(cfg.levels.l2, 0.60);
         assert_eq!(cfg.narrator.model, "gemma3:4b");

@@ -1,5 +1,5 @@
 //! Narrator client (SRS 5.4): Ollama on localhost, structured facts only,
-//! strict output validation, canned-line fallback.
+//! strict output validation, silence on a miss.
 
 use std::time::Duration;
 
@@ -38,12 +38,20 @@ pub struct Facts {
     pub persona: String,
 }
 
-/// FR-35 persona. Terse, dry, eerie; no advice, no command repetition.
+/// FR-35 persona: d43m0n, a deadpan familiar. Terse, blunt, observant; no
+/// advice, no command repetition. The tool's family name may be spoken.
+/// Field labels (kind, family, p_fail, bucket, level, persona) must never
+/// appear in output — plain language only, with two examples to anchor it.
 pub fn system_prompt() -> &'static str {
-    "You are a ghost haunting a user's terminal. Speak one short line, at most 12 words, \
-     terse, dry, eerie. Never give advice. Never repeat or describe the command or its arguments. \
-     Never insult the user's identity. Only tease the situation. No emoji, no markdown, \
-     no quotation marks, no line breaks."
+    "You are d43m0n, a deadpan familiar who has watched this terminal for years. \
+     You notice everything and say little. Speak one short line, at least three \
+     words and at most 12 words, in plain everyday language: name the tool itself \
+     from the sheet (cargo, git, npm, false) with a dry remark, or comment on the \
+     streak (again, third time), or on the hour (late, morning). Never use the words \
+     kind, family, p_fail, bucket, level, days, or persona. Never give advice. Never repeat or \
+     describe the command, its arguments, or paths. Never insult the user's identity. \
+     No emoji, no markdown, no quotation marks, no line breaks. \
+     For example, you might say: the compiler forgives nothing tonight."
 }
 
 pub fn p_fail_bucket(p: f64) -> &'static str {
@@ -89,7 +97,7 @@ pub fn user_prompt(facts: &Facts) -> String {
 }
 
 /// FR-32 validation plus control-character/ANSI stripping. `None` means the
-/// caller falls back to a canned line.
+/// caller stays silent.
 pub fn validate(raw: &str, max_words: usize) -> Option<String> {
     let text = crate::redact::validate_whisper(raw, max_words)?;
     if text.chars().any(is_emoji) {
@@ -103,6 +111,34 @@ pub fn validate(raw: &str, max_words: usize) -> Option<String> {
         || text.contains(']')
         || text.contains('~')
     {
+        return None;
+    }
+    // Prompt-sheet leakage: the model parroting field labels instead of
+    // observing. Plain language only.
+    let lower = text.to_lowercase();
+    if [
+        "p_fail",
+        "fail_streak",
+        "hour_bucket",
+        "days_since",
+        "persona",
+    ]
+    .iter()
+    .any(|t| lower.contains(t))
+    {
+        return None;
+    }
+    if lower.split_whitespace().any(|w| {
+        matches!(
+            w.trim_matches(|c: char| !c.is_alphanumeric()),
+            "kind" | "family" | "bucket" | "level" | "post" | "pre" | "echo"
+        )
+    }) {
+        return None;
+    }
+    // d43m0n speaks in observations, not labels. Single-word outputs are
+    // almost always a hallucinated tool name rather than a remark.
+    if lower.split_whitespace().count() < 3 {
         return None;
     }
     Some(text)
@@ -126,7 +162,7 @@ pub fn seance_prompt(days_dormant: i64, events: i64, persona: &str) -> String {
     format!("kind: seance\ndays_dormant: {days_dormant}\nevents: {events}\npersona: {persona}\n")
 }
 
-/// Ask Ollama for one validated line. `None` after one retry means canned.
+/// Ask Ollama for one validated line. `None` after one retry means silence.
 pub fn generate(facts: &Facts, cfg: &NarratorCfg) -> Option<String> {
     ask(&user_prompt(facts), cfg)
 }
@@ -167,7 +203,7 @@ fn ask(prompt: &str, cfg: &NarratorCfg) -> Option<String> {
         let reply = match reply {
             Ok(reply) => reply,
             Err(e) => {
-                tracing::warn!(error = %e, attempt, "narrator: request failed");
+                tracing::warn!(error = ?e, attempt, "narrator: request failed");
                 continue;
             }
         };
@@ -197,7 +233,25 @@ mod tests {
             validate("\x1b[2mThe house remembers.\x1b[0m", 12),
             Some("The house remembers.".into())
         );
-        assert_eq!(validate("  Too quiet.  ", 12), Some("Too quiet.".into()));
+        assert_eq!(
+            validate("  Too quiet here.  ", 12),
+            Some("Too quiet here.".into())
+        );
+    }
+
+    #[test]
+    fn validator_rejects_prompt_sheet_leakage() {
+        assert_eq!(validate("Post kind is set.", 12), None);
+        assert_eq!(validate("family: cargo, p_fail high", 12), None);
+        assert_eq!(validate("git", 12), None);
+        assert_eq!(
+            validate("cargo again. brave.", 12),
+            Some("cargo again. brave.".into())
+        );
+        assert_eq!(
+            validate("third time tonight. noted.", 12),
+            Some("third time tonight. noted.".into())
+        );
     }
 
     #[test]
@@ -227,7 +281,7 @@ mod tests {
             level: 3,
             days_since_success: Some(4),
             kind: Kind::Pre,
-            persona: "poltergeist".into(),
+            persona: "d43m0n".into(),
         };
         let prompt = user_prompt(&facts);
         assert!(prompt.contains("family: cargo"));
@@ -242,7 +296,7 @@ mod tests {
 
     #[test]
     fn seance_prompt_carries_only_counts_and_dates() {
-        let prompt = seance_prompt(94, 42, "poltergeist");
+        let prompt = seance_prompt(94, 42, "d43m0n");
         assert!(prompt.contains("days_dormant: 94"));
         assert!(prompt.contains("events: 42"));
         assert!(!prompt.contains('/'));
