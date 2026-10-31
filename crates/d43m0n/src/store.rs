@@ -54,8 +54,13 @@ pub fn open(path: &Path) -> Result<Connection> {
 
 /// `cwd_id` is the hex SHA-256 of the absolute path.
 pub fn cwd_id(path: &str) -> String {
+    use std::fmt::Write;
+
     let digest = Sha256::digest(path.as_bytes());
-    hex::encode(digest)
+    digest.iter().fold(String::with_capacity(64), |mut out, b| {
+        let _ = write!(out, "{b:02x}");
+        out
+    })
 }
 
 pub fn upsert_dir(conn: &Connection, cwd_id: &str, path: &str, ts: i64) -> Result<()> {
@@ -275,7 +280,7 @@ fn demo_path_for(cwd: &str) -> Option<&'static str> {
 /// Locate `data/demo_history.csv` at runtime (env override, cwd, or next to
 /// the executable).
 pub fn demo_csv_path() -> Option<std::path::PathBuf> {
-    if let Some(p) = std::env::var_os("POLTERGEIST_DEMO_CSV") {
+    if let Some(p) = std::env::var_os("D43M0N_DEMO_CSV") {
         let p = std::path::PathBuf::from(p);
         if p.exists() {
             return Some(p);

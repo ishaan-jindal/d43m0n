@@ -187,10 +187,6 @@ fn ask(prompt: &str, cfg: &NarratorCfg) -> Option<String> {
     if cfg.backend != "ollama" {
         return None;
     }
-    let client = reqwest::blocking::Client::builder()
-        .timeout(Duration::from_millis(cfg.timeout_ms.max(1)))
-        .build()
-        .ok()?;
     let url = format!("{}/api/generate", cfg.endpoint.trim_end_matches('/'));
     let body = json!({
         "model": cfg.model,
@@ -203,28 +199,24 @@ fn ask(prompt: &str, cfg: &NarratorCfg) -> Option<String> {
         "keep_alive": "30m",
         "options": {"temperature": 0.9, "num_predict": 32},
     });
+    let timeout = Duration::from_millis(cfg.timeout_ms.max(1));
 
     for attempt in 0..2 {
-        let reply = client.post(&url).json(&body).send();
-        let reply = match reply {
-            Ok(reply) => reply,
+        let value = match crate::http::post_json(&url, &body, timeout) {
+            Ok(value) => value,
             Err(e) => {
-                tracing::warn!(error = ?e, attempt, "narrator: request failed");
+                eprintln!("narrator: request failed (attempt {attempt}): {e:?}");
                 continue;
             }
         };
-        let Ok(value) = reply.json::<Value>() else {
-            tracing::warn!("narrator: bad JSON (attempt {attempt})");
-            continue;
-        };
         let Some(text) = value.get("response").and_then(Value::as_str) else {
-            tracing::warn!("narrator: no response field (attempt {attempt})");
+            eprintln!("narrator: no response field (attempt {attempt})");
             continue;
         };
         if let Some(line) = validate(text, cfg.max_words) {
             return Some(line);
         }
-        tracing::warn!("narrator: rejected {:?}", text);
+        eprintln!("narrator: rejected {text:?}");
     }
     None
 }

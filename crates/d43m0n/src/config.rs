@@ -25,12 +25,12 @@ pub fn uid() -> u32 {
 
 pub fn config_path() -> PathBuf {
     xdg_dir("XDG_CONFIG_HOME", ".config")
-        .join("poltergeist")
+        .join("d43m0n")
         .join("config.toml")
 }
 
 pub fn data_dir() -> PathBuf {
-    xdg_dir("XDG_DATA_HOME", ".local/share").join("poltergeist")
+    xdg_dir("XDG_DATA_HOME", ".local/share").join("d43m0n")
 }
 
 pub fn db_path() -> PathBuf {
@@ -43,17 +43,15 @@ pub fn demo_db_path() -> PathBuf {
 
 pub fn socket_path() -> PathBuf {
     match env::var_os("XDG_RUNTIME_DIR").filter(|v| !v.is_empty()) {
-        Some(dir) => PathBuf::from(dir)
-            .join("poltergeist")
-            .join("poltergeist.sock"),
-        None => PathBuf::from(format!("/tmp/poltergeist-{}.sock", uid())),
+        Some(dir) => PathBuf::from(dir).join("d43m0n").join("d43m0n.sock"),
+        None => PathBuf::from(format!("/tmp/d43m0n-{}.sock", uid())),
     }
 }
 
 pub fn sidecar_socket_path() -> PathBuf {
     match env::var_os("XDG_RUNTIME_DIR").filter(|v| !v.is_empty()) {
-        Some(dir) => PathBuf::from(dir).join("poltergeist").join("sidecar.sock"),
-        None => PathBuf::from(format!("/tmp/poltergeist-{}-sidecar.sock", uid())),
+        Some(dir) => PathBuf::from(dir).join("d43m0n").join("sidecar.sock"),
+        None => PathBuf::from(format!("/tmp/d43m0n-{}-sidecar.sock", uid())),
     }
 }
 

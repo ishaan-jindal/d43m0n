@@ -7,6 +7,7 @@ pub mod echo;
 pub mod eval;
 pub mod family;
 pub mod features;
+pub mod http;
 pub mod level;
 pub mod narrator;
 pub mod predictor;

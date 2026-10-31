@@ -10,6 +10,9 @@ use std::collections::HashMap;
 use anyhow::Result;
 use rusqlite::Connection;
 
+use crate::config::Levels;
+use crate::{family, level, redact};
+
 /// Numeric width of one feature vector.
 pub const N_FEATURES: usize = 15;
 
@@ -296,6 +299,80 @@ pub fn vector(input: &RowInput, ids: &IdMaps, counts: &CountsPair) -> [f64; N_FE
         family_prior,
         family_cwd_prior,
     ]
+}
+
+/// One command's pre-path score, shared by the daemon and the eval latency
+/// bench. `None` means the command is skipped (secret match or empty family).
+pub struct PreScore {
+    pub family: String,
+    pub args: Vec<String>,
+    pub redacted: String,
+    pub input: RowInput,
+    pub vector: [f64; N_FEATURES],
+    pub p_fail: f64,
+}
+
+impl PreScore {
+    /// Haunting level for the final probability (baseline or TabPFN).
+    pub fn level(&self, p_fail: f64, levels: &Levels) -> u8 {
+        level::level(
+            p_fail,
+            self.input.fail_streak.max(0) as u32,
+            self.input.hour as u32,
+            levels,
+        )
+    }
+}
+
+/// Redact, split the family and featurize one command, then score the family
+/// prior. The level is derived from the final probability by the caller.
+#[allow(clippy::too_many_arguments)]
+pub fn score_pre(
+    cmd: &str,
+    cwd_id: &str,
+    ts: i64,
+    git_dirty: Option<i64>,
+    prev: Option<&crate::store::LastEvent>,
+    secret_patterns: &[String],
+    ids: &IdMaps,
+    priors: &mut PriorTracker,
+) -> Option<PreScore> {
+    if redact::secret_guard_with(cmd, secret_patterns) {
+        return None;
+    }
+    let (family, args) = family::split_family(cmd);
+    if family.is_empty() {
+        return None;
+    }
+    let (hour, dow) = level::local_hour_dow(ts);
+    let streak = match prev {
+        Some(event) if event.exit_code != 0 => event.fail_streak.max(0),
+        _ => 0,
+    };
+    let input = RowInput {
+        family: family.clone(),
+        cwd_id: cwd_id.to_string(),
+        hour: hour as i64,
+        dow: dow as i64,
+        prev_exit: prev.map(|event| event.exit_code),
+        fail_streak: streak,
+        secs_since_prev: prev.map(|event| (ts - event.ts).max(0)),
+        git_dirty,
+        arg_count: args.len() as i64,
+        has_pipe: args.iter().any(|t| t.contains('|')),
+        has_redirect: args.iter().any(|t| t.contains('>') || t.contains('<')),
+    };
+    priors.begin(ts);
+    let vector = vector(&input, ids, &priors.counts(&family, cwd_id));
+    let p_fail = vector[FAMILY_PRIOR];
+    Some(PreScore {
+        family,
+        args,
+        redacted: redact::redact(cmd),
+        input,
+        vector,
+        p_fail,
+    })
 }
 
 /// Most recent `limit` labeled samples, featurized in ts order.

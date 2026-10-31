@@ -12,18 +12,18 @@
 zmodload zsh/datetime 2>/dev/null
 autoload -Uz add-zsh-hook 2>/dev/null
 
-: "${POLTERGEIST_GLYPH:=👻}"
-: "${POLTERGEIST_HOOK_TIMEOUT:=0.04}"
-__d43m0n_bin=${POLTERGEIST_BIN:-d43m0n}
+: "${D43M0N_GLYPH:=👻}"
+: "${D43M0N_HOOK_TIMEOUT:=0.04}"
+__d43m0n_bin=${D43M0N_BIN:-d43m0n}
 __d43m0n_start=
 __d43m0n_ran=
 
 __d43m0n_emit() {
   [[ -n $1 ]] || return 0
   if [[ -z ${NO_COLOR+x} && -t 2 ]]; then
-    print -u2 -r -- $'\e[2;3m'"${POLTERGEIST_GLYPH} $1"$'\e[0m'
+    print -u2 -r -- $'\e[2;3m'"${D43M0N_GLYPH} $1"$'\e[0m'
   else
-    print -u2 -r -- "${POLTERGEIST_GLYPH} $1"
+    print -u2 -r -- "${D43M0N_GLYPH} $1"
   fi
   return 0
 }
@@ -33,7 +33,7 @@ __d43m0n_emit() {
 __d43m0n_call() {
   local whisper
   if (( $+commands[timeout] )); then
-    whisper=$(timeout "$POLTERGEIST_HOOK_TIMEOUT" "$@" 2>/dev/null) || return 0
+    whisper=$(timeout "$D43M0N_HOOK_TIMEOUT" "$@" 2>/dev/null) || return 0
   else
     whisper=$("$@" 2>/dev/null) || return 0
   fi

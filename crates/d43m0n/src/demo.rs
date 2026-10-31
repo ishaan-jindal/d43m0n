@@ -24,7 +24,7 @@ struct Step {
 }
 
 /// ~20 commands across families, cwds and hours. The prediction cache values
-/// chosen here land in L0, L1, L2 and night-time L3 (see `docs/WRITEUP.md`).
+/// chosen here land in L0, L1, L2 and night-time L3.
 const SCRIPT: &[Step] = &[
     Step {
         label: "git status",

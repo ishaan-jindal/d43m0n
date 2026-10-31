@@ -9,17 +9,17 @@
 # Leading-space commands and the ignore list are sent as-is; the daemon filters.
 # This file must never change $status, command output, or command execution.
 
-set -q POLTERGEIST_GLYPH; or set -g POLTERGEIST_GLYPH "👻"
-set -q POLTERGEIST_HOOK_TIMEOUT; or set -g POLTERGEIST_HOOK_TIMEOUT 0.04
+set -q D43M0N_GLYPH; or set -g D43M0N_GLYPH "👻"
+set -q D43M0N_HOOK_TIMEOUT; or set -g D43M0N_HOOK_TIMEOUT 0.04
 set -q __d43m0n_bin; or set -g __d43m0n_bin d43m0n
-test -n "$POLTERGEIST_BIN"; and set -g __d43m0n_bin $POLTERGEIST_BIN
+test -n "$D43M0N_BIN"; and set -g __d43m0n_bin $D43M0N_BIN
 
 function __d43m0n_emit
     test -n "$argv"; or return 0
     if test -z "$NO_COLOR"; and isatty stderr
-        printf '\e[2;3m%s %s\e[0m\n' "$POLTERGEIST_GLYPH" "$argv" >&2
+        printf '\e[2;3m%s %s\e[0m\n' "$D43M0N_GLYPH" "$argv" >&2
     else
-        printf '%s %s\n' "$POLTERGEIST_GLYPH" "$argv" >&2
+        printf '%s %s\n' "$D43M0N_GLYPH" "$argv" >&2
     end
 end
 
@@ -28,7 +28,7 @@ end
 function __d43m0n_call
     set -l whisper ""
     if command -q timeout
-        set whisper (timeout $POLTERGEIST_HOOK_TIMEOUT $argv 2>/dev/null); or return 0
+        set whisper (timeout $D43M0N_HOOK_TIMEOUT $argv 2>/dev/null); or return 0
     else
         set whisper ($argv 2>/dev/null); or return 0
     end

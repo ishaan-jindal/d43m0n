@@ -2,21 +2,20 @@
 //! prediction/narration wiring.
 
 use std::collections::HashMap;
+use std::io::{BufRead, BufReader, Write};
 use std::os::unix::fs::PermissionsExt;
+use std::os::unix::net::{UnixListener, UnixStream};
 use std::path::PathBuf;
 use std::sync::{Arc, Mutex};
 use std::time::Duration;
 
 use anyhow::{bail, Context, Result};
 use rusqlite::Connection;
-use tokio::io::{AsyncBufReadExt, AsyncWriteExt, BufReader};
-use tokio::net::{UnixListener, UnixStream};
-use tokio::time::timeout;
 
 use crate::config::{self, Config};
 use crate::proto::{self, Reply, Request};
 use crate::rate::RateLimiter;
-use crate::{echo, family, features, level, narrator, predictor, redact, store};
+use crate::{echo, features, level, narrator, predictor, store};
 
 struct Pending {
     family: String,
@@ -49,7 +48,7 @@ impl State {
     fn new(cfg: Config) -> Result<Self> {
         let conn = store::open(&config::db_path())?;
         if let Err(e) = store::prune(&conn, cfg.general.retention_days) {
-            tracing::warn!(error = %e, "retention prune failed");
+            eprintln!("retention prune failed: {e}");
         }
         let ids = features::IdMaps::from_conn(&conn)?;
         let priors = features::PriorTracker::from_conn(&conn, &cfg.predictor.fail_exclude_codes)?;
@@ -76,7 +75,7 @@ impl State {
             return;
         }
         if predictor::ensure_sidecar().is_none() {
-            tracing::warn!("sidecar directory not found; predictions fall back to baseline");
+            eprintln!("sidecar directory not found; predictions fall back to baseline");
             return;
         }
         self.request_refit();
@@ -116,54 +115,35 @@ impl State {
         if config::is_off() {
             return Reply::pre(None, 0, 0.0);
         }
-        if redact::secret_guard_with(cmd, &self.cfg.general.secret_patterns) {
-            return Reply::pre(None, 0, 0.0);
-        }
 
-        let (family, args) = family::split_family(cmd);
-        if family.is_empty() {
-            return Reply::pre(None, 0, 0.0);
-        }
-        let redacted = redact::redact(cmd);
         let cwd_id = store::cwd_id(cwd);
-        let _ = store::upsert_dir(&self.conn, &cwd_id, cwd, ts);
-
         let last = store::last_event(&self.conn).ok().flatten();
-        let streak = match &last {
-            Some(event) if event.exit_code != 0 => event.fail_streak.max(0),
-            _ => 0,
+        let Some(scored) = features::score_pre(
+            cmd,
+            &cwd_id,
+            ts,
+            req.git_dirty.map(|d| d as i64),
+            last.as_ref(),
+            &self.cfg.general.secret_patterns,
+            &self.ids,
+            &mut self.priors,
+        ) else {
+            return Reply::pre(None, 0, 0.0);
         };
-        let secs_since_prev = last.as_ref().map(|event| (ts - event.ts).max(0));
-        let (hour, dow) = level::local_hour_dow(ts);
-        let arg_count = args.len() as i64;
-        let has_pipe = args.iter().any(|t| t.contains('|'));
-        let has_redirect = args.iter().any(|t| t.contains('>') || t.contains('<'));
-
-        let input = features::RowInput {
-            family: family.clone(),
-            cwd_id: cwd_id.clone(),
-            hour: hour as i64,
-            dow: dow as i64,
-            prev_exit: last.as_ref().map(|event| event.exit_code),
-            fail_streak: streak,
-            secs_since_prev,
-            git_dirty: req.git_dirty.map(|d| d as i64),
-            arg_count,
-            has_pipe,
-            has_redirect,
-        };
-        self.priors.begin(ts);
-        let vector = features::vector(&input, &self.ids, &self.priors.counts(&family, &cwd_id));
-        let baseline_p = vector[features::FAMILY_PRIOR];
+        let _ = store::upsert_dir(&self.conn, &cwd_id, cwd, ts);
+        let hour = scored.input.hour as u32;
+        let streak = scored.input.fail_streak;
+        let vector = scored.vector;
+        let baseline_p = scored.p_fail;
 
         let use_tabpfn = self.predictor.enabled()
             && !self.predictor.degraded()
             && self.labeled_total >= self.cfg.predictor.min_rows as u64;
         let (p_fail, predictor_mode) = if use_tabpfn {
-            match self
-                .predictor
-                .request(predictor::Key::new(&family, &cwd_id, hour), vector.to_vec())
-            {
+            match self.predictor.request(
+                predictor::Key::new(&scored.family, &cwd_id, hour),
+                vector.to_vec(),
+            ) {
                 Some(p) => (p, "tabpfn"),
                 None => (baseline_p, "baseline"),
             }
@@ -171,14 +151,14 @@ impl State {
             (baseline_p, "baseline")
         };
 
-        let lvl = level::level(p_fail, streak.max(0) as u32, hour, &self.cfg.levels);
+        let lvl = scored.level(p_fail, &self.cfg.levels);
         // Pure Gemma: pre-whispers are silent (a model round trip cannot fit
         // the 40 ms hook budget). Only echoes — lines generated live after a
         // previous command — may whisper here.
         let mut whisper: Option<String> = None;
         if !config::is_muted() && lvl > 0 {
-            if let Ok(Some(days)) = echo::should_echo(&self.conn, &family, &cwd_id) {
-                let key = (family.clone(), cwd_id.clone());
+            if let Ok(Some(days)) = echo::should_echo(&self.conn, &scored.family, &cwd_id) {
+                let key = (scored.family.clone(), cwd_id.clone());
                 whisper = self
                     .echo_buffer
                     .lock()
@@ -186,7 +166,7 @@ impl State {
                     .and_then(|mut map| map.remove(&key));
                 if whisper.is_none() {
                     let facts = narrator::Facts {
-                        family: family.clone(),
+                        family: scored.family.clone(),
                         p_fail,
                         fail_streak: streak,
                         hour,
@@ -201,16 +181,16 @@ impl State {
         }
 
         self.pending = Some(Pending {
-            family,
-            cmd_redacted: redacted,
+            family: scored.family,
+            cmd_redacted: scored.redacted,
             cwd_id,
             p_fail,
             predictor: predictor_mode,
             level: lvl,
-            arg_count,
-            has_pipe,
-            has_redirect,
-            git_dirty: req.git_dirty.map(|d| d as i64),
+            arg_count: scored.input.arg_count,
+            has_pipe: scored.input.has_pipe,
+            has_redirect: scored.input.has_redirect,
+            git_dirty: scored.input.git_dirty,
         });
         Reply::pre(whisper, lvl, p_fail)
     }
@@ -261,7 +241,7 @@ impl State {
             predictor: Some(pending.predictor.into()),
         };
         if let Err(e) = store::insert_event(&self.conn, &row) {
-            tracing::warn!(error = %e, "event insert failed");
+            eprintln!("event insert failed: {e}");
         } else if !excluded {
             self.priors
                 .observe(ts, &pending.family, &pending.cwd_id, exit != 0);
@@ -282,7 +262,6 @@ impl State {
                 .ok()
                 .and_then(|mut slot| slot.take());
             // Pure Gemma: no fallback. Silence when the model misses.
-            tracing::debug!(lvl, buffered = whisper.is_some(), "post whisper chosen");
         } else if lvl == 0 {
             // Drop any line generated for a calmer moment; it would be stale.
             let _ = self.post_buffer.lock().map(|mut slot| slot.take());
@@ -339,15 +318,11 @@ struct SocketGuard(PathBuf);
 impl Drop for SocketGuard {
     fn drop(&mut self) {
         let _ = std::fs::remove_file(&self.0);
-        let _ = std::fs::remove_file(config::data_dir().join("poltergeistd.pid"));
+        let _ = std::fs::remove_file(config::data_dir().join("d43m0nd.pid"));
     }
 }
 
 pub fn run() -> Result<()> {
-    let _ = tracing_subscriber::fmt()
-        .with_max_level(tracing::Level::INFO)
-        .try_init();
-
     let cfg = Config::load_or_default();
     config::ensure_socket_dir()?;
     let socket = config::socket_path();
@@ -359,41 +334,40 @@ pub fn run() -> Result<()> {
         let _ = std::fs::remove_file(&socket);
     }
 
-    let runtime = tokio::runtime::Builder::new_current_thread()
-        .enable_all()
-        .build()
-        .context("building tokio runtime")?;
+    let listener =
+        UnixListener::bind(&socket).with_context(|| format!("binding {}", socket.display()))?;
+    std::fs::set_permissions(&socket, std::fs::Permissions::from_mode(0o600))?;
+    std::fs::create_dir_all(config::data_dir())?;
+    std::fs::write(
+        config::data_dir().join("d43m0nd.pid"),
+        std::process::id().to_string(),
+    )?;
+    let _guard = SocketGuard(socket.clone());
+    let mut state = State::new(cfg)?;
+    state.startup();
+    eprintln!("d43m0nd listening on {}", socket.display());
 
-    runtime.block_on(async move {
-        let listener =
-            UnixListener::bind(&socket).with_context(|| format!("binding {}", socket.display()))?;
-        std::fs::set_permissions(&socket, std::fs::Permissions::from_mode(0o600))?;
-        std::fs::create_dir_all(config::data_dir())?;
-        std::fs::write(
-            config::data_dir().join("poltergeistd.pid"),
-            std::process::id().to_string(),
-        )?;
-        let _guard = SocketGuard(socket.clone());
-        let mut state = State::new(cfg)?;
-        state.startup();
-        tracing::info!(socket = %socket.display(), "d43m0nd listening");
-
-        loop {
-            let (stream, _) = listener.accept().await?;
-            handle_conn(stream, &mut state).await;
-        }
-    })
+    loop {
+        let (stream, _) = listener.accept()?;
+        handle_conn(stream, &mut state);
+    }
 }
 
-async fn handle_conn(stream: UnixStream, state: &mut State) {
+fn handle_conn(stream: UnixStream, state: &mut State) {
+    if stream
+        .set_read_timeout(Some(Duration::from_millis(500)))
+        .is_err()
+    {
+        return;
+    }
     let mut reader = BufReader::new(stream);
     let mut line = String::new();
-    match timeout(Duration::from_millis(500), reader.read_line(&mut line)).await {
-        Ok(Ok(n)) if n > 0 => {}
+    match reader.read_line(&mut line) {
+        Ok(n) if n > 0 => {}
         _ => return,
     }
     let reply = state.handle(&line);
-    let mut stream = reader.into_inner();
-    let _ = stream.write_all(reply.as_bytes()).await;
-    let _ = stream.flush().await;
+    let stream = reader.get_mut();
+    let _ = stream.write_all(reply.as_bytes());
+    let _ = stream.flush();
 }

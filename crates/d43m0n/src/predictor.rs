@@ -181,14 +181,14 @@ fn worker(
                 let db_conn = match crate::store::open(&db) {
                     Ok(conn) => conn,
                     Err(e) => {
-                        tracing::warn!(error = %e, "refit: opening the event store failed");
+                        eprintln!("refit: opening the event store failed: {e}");
                         continue;
                     }
                 };
                 let rows = match features::training_samples(&db_conn, limit as usize, &exclude) {
                     Ok(samples) => samples,
                     Err(e) => {
-                        tracing::warn!(error = %e, "refit: reading history failed");
+                        eprintln!("refit: reading history failed: {e}");
                         continue;
                     }
                 };
@@ -204,19 +204,19 @@ fn worker(
                         let ok = reply["degraded"].as_bool() == Some(false);
                         degraded.store(!ok, Ordering::Relaxed);
                         if ok {
-                            tracing::info!(rows = rows.len(), "sidecar refit ok");
+                            eprintln!("sidecar refit ok rows={}", rows.len());
                             if let Ok(mut cache) = cache.lock() {
                                 cache.clear();
                             }
                         } else {
-                            tracing::warn!(
-                                error = reply["error"].as_str().unwrap_or("unknown"),
-                                "sidecar refit degraded"
+                            eprintln!(
+                                "sidecar refit degraded: {}",
+                                reply["error"].as_str().unwrap_or("unknown")
                             );
                         }
                     }
                     Err(e) => {
-                        tracing::warn!(error = %e, "sidecar refit failed");
+                        eprintln!("sidecar refit failed: {e}");
                         degraded.store(true, Ordering::Relaxed);
                         conn = None;
                     }
@@ -258,7 +258,7 @@ fn call(
 
 /// Directory containing `sidecar/pyproject.toml`, if discoverable.
 pub fn sidecar_dir() -> Option<PathBuf> {
-    if let Some(dir) = std::env::var_os("POLTERGEIST_SIDECAR_DIR") {
+    if let Some(dir) = std::env::var_os("D43M0N_SIDECAR_DIR") {
         let dir = PathBuf::from(dir);
         if dir.join("pyproject.toml").exists() {
             return Some(dir);
@@ -294,7 +294,7 @@ pub fn ensure_sidecar() -> Option<PathBuf> {
     if let Some(parent) = socket.parent() {
         let _ = std::fs::create_dir_all(parent);
     }
-    let python = std::env::var("POLTERGEIST_PYTHON").unwrap_or_else(|_| "python3".into());
+    let python = std::env::var("D43M0N_PYTHON").unwrap_or_else(|_| "python3".into());
     let log = std::fs::OpenOptions::new()
         .create(true)
         .append(true)
@@ -303,7 +303,7 @@ pub fn ensure_sidecar() -> Option<PathBuf> {
     let mut cmd = Command::new(python);
     cmd.current_dir(&dir)
         .arg("-m")
-        .arg("poltergeist_sidecar")
+        .arg("d43m0n_sidecar")
         .arg("--socket")
         .arg(&socket)
         .stdin(Stdio::null());
@@ -322,7 +322,7 @@ pub fn ensure_sidecar() -> Option<PathBuf> {
     match cmd.spawn() {
         Ok(_) => Some(dir),
         Err(e) => {
-            tracing::warn!(error = %e, "could not spawn sidecar");
+            eprintln!("could not spawn sidecar: {e}");
             None
         }
     }

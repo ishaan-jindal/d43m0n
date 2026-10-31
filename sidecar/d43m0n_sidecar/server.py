@@ -22,7 +22,7 @@ import sys
 import threading
 from typing import Any
 
-# CPU cap verified in docs/DECISIONS.md ("TabPFN max training rows").
+# CPU cap: at most 5000 training rows per refit (TabPFN practical CPU limit).
 MAX_ROWS = 5000
 
 
@@ -207,12 +207,12 @@ class Server(socketserver.ThreadingMixIn, socketserver.UnixStreamServer):
 def default_socket() -> str:
     runtime = os.environ.get("XDG_RUNTIME_DIR")
     if runtime:
-        return os.path.join(runtime, "poltergeist", "sidecar.sock")
-    return f"/tmp/poltergeist-{os.getuid()}-sidecar.sock"
+        return os.path.join(runtime, "d43m0n", "sidecar.sock")
+    return f"/tmp/d43m0n-{os.getuid()}-sidecar.sock"
 
 
 def main() -> None:
-    parser = argparse.ArgumentParser(prog="poltergeist_sidecar")
+    parser = argparse.ArgumentParser(prog="d43m0n_sidecar")
     parser.add_argument("--socket", default=default_socket())
     args = parser.parse_args()
 

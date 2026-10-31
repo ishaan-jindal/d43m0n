@@ -10,9 +10,9 @@
 # This file must never change $?, command output, or command execution.
 # Note: it installs its own DEBUG trap for command timing (post-only bash mode).
 
-: ${POLTERGEIST_GLYPH:=👻}
-: ${POLTERGEIST_HOOK_TIMEOUT:=0.04}
-__d43m0n_bin=${POLTERGEIST_BIN:-d43m0n}
+: ${D43M0N_GLYPH:=👻}
+: ${D43M0N_HOOK_TIMEOUT:=0.04}
+__d43m0n_bin=${D43M0N_BIN:-d43m0n}
 __d43m0n_start=
 
 # One fork at init: does this date support %3N (GNU)? Otherwise durations are 0.
@@ -26,9 +26,9 @@ unset __d43m0n_probe
 __d43m0n_emit() {
   [[ -n $1 ]] || return 0
   if [[ -z ${NO_COLOR+x} && -t 2 ]]; then
-    printf '\033[2;3m%s %s\033[0m\n' "$POLTERGEIST_GLYPH" "$1" >&2
+    printf '\033[2;3m%s %s\033[0m\n' "$D43M0N_GLYPH" "$1" >&2
   else
-    printf '%s %s\n' "$POLTERGEIST_GLYPH" "$1" >&2
+    printf '%s %s\n' "$D43M0N_GLYPH" "$1" >&2
   fi
   return 0
 }
@@ -38,7 +38,7 @@ __d43m0n_emit() {
 __d43m0n_call() {
   local whisper
   if command -v timeout >/dev/null 2>&1; then
-    whisper=$(timeout "$POLTERGEIST_HOOK_TIMEOUT" "$@" 2>/dev/null) || return 0
+    whisper=$(timeout "$D43M0N_HOOK_TIMEOUT" "$@" 2>/dev/null) || return 0
   else
     whisper=$("$@" 2>/dev/null) || return 0
   fi

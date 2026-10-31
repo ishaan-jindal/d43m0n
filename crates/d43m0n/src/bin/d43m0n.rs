@@ -7,7 +7,7 @@ use std::time::{Duration, Instant};
 
 use anyhow::{bail, Context, Result};
 use clap::{Parser, Subcommand};
-use d43m0n::{config, daemon, eval, level, predictor, proto, redact, store};
+use d43m0n::{config, daemon, eval, http, level, predictor, proto, redact, store};
 
 const HOOK_BUDGET: Duration = Duration::from_millis(40);
 const ZSH_SNIPPET: &str = include_str!("../../../../shell/zsh.zsh");
@@ -355,7 +355,7 @@ fn spawn_daemon() -> Result<bool> {
 }
 
 fn daemon_stop() -> Result<()> {
-    let pid_path = config::data_dir().join("poltergeistd.pid");
+    let pid_path = config::data_dir().join("d43m0nd.pid");
     let pid = std::fs::read_to_string(&pid_path)
         .ok()
         .and_then(|s| s.trim().parse::<i32>().ok());
@@ -717,7 +717,7 @@ fn row(ok: Option<bool>, name: &str, detail: &str, fix: &str) {
 }
 
 fn sidecar_python() -> String {
-    std::env::var("POLTERGEIST_PYTHON").unwrap_or_else(|_| "python3".into())
+    std::env::var("D43M0N_PYTHON").unwrap_or_else(|_| "python3".into())
 }
 
 // Fast "is tabpfn installed?" probe. A full `import tabpfn` loads torch
@@ -754,17 +754,8 @@ fn command_ok(program: &str, args: &[&str], limit: Duration) -> bool {
 }
 
 fn ollama_models(endpoint: &str) -> Result<Vec<String>> {
-    let client = reqwest::blocking::Client::builder()
-        .timeout(Duration::from_millis(500))
-        .build()
-        .context("building http client")?;
     let url = format!("{}/api/tags", endpoint.trim_end_matches('/'));
-    let response = client.get(url).send().context("connecting")?;
-    let status = response.status();
-    if !status.is_success() {
-        bail!("HTTP {status}");
-    }
-    let value: serde_json::Value = response.json().context("decoding /api/tags")?;
+    let value = http::get_json(&url, Duration::from_secs(5)).context("GET /api/tags")?;
     let models = value
         .get("models")
         .and_then(|m| m.as_array())

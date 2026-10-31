@@ -11,7 +11,7 @@ use serde_json::json;
 
 use crate::config::Config;
 use crate::features::{self, Sample, FAMILY_PRIOR, N_FEATURES};
-use crate::{family, level, narrator, predictor, proto, redact, store};
+use crate::{level, narrator, predictor, proto, store};
 
 #[derive(Clone, Debug)]
 pub struct Metrics {
@@ -265,7 +265,6 @@ impl Latency {
         let cwd = "/tmp/d43m0n/latency-bench";
         let cwd_id = store::cwd_id(cwd);
         let start_ts = level::now_ts() - N as i64 * 60;
-        let mut streak = 0u32;
 
         let mut out = Self {
             n: N,
@@ -285,37 +284,29 @@ impl Latency {
             let start = Instant::now();
             let req: proto::Request = serde_json::from_str(&request).expect("bench request");
             let cmd = req.cmd.as_deref().expect("bench cmd");
-            let _ = redact::secret_guard(cmd);
-            let (fam, args) = family::split_family(cmd);
-            let _ = redact::redact(cmd);
             store::upsert_dir(&conn, &cwd_id, cwd, ts)?;
             let last = store::last_event(&conn)?;
-            let (hour, dow) = level::local_hour_dow(ts);
-            let input = features::RowInput {
-                family: fam.clone(),
-                cwd_id: cwd_id.clone(),
-                hour: hour as i64,
-                dow: dow as i64,
-                prev_exit: last.as_ref().map(|e| e.exit_code),
-                fail_streak: streak as i64,
-                secs_since_prev: last.as_ref().map(|e| (ts - e.ts).max(0)),
-                git_dirty: req.git_dirty.map(|d| d as i64),
-                arg_count: args.len() as i64,
-                has_pipe: args.iter().any(|t| t.contains('|')),
-                has_redirect: args.iter().any(|t| t.contains('>') || t.contains('<')),
-            };
-            priors.begin(ts);
-            let vector = features::vector(&input, &ids, &priors.counts(&fam, &cwd_id));
-            let p_fail = vector[FAMILY_PRIOR];
-            let lvl = level::level(p_fail, streak, hour, &cfg.levels);
+            let scored = features::score_pre(
+                cmd,
+                &cwd_id,
+                ts,
+                req.git_dirty.map(|d| d as i64),
+                last.as_ref(),
+                &[],
+                &ids,
+                &mut priors,
+            )
+            .expect("bench command must score");
+            let p_fail = scored.p_fail;
+            let lvl = scored.level(p_fail, &cfg.levels);
             // Pure Gemma: the pre path never has a line to show.
             let whisper: Option<String> = None;
             let _ = proto::encode(&proto::Reply::pre(whisper, lvl, p_fail));
             out.pre.push(elapsed_ms(start));
 
             let start = Instant::now();
-            let counts = priors.counts(&fam, &cwd_id);
-            let v = features::vector(&input, &ids, &counts);
+            let counts = priors.counts(&scored.family, &cwd_id);
+            let v = features::vector(&scored.input, &ids, &counts);
             std::hint::black_box(v[FAMILY_PRIOR]);
             out.predict.push(elapsed_ms(start));
 
@@ -329,25 +320,24 @@ impl Latency {
             let row = store::EventRow {
                 ts,
                 cwd_id: cwd_id.clone(),
-                family: fam,
-                cmd_redacted: redact::redact(cmd),
+                family: scored.family,
+                cmd_redacted: scored.redacted,
                 exit_code: exit,
                 duration_ms: 42,
-                hour: hour as i64,
-                dow: dow as i64,
+                hour: scored.input.hour,
+                dow: scored.input.dow,
                 prev_exit: prev.as_ref().map(|e| e.exit_code),
                 fail_streak,
                 secs_since_prev: prev.as_ref().map(|e| (ts - e.ts).max(0)),
-                git_dirty: req.git_dirty.map(|d| d as i64),
-                arg_count: args.len() as i64,
-                has_pipe: input.has_pipe,
-                has_redirect: input.has_redirect,
+                git_dirty: scored.input.git_dirty,
+                arg_count: scored.input.arg_count,
+                has_pipe: scored.input.has_pipe,
+                has_redirect: scored.input.has_redirect,
                 p_fail_pred: Some(p_fail),
                 predictor: Some("baseline".into()),
             };
             store::insert_event(&conn, &row)?;
             out.post.push(elapsed_ms(start));
-            streak = if exit == 0 { 0 } else { streak + 1 };
         }
 
         let facts = narrator::Facts {

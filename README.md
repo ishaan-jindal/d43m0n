@@ -2,13 +2,13 @@
 
 A local-only terminal haunting. d43m0n watches your shell, learns your habits, predicts which commands are likely to fail before they run, and comments in the voice of a ghost. It also surfaces work you forgot was still waiting in old directories.
 
-Nothing leaves the machine: prediction runs on TabPFN in a local sidecar (or the built-in Rust baseline), narration on a local Gemma model via Ollama (silence when it misses), and the event store is SQLite under `~/.local/share/poltergeist/`. The shell hook has a 40 ms budget and degrades silently when the daemon is down.
+Nothing leaves the machine: prediction runs on TabPFN in a local sidecar (or the built-in Rust baseline), narration on a local Gemma model via Ollama (silence when it misses), and the event store is SQLite under `~/.local/share/d43m0n/`. The shell hook has a 40 ms budget and degrades silently when the daemon is down.
 
 **Status: M3** — zsh and bash hooks, redacted event logging, secret guard, baseline + TabPFN prediction, Gemma narration, Echoes, Séance, demo replay, eval + latency benchmark, `doctor`, `stats`, `purge`.
 
 ## Meet d43m0n
 
-The default persona is `d43m0n`, a deadpan familiar with opinions — fonder of the terminal than it lets on, blunt about the tool and the hour, never giving advice or naming a path. Rename it in `~/.config/poltergeist/config.toml`:
+The default persona is `d43m0n`, a deadpan familiar with opinions — fonder of the terminal than it lets on, blunt about the tool and the hour, never giving advice or naming a path. Rename it in `~/.config/d43m0n/config.toml`:
 
 ```toml
 [general]
@@ -68,7 +68,7 @@ séance: 7 directories dormant for 30+ days (oldest first)
 
 ```text
 $ d43m0n demo --run
-demo replay: 18 commands · live narrator · /home/sacred/.local/share/poltergeist/demo.db
+demo replay: 18 commands · live narrator · /home/sacred/.local/share/d43m0n/demo.db
 (read-only over the demo store; your real database is untouched)
 
   [13:00] git status             p=0.12  · L0 (silent)
@@ -108,11 +108,11 @@ Every command above works with networking disabled. There is no network listener
 
 ## Predictor and narrator setup
 
-TabPFN is not bundled. Local use requires accepting Prior Labs' non-commercial license and obtaining the weights per their instructions, then `pip install tabpfn==9.2.0` — on Arch's externally-managed Python, install into the sidecar venv instead: `~/.local/share/poltergeist/venv/bin/pip install "tabpfn==9.2.0"`. The daemon spawns the sidecar with `$POLTERGEIST_PYTHON` (set in the fish snippet config and the systemd unit). Without it the sidecar reports `degraded` and the daemon reports `baseline`; `stats` never claims TabPFN unless the sidecar is healthy and the probe import succeeds.
+TabPFN is not bundled. Local use requires accepting Prior Labs' non-commercial license and obtaining the weights per their instructions, then `pip install tabpfn==9.2.0` — on Arch's externally-managed Python, install into the sidecar venv instead: `~/.local/share/d43m0n/venv/bin/pip install "tabpfn==9.2.0"`. The daemon spawns the sidecar with `$D43M0N_PYTHON` (set in the fish snippet config and the systemd unit). Without it the sidecar reports `degraded` and the daemon reports `baseline`; `stats` never claims TabPFN unless the sidecar is healthy and the probe import succeeds.
 
-First fit downloads weights after a one-time license acceptance. Headless: accept the license at https://ux.priorlabs.ai (Licenses tab), copy the key from https://ux.priorlabs.ai/account, add `Environment=TABPFN_TOKEN=<key>` under `[Service]` via `systemctl --user edit poltergeist`, and restart.
+First fit downloads weights after a one-time license acceptance. Headless: accept the license at https://ux.priorlabs.ai (Licenses tab), copy the key from https://ux.priorlabs.ai/account, add `Environment=TABPFN_TOKEN=<key>` under `[Service]` via `systemctl --user edit d43m0n`, and restart.
 
-Narration uses Ollama on localhost. The default model is `gemma3:4b`; if your local cache has a different tag, set it in `~/.config/poltergeist/config.toml`:
+Narration uses Ollama on localhost. The default model is `gemma3:4b`; if your local cache has a different tag, set it in `~/.config/d43m0n/config.toml`:
 
 ```toml
 [narrator]
@@ -125,14 +125,8 @@ Sentry tracing was cut early; there is no Sentry dependency and no telemetry of 
 
 ## Privacy
 
-Raw command text never touches disk. Events store only the family, a redacted form (`<path>`, `<url>`, `<arg>`, flags kept), exit code and timing. Commands matching secret patterns are dropped entirely. The event store is SQLite under `~/.local/share/poltergeist/`; `d43m0n purge --all` deletes it. See [docs/PRIVACY.md](docs/PRIVACY.md).
-
-## Docs
-
-- [Decisions and VERIFY outcomes](docs/DECISIONS.md)
-- [Privacy](docs/PRIVACY.md)
-- [Write-up draft](docs/WRITEUP.md)
+Raw command text never touches disk. Events store only the family, a redacted form (`<path>`, `<url>`, `<arg>`, flags kept), exit code and timing. Commands matching secret patterns are dropped entirely. The event store is SQLite under `~/.local/share/d43m0n/`; `d43m0n purge --all` deletes it. No telemetry of any kind.
 
 ## Challenge
 
-Built for the [Ghost in the Machine open-source AI challenge](https://dev.to/challenges/hacktoberfest-week4-2026-10-26) (Halloween / Día de los Muertos week, 2026). See [docs/WRITEUP.md](docs/WRITEUP.md) for the measured numbers and what did not work.
+Built for the [Ghost in the Machine open-source AI challenge](https://dev.to/challenges/hacktoberfest-week4-2026-10-26) (Halloween / Día de los Muertos week, 2026).

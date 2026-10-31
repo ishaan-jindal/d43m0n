@@ -14,4 +14,4 @@ dependencies = [
 ]
 
 [tool.setuptools]
-packages = ["poltergeist_sidecar"]
+packages = ["d43m0n_sidecar"]
