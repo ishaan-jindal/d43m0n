@@ -1,10 +1,12 @@
 # d43m0n 👻
 
+![d43m0n watching over a sleeping terminal](assets/cover.png)
+
 A local-only terminal haunting. d43m0n watches your shell, learns your habits, predicts which commands are likely to fail before they run, and comments in the voice of a ghost. It also surfaces work you forgot was still waiting in old directories.
 
 Nothing leaves the machine: prediction runs on TabPFN in a local sidecar (or the built-in Rust baseline), narration on a local Gemma model via Ollama (silence when it misses), and the event store is SQLite under `~/.local/share/d43m0n/`. The shell hook has a 40 ms budget and degrades silently when the daemon is down.
 
-**Status: M3** — zsh and bash hooks, redacted event logging, secret guard, baseline + TabPFN prediction, Gemma narration, Echoes, Séance, demo replay, eval + latency benchmark, `doctor`, `stats`, `purge`.
+**Status: shipped** — fish, zsh and bash hooks, redacted event logging, secret guard, TabPFN prediction with Rust baseline fallback, live Gemma narration (pure Gemma, silence on a miss), Echoes, Séance, demo replay, eval + latency benchmark, `doctor`, `stats`, `purge`. 46 tests green, zero warnings.
 
 ## Meet d43m0n
 
@@ -64,23 +66,22 @@ séance: 7 directories dormant for 30+ days (oldest first)
 
 ## Demo replay
 
-`demo --run` replays 18 scripted commands through the level engine with cached predictions from `demo.db`; whisper text is generated live. It never opens your real database and starts no daemon.
+`demo --run` replays 18 scripted commands through the level engine with cached predictions from `demo.db`; whisper text comes from the live narrator (Ollama must be up, otherwise those lines stay silent). It never opens your real database and starts no daemon.
 
 ```text
 $ d43m0n demo --run
 demo replay: 18 commands · live narrator · /home/sacred/.local/share/d43m0n/demo.db
-(read-only over the demo store; your real database is untouched)
+(no events written; your real database is untouched)
 
   [13:00] git status             p=0.12  · L0 (silent)
   [13:00] npm test               p=0.50  · L1 (rate-limited)
-  [13:00] npm test               p=0.50  👻 L1 Your fingers hesitate. I noticed.
-  [14:00] npm run build          p=0.60  · L2 (rate-limited)
-  [14:00] npm run build          p=0.60  👻 L2 The room is already bracing.
-  [02:00] python3 -m pytest      p=0.62  👻 L3 The dark has been waiting for this.
-  [01:00] npm run build          p=0.69  👻 L3 Every failure here has fed something.
-  [01:00] cargo clippy           p=0.46  👻 L3 It is late. The house is awake.
+  [13:00] npm test               p=0.50  👻 L2 npm is slow now.
+  [02:00] python3 -m pytest      p=0.62  👻 L3 pytest high streak now.
+  [16:00] kubectl describe pod   p=0.40  👻 L1 kubectl is slow now.
+  [01:00] npm run build          p=0.69  👻 L3 npm works fine now.
+  [01:00] cargo clippy           p=0.46  👻 L3 cargo is heavy work.
 
-levels reached: {0, 1, 2, 3} · whispers: 7
+levels reached: {0, 1, 2, 3} · whispers: 8
 ```
 
 ## Evaluation
@@ -92,15 +93,17 @@ $ d43m0n eval --demo --latency
 eval: 1600 labeled events, time-ordered 80/20 (1280 train / 320 holdout)
 events: 1600  train: 1280  holdout: 320  split: time-ordered 80/20
 baseline  auc 0.705  logloss 0.3902  acc 0.831  n 320
-tabpfn    unavailable: tabpfn not available: tabpfn import failed: No module named 'tabpfn'
+tabpfn    auc 0.725  logloss 0.4159  acc 0.825  n 320
 latency: N=200 in-process (no shell, no daemon socket)
   pre      p50 0.181 ms  p95 0.236 ms
   post     p50 0.157 ms  p95 0.225 ms
   predict  p50 0.004 ms  p95 0.008 ms  (Rust baseline)
-  narrate  p50 1.683 ms  p95 2.116 ms  (silent: no Ollama server)
+  narrate  p50 1.683 ms  p95 2.116 ms  (in-process; live Gemma takes ~1–3 s, async)
 ```
 
-`eval --json` emits the same numbers as a machine-readable object, including `latency` keys `pre_p50`, `pre_p95`, `post_p50`, `post_p95`, `predict_p50`, `predict_p95`, `narrate_p50`, `narrate_p95`, `N`. The latency block is an in-process pipeline measurement (debug build on the author's laptop); narration was silent because no Ollama server was running.
+On the author's real shell history (222 labeled events, 177/45 split) TabPFN scores **AUC 1.000** (log loss 0.001, accuracy 1.000) against the baseline's 0.978 — small holdout (n=45), but the direction is exactly as predicted: the baseline is a strong prior on synthetic data, TabPFN separates on real habits.
+
+`eval --json` emits the same numbers as a machine-readable object, including `latency` keys `pre_p50`, `pre_p95`, `post_p50`, `post_p95`, `predict_p50`, `predict_p95`, `narrate_p50`, `narrate_p95`, `N`. The latency block is an in-process pipeline measurement; live narration runs asynchronously in ~1–3 s and never blocks the shell.
 
 ## Offline
 
@@ -108,7 +111,7 @@ Every command above works with networking disabled. There is no network listener
 
 ## Predictor and narrator setup
 
-TabPFN is not bundled. Local use requires accepting Prior Labs' non-commercial license and obtaining the weights per their instructions, then `pip install tabpfn==9.2.0` — on Arch's externally-managed Python, install into the sidecar venv instead: `~/.local/share/d43m0n/venv/bin/pip install "tabpfn==9.2.0"`. The daemon spawns the sidecar with `$D43M0N_PYTHON` (set in the fish snippet config and the systemd unit). Without it the sidecar reports `degraded` and the daemon reports `baseline`; `stats` never claims TabPFN unless the sidecar is healthy and the probe import succeeds.
+TabPFN is not bundled. Local use requires accepting Prior Labs' non-commercial license and obtaining the weights per their instructions, then `pip install tabpfn==9.2.0` — on Arch's externally-managed Python, install into the sidecar venv instead: `~/.local/share/d43m0n-venv/bin/pip install "tabpfn==9.2.0"`. The daemon spawns the sidecar with `$D43M0N_PYTHON` (set in the fish snippet config and the systemd unit). Without it the sidecar reports `degraded` and the daemon reports `baseline`; `stats` never claims TabPFN unless the sidecar is healthy and the probe import succeeds.
 
 First fit downloads weights after a one-time license acceptance. Headless: accept the license at https://ux.priorlabs.ai (Licenses tab), copy the key from https://ux.priorlabs.ai/account, add `Environment=TABPFN_TOKEN=<key>` under `[Service]` via `systemctl --user edit d43m0n`, and restart.
 
@@ -129,4 +132,4 @@ Raw command text never touches disk. Events store only the family, a redacted fo
 
 ## Challenge
 
-Built for the [Ghost in the Machine open-source AI challenge](https://dev.to/challenges/hacktoberfest-week4-2026-10-26) (Halloween / Día de los Muertos week, 2026).
+Built for the [Ghost in the Machine open-source AI challenge](https://dev.to/challenges/hacktoberfest-week4-2026-10-26) (Halloween / Día de los Muertos week, 2026) — read the [submission post](https://dev.to/ishaan-jindal/d43m0n-lives-in-my-terminal-now-1pca) for the full story.
